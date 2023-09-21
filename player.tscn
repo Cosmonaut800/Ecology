@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://ptn3na5kq76"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_3ktdy"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_68iyb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g0wcy"]
+albedo_color = Color(0.584314, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5y1kx"]
+material = SubResource("StandardMaterial3D_g0wcy")
+
+[sub_resource type="BoxMesh" id="BoxMesh_3w384"]
+size = Vector3(0.2, 0.2, 1)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_3ktdy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_68iyb")
+
+[node name="Graphics" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_5y1kx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.123042)
+mesh = SubResource("BoxMesh_3w384")
+
+[node name="YawPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+
+[node name="PitchPivot" type="Node3D" parent="YawPivot"]
+
+[node name="Camera3D" type="Camera3D" parent="YawPivot/PitchPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25)
