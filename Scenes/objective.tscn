@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://jrx02g6k4j55"]
+
+[ext_resource type="Script" path="res://Scripts/objective.gd" id="1_wygws"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b5qv5"]
+albedo_color = Color(0.533333, 0.329412, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_x2os0"]
+material = SubResource("StandardMaterial3D_b5qv5")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_filot"]
+radius = 1.5
+
+[node name="Objective" type="Node3D"]
+script = ExtResource("1_wygws")
+
+[node name="Graphics" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.996624, 0)
+mesh = SubResource("CylinderMesh_x2os0")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_filot")

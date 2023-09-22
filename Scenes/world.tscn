@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://chsv4hh4paivh"]
+[gd_scene load_steps=15 format=3 uid="uid://chsv4hh4paivh"]
 
+[ext_resource type="Script" path="res://Scripts/world.gd" id="1_6aae5"]
 [ext_resource type="Texture2D" uid="uid://dsado4m81y6lo" path="res://Materials/20190728_134250.png" id="1_52pn5"]
 [ext_resource type="Texture2D" uid="uid://6hniyov4judk" path="res://Materials/20190728_134236.png" id="2_1ij88"]
-[ext_resource type="PackedScene" uid="uid://ptn3na5kq76" path="res://player.tscn" id="2_lmlxt"]
+[ext_resource type="PackedScene" uid="uid://bb3fswnhcewyr" path="res://Scenes/player.tscn" id="2_lmlxt"]
+[ext_resource type="PackedScene" uid="uid://jrx02g6k4j55" path="res://Scenes/objective.tscn" id="4_g8hsc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8o6pj"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -35,6 +37,7 @@ albedo_texture = ExtResource("2_1ij88")
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [node name="World" type="Node3D"]
+script = ExtResource("1_6aae5")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xscvn")
@@ -64,3 +67,7 @@ shape = SubResource("ConcavePolygonShape3D_5q7vx")
 
 [node name="Player" parent="." instance=ExtResource("2_lmlxt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.837719, 0)
+
+[node name="Objective1" parent="." node_paths=PackedStringArray("player_body") instance=ExtResource("4_g8hsc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.98791, 0, -5.64794)
+player_body = NodePath("../Player")

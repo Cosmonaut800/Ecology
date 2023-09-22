@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddgpd7xbfmn5h"]
+
+[ext_resource type="Script" path="res://Scripts/follower.gd" id="1_jkej4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhsmj"]
+albedo_color = Color(0.572549, 0.462745, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_no588"]
+material = SubResource("StandardMaterial3D_qhsmj")
+
+[sub_resource type="BoxMesh" id="BoxMesh_14kpn"]
+size = Vector3(0.2, 0.2, 1)
+
+[node name="Follower" type="Node3D"]
+script = ExtResource("1_jkej4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_no588")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.094861)
+mesh = SubResource("BoxMesh_14kpn")

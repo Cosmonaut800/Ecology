@@ -8,6 +8,7 @@ const JUMP_VELOCITY = 4.5
 var mouse_sensitivity := 0.001
 var yaw_input := 0.0
 var pitch_input := 0.0
+var herd_size := 50.0
 
 @onready var yaw := $YawPivot
 @onready var pitch := $YawPivot/PitchPivot
@@ -58,3 +59,7 @@ func _unhandled_input(event):
 			if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 				yaw_input = -event.relative.x * mouse_sensitivity
 				pitch_input = -event.relative.y * mouse_sensitivity
+				
+		if event is InputEventMouseButton:
+			if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
