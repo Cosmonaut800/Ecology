@@ -34,6 +34,5 @@ func update_fog_image_texture():
 	fog.set_shader_parameter("srcTex", fog_texture)
 
 func _process(_delta):
-	print("hello?")
 	target = (1024.0/50.0) * Vector2(player.global_position.x, player.global_position.z) + Vector2(1024.0, 1024.0)
 	update_fog(target)
