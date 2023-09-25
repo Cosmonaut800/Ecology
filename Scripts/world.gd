@@ -20,8 +20,7 @@ func on_spawn_follower(amount):
 	var _use_amount = amount/2
 	follower_instances.append(follower_scene.instantiate())
 	follower_targets.append(Node3D.new())
-	follower_targets[-1].position = Vector3.FORWARD
+	follower_targets[-1].position = Vector3.ZERO #Edit this line to use spiral formula
 	player.add_child(follower_targets[-1])
 	add_child(follower_instances[-1])
-	follower_instances[-1].set_leader(player)
-	print(follower_instances.size())
+	follower_instances[-1].set_leader(follower_targets[-1])
