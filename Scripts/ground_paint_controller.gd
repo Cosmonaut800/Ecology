@@ -23,6 +23,8 @@ func _ready():
 	light_image.resize(int(light_scale*light_image.get_width()), int(light_scale*light_image.get_height()))
 	light_offset = Vector2(int(light_scale*light_texture.get_width())/2, int(light_scale*light_texture.get_height())/2)
 	light_image.convert(Image.FORMAT_RGBAH)
+	target = Vector2(-fog_image.get_width(), -fog_image.get_height())
+	update_fog(target)
 
 func update_fog(new_position):
 	var light_rect = Rect2(Vector2.ZERO, Vector2(light_image.get_width(), light_image.get_height()))
@@ -35,4 +37,5 @@ func update_fog_image_texture():
 
 func _process(_delta):
 	target = (1024.0/50.0) * Vector2(player.global_position.x, player.global_position.z) + Vector2(1024.0, 1024.0)
-	update_fog(target)
+	if player.is_on_floor():
+		update_fog(target)

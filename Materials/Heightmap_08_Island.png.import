@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chxpewi6h7j0g"
-path.s3tc="res://.godot/imported/Heightmap_03_Meadows.png-dc2d9c5c72eb6725943629f1e4ffcbdd.s3tc.ctex"
+uid="uid://cqcvxv6va6jt5"
+path.bptc="res://.godot/imported/Heightmap_08_Island.png-c8b435560c70f4bd86009218465f97c6.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,13 +11,13 @@ metadata={
 
 [deps]
 
-source_file="res://Materials/Heightmap_03_Meadows.png"
-dest_files=["res://.godot/imported/Heightmap_03_Meadows.png-dc2d9c5c72eb6725943629f1e4ffcbdd.s3tc.ctex"]
+source_file="res://Materials/Heightmap_08_Island.png"
+dest_files=["res://.godot/imported/Heightmap_08_Island.png-c8b435560c70f4bd86009218465f97c6.bptc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

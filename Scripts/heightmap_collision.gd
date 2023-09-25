@@ -1,36 +1,36 @@
-extends CollisionShape3D
+@tool
+extends EditorScript
 
 var heightmap = Image.new()
-@export var height_intensity := 1.0
+var height_intensity := 5.0 # /!\ Make sure this scale matches the shader /!\ 
+var collision_shape = get_scene().get_node("./Ground/StaticBody3D/HeightmapCollision") # /!\ Pick the correct CollisionShape3D /!\
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	heightmap.load("res://Materials/test_heightmap.png")
+
+func _run():
+	print("Updating heightmap collision")
+	heightmap.load("res://Materials/smooth_noise.png") # /!\ Put the heightmap you want to use here /!\
 	heightmap.convert(Image.FORMAT_RF)
-	
-	shape.map_width = 34
-	shape.map_depth = 34
 	
 	assign_map_data()
 
 func assign_map_data():
 	var x := 0
 	var y := 0
-	var x_interval := float(heightmap.get_width()) / float(shape.map_width - 1)
-	var y_interval := float(heightmap.get_height()) / float(shape.map_depth - 1)
+	var x_interval := float(heightmap.get_width()) / float(collision_shape.shape.map_width - 1)
+	var y_interval := float(heightmap.get_height()) / float(collision_shape.shape.map_depth - 1)
 	var k := 0
 	
-	print("Transferring data to array of size ", (shape.map_width * shape.map_depth))
-	for j in shape.map_depth:
-		for i in shape.map_width:
+	print("Transferring data to array of size ", (collision_shape.shape.map_width * collision_shape.shape.map_depth))
+	for j in collision_shape.shape.map_depth:
+		for i in collision_shape.shape.map_width:
 			if k % 100 == 0:
 				print(k)
 			x = i * x_interval
 			y = j * y_interval
 			
-			x = clamp(x, 0, 1023)
-			y = clamp(y, 0, 1023)
+			x = clamp(x, 0, heightmap.get_width() - 1)
+			y = clamp(y, 0, heightmap.get_height() - 1)
 			
-			shape.map_data[k] = (height_intensity / transform.basis.get_scale().y) * heightmap.get_pixel(x, y).r
+			collision_shape.shape.map_data[k] = (height_intensity / collision_shape.transform.basis.get_scale().y) * heightmap.get_pixel(x, y).r
 			k += 1
 	

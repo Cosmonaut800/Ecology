@@ -2,13 +2,13 @@ shader_type spatial;
 
 uniform sampler2D staticTex;
 uniform sampler2D revealedTex;
-uniform sampler2D heightmap: repeat_disable;
+uniform sampler2D heightmap: repeat_disable, filter_nearest;
 uniform float heightIntensity = 1.0f;
 uniform sampler2D srcTex;
 uniform vec2 repeat = vec2(1.0f, 1.0f);
 
 void vertex() {
-	VERTEX.y = heightIntensity * texture(heightmap, UV).r;
+	VERTEX.y = heightIntensity * ((texture(heightmap, UV).r + texture(heightmap, UV).g + texture(heightmap, UV).b) / 3.0f);
 }
 
 void fragment() {
