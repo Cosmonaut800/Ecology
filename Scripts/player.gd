@@ -8,7 +8,7 @@ const JUMP_VELOCITY = 4.5
 var mouse_sensitivity := 0.001
 var yaw_input := 0.0
 var pitch_input := 0.0
-var herd_size := 50.0
+@export var herd_size := 1
 
 @onready var yaw := $YawPivot
 @onready var pitch := $YawPivot/PitchPivot
@@ -37,7 +37,7 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = move_toward(velocity.x, SPEED * direction.x, ACCEL * delta)
 		velocity.z = move_toward(velocity.z, SPEED * direction.z, ACCEL * delta)
-		graphics.look_at(position + velocity)
+		graphics.look_at(position + (velocity * Vector3(1.0, 0.0, 1.0)))
 	else:
 		velocity.x = move_toward(velocity.x, 0, DECEL * delta)
 		velocity.z = move_toward(velocity.z, 0, DECEL * delta)

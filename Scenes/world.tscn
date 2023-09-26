@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://jrx02g6k4j55" path="res://Scenes/objective.tscn" id="4_g8hsc"]
 [ext_resource type="Texture2D" uid="uid://wdwarvbtrwy4" path="res://Materials/smooth_noise.png" id="4_s47an"]
 [ext_resource type="Texture2D" uid="uid://b578xhpldbj42" path="res://Materials/spotlight.png" id="5_utymq"]
-[ext_resource type="Texture2D" uid="uid://plmdcyjdt3tb" path="res://Materials/100_1180_seamless_e.png" id="7_w5rfh"]
+[ext_resource type="Texture2D" uid="uid://dsado4m81y6lo" path="res://Materials/20190728_134250.png" id="7_ea2ky"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8o6pj"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -33,7 +33,7 @@ render_priority = 0
 shader = ExtResource("3_h68e7")
 shader_parameter/heightIntensity = 5.0
 shader_parameter/repeat = Vector2(10, 10)
-shader_parameter/staticTex = ExtResource("7_w5rfh")
+shader_parameter/staticTex = ExtResource("7_ea2ky")
 shader_parameter/revealedTex = ExtResource("2_1ij88")
 shader_parameter/heightmap = ExtResource("4_s47an")
 shader_parameter/srcTex = ExtResource("5_utymq")
@@ -75,27 +75,33 @@ mesh = SubResource("PlaneMesh_1qffk")
 surface_material_override/0 = SubResource("ShaderMaterial_y2x7y")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="HeightmapCollision" type="CollisionShape3D" parent="Ground/StaticBody3D"]
 transform = Transform3D(0.775, 0, 0, 0, 0.775, 0, 0, 0, 0.775, 0, 0, 0)
 shape = SubResource("HeightMapShape3D_enow8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-transform = Transform3D(1, 0, 0, 0, 5.85995, -6.99979, 0, 2.11514, 19.3927, 8.36062, -0.743054, -1.70801)
+transform = Transform3D(3.04031, 0, 0, 0, 6.08625, -4.40338, 0, 1.33057, 20.1416, 8.36062, 2.62968, -1.70801)
 material_override = SubResource("StandardMaterial3D_jb7ur")
 mesh = SubResource("BoxMesh_rpfis")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground/MeshInstance3D"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5q7vx")
 
 [node name="Player" parent="." instance=ExtResource("2_lmlxt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0263, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.90383, 0)
 
 [node name="Objective1" parent="." node_paths=PackedStringArray("player_body") instance=ExtResource("4_g8hsc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.98791, 0, -5.64794)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.98791, 1.65395, -5.64794)
 player_body = NodePath("../Player")
+MAX_HEALTH = 2.0
+num_of_followers = 500
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_ytdgd")
