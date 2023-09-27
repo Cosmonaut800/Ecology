@@ -32,6 +32,7 @@ func on_spawn_follower(amount, spawn_position):
 		follower_instances[-1].set_leader(follower_targets[-1])
 		player.herd_size += 1
 	
+	player.change_camera_distance(4.6 + sqrt(player.herd_size)/10.0)
 	ground_paint_controller.update_brush_size(follower_targets[-1].position.length())
 
 func find_spiral_position(index: int) -> Vector3:
