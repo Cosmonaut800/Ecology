@@ -100,7 +100,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.90383, 0)
 [node name="Objective1" parent="." node_paths=PackedStringArray("player_body") instance=ExtResource("4_g8hsc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.98791, 1.65395, -5.64794)
 player_body = NodePath("../Player")
-MAX_HEALTH = 2.0
+MAX_HEALTH = 1.0
 num_of_followers = 500
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

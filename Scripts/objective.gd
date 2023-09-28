@@ -21,4 +21,5 @@ func _process(delta):
 	
 	if health < 0.0 and not killed:
 		spawn_follower.emit(num_of_followers, position)
+		health = MAX_HEALTH
 		killed = true

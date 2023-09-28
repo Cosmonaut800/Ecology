@@ -39,8 +39,7 @@ func find_spiral_position(index: int) -> Vector3:
 	var radius = sqrt(index * arc_length * GOLDEN * PI)/4.15
 	var theta = (index * arc_length * GOLDEN * PI) / radius
 	
-	if index % 5 == 0:
-		print(index, ", ", radius)
+#	if index % 5 == 0: print(index, ", ", radius)
 	
 	radius = max(0.75, radius)/player.basis.get_scale().x
 	
