@@ -13,6 +13,8 @@ var pitch_input := 0.0
 @onready var yaw := $YawPivot
 @onready var pitch := $YawPivot/PitchPivot
 @onready var graphics := $Graphics
+@onready var camera := $YawPivot/PitchPivot/Camera3D
+@onready var camera_ray := $YawPivot/PitchPivot/CameraRay
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -63,3 +65,8 @@ func _unhandled_input(event):
 		if event is InputEventMouseButton:
 			if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func change_camera_distance(distance):
+	camera.distance = distance
+	camera_ray.target_position.z = distance
+	pass

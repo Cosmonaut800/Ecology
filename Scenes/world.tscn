@@ -70,6 +70,11 @@ shadow_enabled = true
 script = ExtResource("2_587i6")
 light_scale = 0.1
 
+[node name="Timer" type="Timer" parent="GroundPaintController"]
+process_callback = 0
+wait_time = 0.075
+autostart = true
+
 [node name="Ground" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_1qffk")
 surface_material_override/0 = SubResource("ShaderMaterial_y2x7y")
