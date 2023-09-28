@@ -1,18 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://bb3fswnhcewyr"]
+[gd_scene load_steps=6 format=3 uid="uid://bb3fswnhcewyr"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_re3kw"]
 [ext_resource type="Script" path="res://Scripts/camera_collision.gd" id="2_b2qeo"]
+[ext_resource type="PackedScene" uid="uid://cgj1c8onrj4l6" path="res://Models/forest_sprite.glb" id="2_cn1nc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_68iyb"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g0wcy"]
-albedo_color = Color(0.584314, 0, 1, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_5y1kx"]
-material = SubResource("StandardMaterial3D_g0wcy")
-
-[sub_resource type="BoxMesh" id="BoxMesh_3w384"]
-size = Vector3(0.2, 0.2, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l63k3"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0.529412, 0.490196, 1)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_re3kw")
@@ -20,12 +16,13 @@ script = ExtResource("1_re3kw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_68iyb")
 
-[node name="Graphics" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_5y1kx")
+[node name="Graphics" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Graphics"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.123042)
-mesh = SubResource("BoxMesh_3w384")
+[node name="forest_sprite" parent="Graphics" instance=ExtResource("2_cn1nc")]
+transform = Transform3D(0.355, 0, 0, 0, 0.355, 0, 0, 0, 0.355, 0, -0.5, 0)
+
+[node name="body" parent="Graphics/forest_sprite" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_l63k3")
 
 [node name="YawPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
@@ -39,3 +36,5 @@ collision_mask = 2
 [node name="Camera3D" type="Camera3D" parent="YawPivot/PitchPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.6)
 script = ExtResource("2_b2qeo")
+
+[editable path="Graphics/forest_sprite"]

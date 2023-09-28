@@ -3,9 +3,11 @@ extends Node3D
 var leader = null
 var player
 @onready var ray := $RayCast3D
+@onready var graphics := $Graphics
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var vertical_velocity := 0.0
+var random_offset := randf_range(0.0, 2 * PI)
 
 func _physics_process(delta):
 	var target_pos = Vector3(leader.global_position.x, position.y, leader.global_position.z)
@@ -29,8 +31,12 @@ func _physics_process(delta):
 	else:
 		print("target position is somehow not in 3D space")
 
-func _process(_delta):
-	basis = player.basis
+func _process(delta):
+	if player.get_position_delta().length() > 0.0:
+		graphics.position.y = 0.05 * sin(20.0 * player.timer + random_offset)
+	else:
+		graphics.position.y = 0.0
+	basis = player.graphics.basis
 
 func set_leader(target_leader: Node3D):
 	leader = target_leader

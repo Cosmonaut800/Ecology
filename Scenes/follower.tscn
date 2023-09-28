@@ -1,26 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddgpd7xbfmn5h"]
+[gd_scene load_steps=3 format=3 uid="uid://ddgpd7xbfmn5h"]
 
 [ext_resource type="Script" path="res://Scripts/follower.gd" id="1_jkej4"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhsmj"]
-albedo_color = Color(0.572549, 0.462745, 1, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_no588"]
-material = SubResource("StandardMaterial3D_qhsmj")
-
-[sub_resource type="BoxMesh" id="BoxMesh_14kpn"]
-size = Vector3(0.2, 0.2, 1)
+[ext_resource type="PackedScene" uid="uid://cgj1c8onrj4l6" path="res://Models/forest_sprite.glb" id="2_8oxf0"]
 
 [node name="Follower" type="Node3D"]
 script = ExtResource("1_jkej4")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Graphics" type="Node3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-mesh = SubResource("SphereMesh_no588")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.094861)
-mesh = SubResource("BoxMesh_14kpn")
+[node name="forest_sprite" parent="Graphics" instance=ExtResource("2_8oxf0")]
+transform = Transform3D(0.355, 0, 0, 0, 0.355, 0, 0, 0, 0.355, 0, -0.501142, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)

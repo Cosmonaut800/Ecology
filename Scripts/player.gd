@@ -18,6 +18,7 @@ var pitch_input := 0.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var timer := 0.0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -46,7 +47,9 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-func _process(_delta):
+func _process(delta):
+	timer += delta
+	
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
@@ -55,6 +58,11 @@ func _process(_delta):
 	pitch.rotation.x = clamp(pitch.rotation.x, -1.5, 1.5)
 	yaw_input = 0.0
 	pitch_input = 0.0
+	
+	if get_position_delta().length() > 0.0:
+		graphics.position.y = 0.05 * sin(20.0 * timer)
+	else:
+		graphics.position.y = 0.0
 
 func _unhandled_input(event):
 		if event is InputEventMouseMotion:

@@ -8,7 +8,7 @@ var follower_targets = []
 
 @onready var objective = $Objective1
 @onready var player = $Player
-@onready var player_graphics = $Player/Graphics
+#@onready var player_graphics = $Player/Graphics
 @onready var ground_paint_controller = $GroundPaintController
 
 # Called when the node enters the scene tree for the first time.
@@ -24,7 +24,7 @@ func on_spawn_follower(amount, spawn_position):
 	for i in amount:
 		follower_instances.append(follower_scene.instantiate())
 		follower_instances[-1].position = spawn_position
-		follower_instances[-1].player = player_graphics
+		follower_instances[-1].player = player
 		follower_targets.append(Node3D.new())
 		follower_targets[-1].position = find_spiral_position(follower_instances.size())
 		player.add_child(follower_targets[-1])
