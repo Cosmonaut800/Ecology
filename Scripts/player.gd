@@ -6,6 +6,7 @@ const DECEL = 25.0
 const JUMP_VELOCITY = 4.5
 
 var mouse_sensitivity := 0.001
+var mouse_last_position := Vector2.ZERO
 var yaw_input := 0.0
 var pitch_input := 0.0
 @export var herd_size := 1
@@ -20,8 +21,7 @@ var pitch_input := 0.0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var timer := 0.0
 
-func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+signal throw_follower(amount: int, destination: Vector3)
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -49,9 +49,18 @@ func _physics_process(delta):
 
 func _process(delta):
 	timer += delta
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+		mouse_last_position = get_viewport().get_mouse_position()
 	
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("focus_camera"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		
+	if Input.is_action_just_released("focus_camera"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		get_viewport().warp_mouse(mouse_last_position)
+	
+	if Input.is_action_just_pressed("attack"):
+		attack()
 	
 	yaw.rotate_y(yaw_input)
 	pitch.rotate_x(pitch_input)
@@ -70,11 +79,34 @@ func _unhandled_input(event):
 				yaw_input = -event.relative.x * mouse_sensitivity
 				pitch_input = -event.relative.y * mouse_sensitivity
 				
-		if event is InputEventMouseButton:
-			if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+#		if event is InputEventMouseButton:
+#			if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+#				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func change_camera_distance(distance):
 	camera.distance = distance
 	camera_ray.target_position.z = distance
-	pass
+
+func attack():
+	var intersection = raycast_from_mouse(get_viewport().get_mouse_position(), 1)
+	
+	if intersection:
+		if (intersection.position - global_position).length() < 20.0:
+			throw_follower.emit(1, intersection.position)
+
+# Thanks to MagickPanda on the Godot Forums at
+# https://godotforums.org/d/33479-godot-4-raycasting-to-get-mouse-position-in-3d/2
+# for this implementation of ray casting!
+func raycast_from_mouse(m_pos, collision_mask):
+	var ray_start = camera.project_ray_origin(m_pos)
+	var ray_end = ray_start + camera.project_ray_normal(m_pos) * 1000.0
+	var world3d : World3D = get_world_3d()
+	var space_state = world3d.direct_space_state
+	
+	if space_state == null:
+		return
+	
+	var query = PhysicsRayQueryParameters3D.create(ray_start, ray_end, collision_mask)
+	query.collide_with_areas = true
+	
+	return space_state.intersect_ray(query)

@@ -2,13 +2,13 @@
 extends EditorScript
 
 var heightmap = Image.new()
-var height_intensity := 5.0 # /!\ Make sure this scale matches the shader /!\ 
-var collision_shape = get_scene().get_node("./Ground/StaticBody3D/HeightmapCollision") # /!\ Pick the correct CollisionShape3D /!\
+var height_intensity := 10.0 # /!\ Make sure this scale matches the shader /!\ 
+var collision_shape = get_scene().get_node("./Ground4/StaticBody3D/HeightmapCollision") # /!\ Pick the correct CollisionShape3D /!\
 
 
 func _run():
 	print("Updating heightmap collision")
-	heightmap.load("res://Materials/smooth_noise.png") # /!\ Put the heightmap you want to use here /!\
+	heightmap.load("res://Materials/ecology_heightmap4.png") # /!\ Put the heightmap you want to use here /!\
 	heightmap.convert(Image.FORMAT_RF)
 	
 	assign_map_data()

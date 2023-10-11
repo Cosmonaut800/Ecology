@@ -6,7 +6,7 @@ extends Node3D
 const light_texture = preload("res://Materials/spotlight.png")
 const DIMENSION = 512
 
-@onready var fog = $"../Ground".get_surface_override_material(0)
+@onready var fogs = [$"../Ground1".get_surface_override_material(0), $"../Ground2".get_surface_override_material(0), $"../Ground3".get_surface_override_material(0), $"../Ground4".get_surface_override_material(0)]
 @onready var player = $"../Player"
 @onready var timer = $Timer
 
@@ -37,10 +37,11 @@ func update_fog(new_position):
 
 func update_fog_image_texture():
 	fog_texture = ImageTexture.create_from_image(fog_image)
-	fog.set_shader_parameter("srcTex", fog_texture)
+	for fog in fogs:
+		fog.set_shader_parameter("srcTex", fog_texture)
 
 func _process(_delta):
-	target = (DIMENSION/100.0) * Vector2(player.global_position.x, player.global_position.z) + Vector2(DIMENSION/2.0, DIMENSION/2.0)
+	target = (DIMENSION/128.0) * Vector2(player.global_position.x, player.global_position.z) + Vector2(DIMENSION/2.0, DIMENSION/2.0)
 	
 	player_last_position = player.global_position
 

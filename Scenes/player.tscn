@@ -11,6 +11,7 @@ vertex_color_use_as_albedo = true
 albedo_color = Color(0, 0.529412, 0.490196, 1)
 
 [node name="Player" type="CharacterBody3D"]
+collision_mask = 5
 script = ExtResource("1_re3kw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

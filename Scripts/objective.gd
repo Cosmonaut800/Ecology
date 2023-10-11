@@ -19,11 +19,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if trigger.overlaps_body(player_body):
-		health -= player_body.herd_size * delta
+		health -= delta
 	
 	if health < 0.0 and not killed:
 		spawn_follower.emit(num_of_followers, position)
-		health = MAX_HEALTH
+		#health = MAX_HEALTH
 		killed = true
 
 func _process(_delta):

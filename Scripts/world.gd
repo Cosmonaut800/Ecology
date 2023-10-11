@@ -1,30 +1,39 @@
 extends Node3D
 
 const GOLDEN = 0.618033 # Golden Ratio
+const AIRTIME = 1.5
 
 var follower_scene = preload("res://Scenes/follower.tscn")
 var follower_instances = []
 var follower_targets = []
+var follower_thrown = []
+var total_thrown = 0
 
-@onready var objective = $Objective1
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+@export var objectives: Array[Node3D]= []
 @onready var player = $Player
-#@onready var player_graphics = $Player/Graphics
 @onready var ground_paint_controller = $GroundPaintController
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	objective.spawn_follower.connect(on_spawn_follower)
-	pass # Replace with function body.
+	for objective in objectives:
+		objective.spawn_follower.connect(on_spawn_follower)
+	
+	player.throw_follower.connect(on_throw_follower)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
+#func _physics_process(_delta):
 #	pass
 
 func on_spawn_follower(amount, spawn_position):
 	for i in amount:
 		follower_instances.append(follower_scene.instantiate())
+		follower_instances[-1].landed.connect(on_follower_land)
+		follower_instances[-1].instance_index = follower_instances.size()-1
 		follower_instances[-1].position = spawn_position
 		follower_instances[-1].player = player
+		follower_instances[-1].instance_index = follower_instances.size()-1
 		follower_targets.append(Node3D.new())
 		follower_targets[-1].position = find_spiral_position(follower_instances.size())
 		player.add_child(follower_targets[-1])
@@ -37,8 +46,8 @@ func on_spawn_follower(amount, spawn_position):
 
 func find_spiral_position(index: int) -> Vector3:
 	var arc_length = 0.612
-	var radius = sqrt(index * arc_length * GOLDEN * PI)/4.15
-	var theta = (index * arc_length * GOLDEN * PI) / radius
+	var radius = sqrt((index + 8) * arc_length * GOLDEN * PI)/4.15
+	var theta = ((index + 8) * arc_length * GOLDEN * PI) / radius
 	
 #	if index % 5 == 0:
 #		print(index, ", ", radius)
@@ -46,3 +55,42 @@ func find_spiral_position(index: int) -> Vector3:
 	radius = max(0.75, radius)/player.basis.get_scale().x
 	
 	return Vector3(radius * cos(theta), 0.0, radius * sin(theta))
+
+func on_throw_follower(amount, destination):
+	if player.herd_size > 1:
+		var index := find_usable_follower_index()
+		
+		if index > -1:
+			follower_thrown.append(follower_instances[index])
+			total_thrown += 1
+			player.herd_size -= 1
+			
+			follower_thrown[-1].t = 0.0
+			follower_thrown[-1].r0 = follower_thrown[-1].position
+			follower_thrown[-1].v0.x = (destination.x - follower_thrown[-1].r0.x)/AIRTIME
+			follower_thrown[-1].v0.y = (destination.y - follower_thrown[-1].r0.y)/AIRTIME + gravity*AIRTIME/2.0
+			follower_thrown[-1].v0.z = (destination.z - follower_thrown[-1].r0.z)/AIRTIME
+			follower_thrown[-1].state = follower_thrown[-1].THROWN
+
+func on_follower_land(follower):
+	follower_thrown.erase(follower)
+	player.herd_size += 1
+	pass
+
+func find_usable_follower_index() -> int:
+	var index := randi_range(0, follower_instances.size()-1)
+	
+	for i in follower_instances.size():
+		if follower_instances[index].state == follower_instances[index].FOLLOW:
+			return index
+		else:
+			index = (index + 1) % follower_instances.size()
+	
+	print("Couldn't find suitable index.")
+	return -1
+
+func sort_thrown_followers(a, b):
+	if a.state == a.FOLLOW:
+		return false
+	else:
+		return true
