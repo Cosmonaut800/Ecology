@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0o85y2vbgli0"]
+
+[ext_resource type="PackedScene" uid="uid://jrx02g6k4j55" path="res://Scenes/Objectives/objective.tscn" id="1_gpcfa"]
+[ext_resource type="PackedScene" uid="uid://dvb0vtbhu6pa7" path="res://Models/objectives/quarry_miner.glb" id="2_5csrw"]
+[ext_resource type="Material" uid="uid://1vtu5ckupiop" path="res://Materials/metal_green.tres" id="3_o3otc"]
+[ext_resource type="Material" uid="uid://32vspls8t34r" path="res://Materials/metal_rusty.tres" id="4_6fw1x"]
+[ext_resource type="Material" uid="uid://by81w5dqoujjp" path="res://Materials/tire.tres" id="5_30hve"]
+
+[node name="QuarryMiner" type="Node3D"]
+
+[node name="Objective" parent="." instance=ExtResource("1_gpcfa")]
+
+[node name="Graphics" parent="." instance=ExtResource("2_5csrw")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4, 0, 0)
+
+[node name="quarry_miner2" parent="Graphics/quarry_miner_arm/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_o3otc")
+surface_material_override/1 = ExtResource("4_6fw1x")
+surface_material_override/2 = ExtResource("5_30hve")
+
+[editable path="Graphics"]

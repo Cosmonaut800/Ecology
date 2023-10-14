@@ -1,0 +1,189 @@
+[gd_scene load_steps=27 format=3 uid="uid://cxbnet6wgr3dv"]
+
+[ext_resource type="Script" path="res://Scripts/cutter.gd" id="1_bm4ck"]
+[ext_resource type="PackedScene" uid="uid://dlvw7gpdsm1n" path="res://Models/cutter.glb" id="1_y0iu7"]
+[ext_resource type="AnimationLibrary" uid="uid://qambok6f25kq" path="res://Models/Animations/cutter/cutter_animations.res" id="2_r4yo5"]
+[ext_resource type="Material" uid="uid://dytffe3xar75n" path="res://Materials/Enemies/animated_face2.tres" id="3_h1h6f"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_047qn"]
+radius = 0.841
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_qm2ix"]
+filters = ["cutter_armature/Skeleton3D:saw"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7o23i"]
+animation = &"cutter_blade_spin"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_snhg5"]
+animation = &"cutter_attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lgll5"]
+animation = &"cutter_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1d7p8"]
+animation = &"cutter_walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3kkyw"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v4kwv"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"walking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b11t1"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"not_walking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mrdxs"]
+advance_mode = 2
+advance_condition = &"attacking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gev3s"]
+xfade_time = 0.8
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_r1sgm"]
+states/cutter_attack/node = SubResource("AnimationNodeAnimation_snhg5")
+states/cutter_attack/position = Vector2(456, 164)
+states/cutter_idle/node = SubResource("AnimationNodeAnimation_lgll5")
+states/cutter_idle/position = Vector2(456, 56)
+states/cutter_walk/node = SubResource("AnimationNodeAnimation_1d7p8")
+states/cutter_walk/position = Vector2(655, 56)
+transitions = ["Start", "cutter_idle", SubResource("AnimationNodeStateMachineTransition_3kkyw"), "cutter_idle", "cutter_walk", SubResource("AnimationNodeStateMachineTransition_v4kwv"), "cutter_walk", "cutter_idle", SubResource("AnimationNodeStateMachineTransition_b11t1"), "cutter_idle", "cutter_attack", SubResource("AnimationNodeStateMachineTransition_mrdxs"), "cutter_attack", "cutter_idle", SubResource("AnimationNodeStateMachineTransition_gev3s")]
+graph_offset = Vector2(95, -3)
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_upup4"]
+graph_offset = Vector2(-413.761, 48.3101)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_qm2ix")
+nodes/Add2/position = Vector2(100, 160)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_7o23i")
+nodes/Animation/position = Vector2(-180, 260)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_r1sgm")
+nodes/StateMachine/position = Vector2(-160, 120)
+node_connections = [&"output", 0, &"Add2", &"Add2", 0, &"StateMachine", &"Add2", 1, &"Animation"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8o6ip"]
+animation = &"cutter_die"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f1qxt"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rjtuw"]
+advance_mode = 2
+advance_condition = &"dead"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_m1rnv"]
+states/BlendTree/node = SubResource("AnimationNodeBlendTree_upup4")
+states/BlendTree/position = Vector2(456.152, 100)
+states/Start/position = Vector2(228, 100)
+states/cutter_die/node = SubResource("AnimationNodeAnimation_8o6ip")
+states/cutter_die/position = Vector2(724.152, 100)
+transitions = ["Start", "BlendTree", SubResource("AnimationNodeStateMachineTransition_f1qxt"), "BlendTree", "cutter_die", SubResource("AnimationNodeStateMachineTransition_rjtuw")]
+graph_offset = Vector2(101.152, 24)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mc3er"]
+size = Vector3(1.5, 1.5, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jsydr"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wr6vj"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_anbky"]
+bg_color = Color(0.360784, 0.176471, 0.160784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_44fga"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="Cutter" type="CharacterBody3D"]
+collision_layer = 16
+collision_mask = 130
+script = ExtResource("1_bm4ck")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_047qn")
+
+[node name="Graphics" parent="." instance=ExtResource("1_y0iu7")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -1, 0)
+
+[node name="cutter_armature" parent="Graphics" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.687, 0)
+
+[node name="Skeleton3D" parent="Graphics/cutter_armature" index="0"]
+bones/0/position = Vector3(0, -0.0382331, 0)
+bones/2/position = Vector3(-0.0331795, 0.494504, 0.00430802)
+bones/2/rotation = Quaternion(-0.0654056, -6.70347e-08, -0.503742, 0.861375)
+bones/4/position = Vector3(0.0331795, 0.494504, 0.00430801)
+bones/4/rotation = Quaternion(-0.0654056, 6.70347e-08, 0.503742, 0.861375)
+bones/6/rotation = Quaternion(-0.753112, 4.42978e-09, 0.00818647, 0.657841)
+bones/7/rotation = Quaternion(-5.92389e-10, 2.02161e-09, -0.0239451, 0.999713)
+bones/8/rotation = Quaternion(-4.18674e-09, -3.50125e-08, -0.372863, 0.927887)
+
+[node name="cutter_body" parent="Graphics/cutter_armature/Skeleton3D" index="0"]
+surface_material_override/1 = ExtResource("3_h1h6f")
+
+[node name="AnimationPlayer" parent="Graphics" index="1"]
+libraries = {
+"": ExtResource("2_r4yo5")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="Graphics"]
+tree_root = SubResource("AnimationNodeStateMachine_m1rnv")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/conditions/dead = false
+parameters/BlendTree/Add2/add_amount = 1.0
+parameters/BlendTree/StateMachine/conditions/attacking = false
+parameters/BlendTree/StateMachine/conditions/not_walking = false
+parameters/BlendTree/StateMachine/conditions/walking = false
+
+[node name="Hurtbox" type="Area3D" parent="Graphics"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, -2.92293)
+collision_layer = 64
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Graphics/Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.30781)
+shape = SubResource("BoxShape3D_mc3er")
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("BoxShape3D_jsydr")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25289, 0)
+visibility_range_end = 40.0
+billboard = 1
+no_depth_test = true
+texture = SubResource("ViewportTexture_wr6vj")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+render_target_update_mode = 4
+
+[node name="HealthBar" type="ProgressBar" parent="SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -5.41998
+offset_right = 100.0
+offset_bottom = 5.41998
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_anbky")
+theme_override_styles/fill = SubResource("StyleBoxFlat_44fga")
+value = 75.0
+show_percentage = false
+
+[editable path="Graphics"]

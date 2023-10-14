@@ -3,10 +3,10 @@ extends Node3D
 # Credit to HeartBeast on YouTube for this implementation of
 # the Fog of War effect!
 
-const light_texture = preload("res://Materials/spotlight.png")
+const light_texture = preload("res://Materials/Textures/spotlight.png")
 const DIMENSION = 512
 
-@onready var fogs = [$"../Ground1".get_surface_override_material(0), $"../Ground2".get_surface_override_material(0), $"../Ground3".get_surface_override_material(0), $"../Ground4".get_surface_override_material(0)]
+@onready var fogs = [$"../Ground/Ground1".get_surface_override_material(0), $"../Ground/Ground2".get_surface_override_material(0), $"../Ground/Ground3".get_surface_override_material(0), $"../Ground/Ground4".get_surface_override_material(0)]
 @onready var player = $"../Player"
 @onready var timer = $Timer
 
@@ -16,7 +16,7 @@ var light_image = light_texture.get_image()
 var light_offset = Vector2.ZERO
 @export var light_scale := 1.0
 
-var player_last_position := Vector3.ZERO
+# var player_last_position := Vector3.ZERO
 var target := Vector2.ZERO
 
 func _ready():
@@ -43,10 +43,10 @@ func update_fog_image_texture():
 func _process(_delta):
 	target = (DIMENSION/128.0) * Vector2(player.global_position.x, player.global_position.z) + Vector2(DIMENSION/2.0, DIMENSION/2.0)
 	
-	player_last_position = player.global_position
+	# player_last_position = player.global_position
 
 func on_timer_timeout():
-	if player.is_on_floor() and player.get_position_delta().length() > 0.01:
+	if player.get_position_delta().length() > 0.01:
 		update_fog(target)
 
 func update_brush_size(radius):

@@ -1,0 +1,23 @@
+[gd_scene load_steps=7 format=3 uid="uid://ujel2tbkwjqn"]
+
+[ext_resource type="PackedScene" uid="uid://jrx02g6k4j55" path="res://Scenes/Objectives/objective.tscn" id="1_g0vvo"]
+[ext_resource type="PackedScene" uid="uid://b5h5grbc4hnty" path="res://Models/objectives/log_loader.glb" id="2_qq30n"]
+[ext_resource type="Material" uid="uid://32vspls8t34r" path="res://Materials/metal_rusty.tres" id="3_8t2wm"]
+[ext_resource type="Material" uid="uid://bafpidm36le0v" path="res://Materials/wood.tres" id="4_vmcyf"]
+[ext_resource type="Material" uid="uid://bni8ayt0j1mih" path="res://Materials/soapstone.tres" id="5_3onnb"]
+[ext_resource type="Material" uid="uid://dodob1b08qa2h" path="res://Materials/metal_red.tres" id="6_ncq1k"]
+
+[node name="LogLoader" type="Node3D"]
+
+[node name="Objective" parent="." instance=ExtResource("1_g0vvo")]
+
+[node name="Graphics" parent="." instance=ExtResource("2_qq30n")]
+transform = Transform3D(0.87, 0, 0, 0, 0.87, 0, 0, 0, 0.87, 0, 0, 0)
+
+[node name="log_loader2" parent="Graphics/log_loader_arm/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_8t2wm")
+surface_material_override/1 = ExtResource("4_vmcyf")
+surface_material_override/2 = ExtResource("5_3onnb")
+surface_material_override/3 = ExtResource("6_ncq1k")
+
+[editable path="Graphics"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5axk3ofekoou"]
+
+[ext_resource type="PackedScene" uid="uid://jrx02g6k4j55" path="res://Scenes/Objectives/objective.tscn" id="1_v4ych"]
+[ext_resource type="PackedScene" uid="uid://du1mk6v5v5b8w" path="res://Models/objectives/hopper.glb" id="2_k4nu3"]
+[ext_resource type="Material" uid="uid://32vspls8t34r" path="res://Materials/metal_rusty.tres" id="3_5t2td"]
+
+[node name="Hopper" type="Node3D"]
+
+[node name="Objective" parent="." instance=ExtResource("1_v4ych")]
+
+[node name="Graphics" parent="." instance=ExtResource("2_k4nu3")]
+transform = Transform3D(0.162, 0, 0, 0, 0.162, 0, 0, 0, 0.162, 0, 0, 0)
+
+[node name="hopper2" parent="Graphics" index="0"]
+surface_material_override/0 = ExtResource("3_5t2td")
+
+[editable path="Graphics"]

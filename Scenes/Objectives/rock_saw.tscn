@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://drued71g8ui4u"]
+
+[ext_resource type="PackedScene" uid="uid://jrx02g6k4j55" path="res://Scenes/Objectives/objective.tscn" id="1_6f50u"]
+[ext_resource type="PackedScene" uid="uid://bp1ly7thfv6xi" path="res://Models/objectives/smokestack.glb" id="2_8266n"]
+
+[node name="RockSaw" type="Node3D"]
+
+[node name="Objective" parent="." instance=ExtResource("1_6f50u")]
+
+[node name="Graphics" parent="." instance=ExtResource("2_8266n")]
+transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 0, 0)
+
+[editable path="Graphics"]

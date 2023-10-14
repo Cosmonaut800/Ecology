@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://cvwbfr7jfuif3"]
+
+[ext_resource type="Texture2D" uid="uid://dbn1uoyuc2r1i" path="res://Materials/Textures/BrushedIron01_2K_BaseColor.png" id="1_oul47"]
+[ext_resource type="Texture2D" uid="uid://bbyyqpsd7iu0v" path="res://Materials/Textures/BrushedIron01_2K_Metallic.png" id="2_1jpw3"]
+[ext_resource type="Texture2D" uid="uid://buem7apted33" path="res://Materials/Textures/BrushedIron01_2K_Normal.png" id="3_i6ant"]
+[ext_resource type="Texture2D" uid="uid://dagip187c0u3r" path="res://Materials/Textures/BrushedIron01_2K_Roughness.png" id="4_dma42"]
+
+[resource]
+resource_name = "metal"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_oul47")
+metallic = 1.0
+metallic_texture = ExtResource("2_1jpw3")
+roughness_texture = ExtResource("4_dma42")
+normal_enabled = true
+normal_texture = ExtResource("3_i6ant")

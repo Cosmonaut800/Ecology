@@ -1,6 +1,6 @@
 extends Node3D
 
-const AIRTIME = 1.5
+const AIRTIME = 1.0
 
 var leader = null
 var player
@@ -24,6 +24,7 @@ var v0 := Vector3.ZERO
 var t := 0.0
 
 signal landed(follower)
+signal died(follower)
 
 func _ready():
 	cooldown_timer = cooldown_time
@@ -87,9 +88,14 @@ func _process(_delta):
 			graphics.look_at(look_dir)
 	else:
 		graphics.position.y = 0.0
-		graphics.basis = Basis.from_euler(player.graphics.basis.get_euler()).scaled(0.5*Vector3.ONE)
+		if state != COOLDOWN:
+			graphics.basis = Basis.from_euler(player.graphics.basis.get_euler()).scaled(0.5*Vector3.ONE)
 	
 	last_position = position
 
 func set_leader(target_leader: Node3D):
 	leader = target_leader
+
+func die():
+	print("received damage!")
+	died.emit(self)

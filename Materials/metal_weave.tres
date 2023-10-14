@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://ymr8ilcsvad2"]
+
+[ext_resource type="Texture2D" uid="uid://bvikgyc8dlly7" path="res://Materials/Textures/DirtyMetalWeave03_2K_BaseColor.png" id="1_nla8n"]
+[ext_resource type="Texture2D" uid="uid://dyggr6r2d30rn" path="res://Materials/Textures/DirtyMetalWeave03_2K_Metallic.png" id="2_84rc6"]
+[ext_resource type="Texture2D" uid="uid://b0dhj1siiag3x" path="res://Materials/Textures/DirtyMetalWeave03_2K_Normal.png" id="3_mcysw"]
+[ext_resource type="Texture2D" uid="uid://dgyhubdpua1ly" path="res://Materials/Textures/DirtyMetalWeave03_2K_Roughness.png" id="4_5l047"]
+
+[resource]
+albedo_texture = ExtResource("1_nla8n")
+metallic = 1.0
+metallic_texture = ExtResource("2_84rc6")
+roughness_texture = ExtResource("4_5l047")
+normal_enabled = true
+normal_texture = ExtResource("3_mcysw")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5x4ovf0sau02"]
+
+[ext_resource type="PackedScene" uid="uid://jrx02g6k4j55" path="res://Scenes/Objectives/objective.tscn" id="1_ah0oe"]
+[ext_resource type="PackedScene" uid="uid://cnpmp8wfl12sd" path="res://Models/objectives/welder.glb" id="2_g2sqw"]
+[ext_resource type="Material" uid="uid://ymr8ilcsvad2" path="res://Materials/metal_weave.tres" id="3_0l0et"]
+[ext_resource type="Material" uid="uid://d46frkpuonqm" path="res://Materials/metal_blue.tres" id="4_6semn"]
+
+[node name="Welder" type="Node3D"]
+
+[node name="Objective" parent="." instance=ExtResource("1_ah0oe")]
+
+[node name="Graphics" parent="." instance=ExtResource("2_g2sqw")]
+transform = Transform3D(0.34, 0, 0, 0, 0.34, 0, 0, 0, 0.34, 0, 0, 0)
+
+[node name="Cube_050" parent="Graphics" index="0"]
+surface_material_override/0 = ExtResource("3_0l0et")
+surface_material_override/1 = ExtResource("4_6semn")
+
+[editable path="Graphics"]

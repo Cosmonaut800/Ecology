@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://32vspls8t34r"]
+
+[ext_resource type="Texture2D" uid="uid://cpp5qpvkvsw10" path="res://Materials/Textures/RustyMetalPanel01_2K_BaseColor.png" id="1_ehnu4"]
+[ext_resource type="Texture2D" uid="uid://bbi5ebw4tlvth" path="res://Materials/Textures/RustyMetalPanel01_2K_Metallic.png" id="2_b4hi6"]
+[ext_resource type="Texture2D" uid="uid://dsvjb2fdb6wvq" path="res://Materials/Textures/RustyMetalPanel01_2K_Normal.png" id="3_kmlrj"]
+[ext_resource type="Texture2D" uid="uid://bpo3i7cywo37a" path="res://Materials/Textures/RustyMetalPanel01_2K_Roughness.png" id="4_5sh51"]
+
+[resource]
+albedo_texture = ExtResource("1_ehnu4")
+metallic = 1.0
+metallic_texture = ExtResource("2_b4hi6")
+roughness_texture = ExtResource("4_5sh51")
+normal_enabled = true
+normal_texture = ExtResource("3_kmlrj")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://brmjkacgr6o1l"]
+
+[ext_resource type="PackedScene" uid="uid://jrx02g6k4j55" path="res://Scenes/Objectives/objective.tscn" id="1_06bsk"]
+[ext_resource type="PackedScene" uid="uid://uenj50ufq2xw" path="res://Models/objectives/factory_building.glb" id="2_4ugov"]
+[ext_resource type="Material" uid="uid://euvpn81d2a5p" path="res://Materials/concrete.tres" id="3_fmgkt"]
+[ext_resource type="Material" uid="uid://dsjnxltf0a5uv" path="res://Materials/metal_corrugated.tres" id="4_gxon1"]
+
+[node name="FactoryBuilding" type="Node3D"]
+
+[node name="Objective" parent="." instance=ExtResource("1_06bsk")]
+
+[node name="Graphics" parent="." instance=ExtResource("2_4ugov")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="factory" parent="Graphics/factory_arm/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_fmgkt")
+surface_material_override/1 = ExtResource("4_gxon1")
+
+[editable path="Graphics"]

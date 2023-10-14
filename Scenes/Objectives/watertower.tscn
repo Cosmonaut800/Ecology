@@ -1,0 +1,83 @@
+[gd_scene load_steps=16 format=3 uid="uid://bh4jot7hakqvs"]
+
+[ext_resource type="PackedScene" uid="uid://jrx02g6k4j55" path="res://Scenes/Objectives/objective.tscn" id="1_6qcoj"]
+[ext_resource type="PackedScene" uid="uid://bp53ukyabo0y6" path="res://Models/objectives/watertower.glb" id="2_tblwy"]
+[ext_resource type="Material" uid="uid://32vspls8t34r" path="res://Materials/metal_rusty.tres" id="3_svgye"]
+[ext_resource type="Material" uid="uid://bafpidm36le0v" path="res://Materials/wood.tres" id="4_k2pkk"]
+[ext_resource type="PackedScene" uid="uid://duvifqtl4cioh" path="res://Models/objectives/tree2.glb" id="5_0x4di"]
+[ext_resource type="Material" uid="uid://bp1is4tq0ctx1" path="res://Materials/tree_leaves.tres" id="6_jjydj"]
+[ext_resource type="Material" uid="uid://cskejr35dkg3d" path="res://Materials/tree_bark.tres" id="7_c0nod"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q0rbs"]
+animation = &"watertower_fall"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o4ppc"]
+advance_mode = 2
+advance_condition = &"fall"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_n7okv"]
+states/watertower_fall/node = SubResource("AnimationNodeAnimation_q0rbs")
+states/watertower_fall/position = Vector2(530, 100)
+transitions = ["Start", "watertower_fall", SubResource("AnimationNodeStateMachineTransition_o4ppc")]
+graph_offset = Vector2(136, 15)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wrmvx"]
+animation = &"tree2_grow"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5xd0c"]
+animation = &"tree2_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xrskp"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_syheq"]
+advance_mode = 2
+advance_condition = &"grow"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_37ied"]
+states/tree2_grow/node = SubResource("AnimationNodeAnimation_wrmvx")
+states/tree2_grow/position = Vector2(636, 100)
+states/tree2_idle/node = SubResource("AnimationNodeAnimation_5xd0c")
+states/tree2_idle/position = Vector2(400, 100)
+transitions = ["Start", "tree2_idle", SubResource("AnimationNodeStateMachineTransition_xrskp"), "tree2_idle", "tree2_grow", SubResource("AnimationNodeStateMachineTransition_syheq")]
+graph_offset = Vector2(131, 8)
+
+[node name="Watertower" type="Node3D"]
+
+[node name="Objective" parent="." node_paths=PackedStringArray("graphics_anim", "tree_anim") instance=ExtResource("1_6qcoj")]
+graphics_anim = NodePath("../AnimationTreeGraphics")
+tree_anim = NodePath("../AnimationTreeTree")
+
+[node name="Graphics" parent="." instance=ExtResource("2_tblwy")]
+transform = Transform3D(0.39, 0, 0, 0, 0.39, 0, 0, 0, 0.39, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/watertower_arm" index="0"]
+bones/5/rotation = Quaternion(0.0593974, 0.0310882, -0.0564032, 0.996155)
+bones/6/rotation = Quaternion(0.0593974, -0.0310882, 0.0564032, 0.996155)
+
+[node name="watertower2" parent="Graphics/watertower_arm/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_svgye")
+surface_material_override/1 = ExtResource("4_k2pkk")
+
+[node name="tree2" parent="." instance=ExtResource("5_0x4di")]
+transform = Transform3D(0.4188, 0, 0, 0, 0.4188, 0, 0, 0, 0.4188, 0.292927, -0.250961, -0.0588337)
+
+[node name="Cylinder_001" parent="tree2" index="0"]
+transform = Transform3D(-0.0168686, -0.00148644, 0.00338101, -0.00231528, 0.0165721, -0.00426559, -0.00287754, -0.0046202, -0.0163879, 0, -1.07764, 0)
+surface_material_override/0 = ExtResource("6_jjydj")
+surface_material_override/1 = ExtResource("7_c0nod")
+
+[node name="AnimationTreeGraphics" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_n7okv")
+anim_player = NodePath("../Graphics/AnimationPlayer")
+active = true
+parameters/conditions/fall = false
+
+[node name="AnimationTreeTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_37ied")
+anim_player = NodePath("../tree2/AnimationPlayer")
+active = true
+parameters/conditions/grow = false
+
+[editable path="Graphics"]
+[editable path="tree2"]

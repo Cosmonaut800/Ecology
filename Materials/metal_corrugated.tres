@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://dsjnxltf0a5uv"]
+
+[ext_resource type="Texture2D" uid="uid://da0kg5f5n36aq" path="res://Materials/Textures/RustyCorrugatedMetalPanel02_2K_BaseColor.png" id="1_jj6u6"]
+[ext_resource type="Texture2D" uid="uid://q4r3gjny4y5h" path="res://Materials/Textures/RustyCorrugatedMetalPanel02_2K_Metallic.png" id="2_oq17l"]
+[ext_resource type="Texture2D" uid="uid://dc2fc7ilfy2gq" path="res://Materials/Textures/RustyCorrugatedMetalPanel02_2K_Normal.png" id="3_tx43b"]
+[ext_resource type="Texture2D" uid="uid://8f688s8xhna2" path="res://Materials/Textures/RustyCorrugatedMetalPanel02_2K_Roughness.png" id="4_flk8e"]
+
+[resource]
+albedo_texture = ExtResource("1_jj6u6")
+metallic = 1.0
+metallic_texture = ExtResource("2_oq17l")
+roughness_texture = ExtResource("4_flk8e")
+normal_enabled = true
+normal_texture = ExtResource("3_tx43b")

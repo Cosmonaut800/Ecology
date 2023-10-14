@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c17pcfokreoa0"]
+
+[ext_resource type="Texture2D" uid="uid://tpxfvq3ru4xk" path="res://Models/objectives/welder_DirtyMetalWeave03_2K_BaseColor.png" id="1_bty1n"]
+
+[resource]
+resource_name = "metal_weave"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_bty1n")
+roughness = 0.5

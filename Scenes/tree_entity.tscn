@@ -1,0 +1,63 @@
+[gd_scene load_steps=12 format=3 uid="uid://ih6pwq61mcnv"]
+
+[ext_resource type="PackedScene" uid="uid://dk173agg4873y" path="res://Models/tree.glb" id="1_ukklc"]
+[ext_resource type="Script" path="res://Scripts/tree_entity.gd" id="1_uokrm"]
+[ext_resource type="Material" uid="uid://bp1is4tq0ctx1" path="res://Materials/tree_leaves.tres" id="2_ag252"]
+[ext_resource type="Material" uid="uid://cskejr35dkg3d" path="res://Materials/tree_bark.tres" id="3_gdkhu"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1f5mn"]
+height = 4.24
+radius = 0.83
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_klcor"]
+radius = 2.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q81gq"]
+animation = &"grow_leaves"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_swfe0"]
+animation = &"idle_leaves"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_irg42"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uyb6l"]
+advance_mode = 2
+advance_condition = &"grow"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xuk1r"]
+states/grow_leaves/node = SubResource("AnimationNodeAnimation_q81gq")
+states/grow_leaves/position = Vector2(635, 82)
+states/idle_leaves/node = SubResource("AnimationNodeAnimation_swfe0")
+states/idle_leaves/position = Vector2(382, 82)
+transitions = ["Start", "idle_leaves", SubResource("AnimationNodeStateMachineTransition_irg42"), "idle_leaves", "grow_leaves", SubResource("AnimationNodeStateMachineTransition_uyb6l")]
+
+[node name="TreeEntity" type="StaticBody3D"]
+collision_mask = 32776
+script = ExtResource("1_uokrm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 2, 0.1)
+shape = SubResource("CylinderShape3D_1f5mn")
+
+[node name="tree" parent="." instance=ExtResource("1_ukklc")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="Cylinder_007" parent="tree" index="0"]
+surface_material_override/0 = ExtResource("2_ag252")
+surface_material_override/1 = ExtResource("3_gdkhu")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 128
+collision_mask = 32776
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_klcor")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_xuk1r")
+anim_player = NodePath("../tree/AnimationPlayer")
+active = true
+parameters/conditions/grow = false
+
+[editable path="tree"]

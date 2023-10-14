@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://f6woabmyb3fk"]
+
+[ext_resource type="PackedScene" uid="uid://jrx02g6k4j55" path="res://Scenes/Objectives/objective.tscn" id="1_sqpc7"]
+[ext_resource type="PackedScene" uid="uid://cnpmp8wfl12sd" path="res://Models/objectives/welder.glb" id="2_85mum"]
+
+[node name="Smokestack" type="Node3D"]
+
+[node name="Objective" parent="." instance=ExtResource("1_sqpc7")]
+
+[node name="Graphics" parent="." instance=ExtResource("2_85mum")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[editable path="Graphics"]

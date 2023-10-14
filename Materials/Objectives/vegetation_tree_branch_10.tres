@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bx1o25kiimnlq"]
+
+[resource]
+resource_name = "vegetation_tree_branch_10"
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+roughness = 0.5
+texture_repeat = false

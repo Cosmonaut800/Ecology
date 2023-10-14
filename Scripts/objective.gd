@@ -1,6 +1,8 @@
 extends Node3D
 
 @export var player_body :CharacterBody3D
+@export var graphics_anim :AnimationTree
+@export var tree_anim :AnimationTree
 @export var MAX_HEALTH := 100.0
 @export var num_of_followers := 1
 var health := 100.0
@@ -21,9 +23,10 @@ func _physics_process(delta):
 	if trigger.overlaps_body(player_body):
 		health -= delta
 	
-	if health < 0.0 and not killed:
-		spawn_follower.emit(num_of_followers, position)
+	if health < 0.01 and not killed:
+		spawn_follower.emit(num_of_followers, global_position)
 		#health = MAX_HEALTH
+		graphics_anim.set("parameters/StateMachine/conditions/fall", true)
 		killed = true
 
 func _process(_delta):

@@ -9,6 +9,7 @@ var mouse_sensitivity := 0.001
 var mouse_last_position := Vector2.ZERO
 var yaw_input := 0.0
 var pitch_input := 0.0
+var can_attack := false
 @export var herd_size := 1
 
 @onready var yaw := $YawPivot
@@ -16,6 +17,7 @@ var pitch_input := 0.0
 @onready var graphics := $Graphics
 @onready var camera := $YawPivot/PitchPivot/Camera3D
 @onready var camera_ray := $YawPivot/PitchPivot/CameraRay
+@onready var timer_node := $Timer
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -23,15 +25,18 @@ var timer := 0.0
 
 signal throw_follower(amount: int, destination: Vector3)
 
+func _ready():
+	timer_node.timeout.connect(on_timer_timeout)
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-
+	
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
@@ -44,8 +49,11 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, DECEL * delta)
 		velocity.z = move_toward(velocity.z, 0, DECEL * delta)
-
+	
 	move_and_slide()
+	
+	if global_position.y < -100.0:
+		global_position = Vector3(0.0, 100.0, 0.0)
 
 func _process(delta):
 	timer += delta
@@ -59,8 +67,10 @@ func _process(delta):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		get_viewport().warp_mouse(mouse_last_position)
 	
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_pressed("attack") and can_attack:
 		attack()
+		can_attack = false
+		timer_node.start()
 	
 	yaw.rotate_y(yaw_input)
 	pitch.rotate_x(pitch_input)
@@ -110,3 +120,6 @@ func raycast_from_mouse(m_pos, collision_mask):
 	query.collide_with_areas = true
 	
 	return space_state.intersect_ray(query)
+
+func on_timer_timeout():
+	can_attack = true

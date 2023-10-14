@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dytffe3xar75n"]
+
+[ext_resource type="Shader" path="res://Materials/Enemies/animated_face.gdshader" id="1_72ug2"]
+[ext_resource type="Texture2D" uid="uid://b62n7kbsf2a4l" path="res://Materials/Textures/ecology_enemy_face.png" id="2_4afdv"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_72ug2")
+shader_parameter/slices = Vector2(1, 2)
+shader_parameter/index = Vector2(1, 1)
+shader_parameter/intensity = 1.0
+shader_parameter/faceTex = ExtResource("2_4afdv")

@@ -28,5 +28,16 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"tree_bark": {
+"use_external/enabled": true,
+"use_external/path": "res://Materials/Objectives/tree_bark.tres"
+},
+"vegetation_tree_branch_10": {
+"use_external/enabled": true,
+"use_external/path": "res://Materials/Objectives/vegetation_tree_branch_10.tres"
+}
+}
+}
 gltf/embedded_image_handling=1
