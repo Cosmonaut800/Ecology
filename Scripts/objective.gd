@@ -26,7 +26,8 @@ func _physics_process(delta):
 	if health < 0.01 and not killed:
 		spawn_follower.emit(num_of_followers, global_position)
 		#health = MAX_HEALTH
-		graphics_anim.set("parameters/StateMachine/conditions/fall", true)
+		graphics_anim.set("parameters/conditions/fall", true)
+		tree_anim.set("parameters/conditions/grow", true)
 		killed = true
 
 func _process(_delta):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://chsv4hh4paivh"]
+[gd_scene load_steps=39 format=3 uid="uid://chsv4hh4paivh"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_6aae5"]
 [ext_resource type="Script" path="res://Scripts/ground_paint_controller.gd" id="2_587i6"]
@@ -15,7 +15,14 @@
 [ext_resource type="Texture2D" uid="uid://bh7lixxkw202m" path="res://Materials/Textures/ecology_heightmap4.png" id="12_g708l"]
 [ext_resource type="PackedScene" uid="uid://cxbnet6wgr3dv" path="res://Scenes/cutter.tscn" id="15_3bnyu"]
 [ext_resource type="PackedScene" uid="uid://ih6pwq61mcnv" path="res://Scenes/tree_entity.tscn" id="16_qklas"]
+[ext_resource type="PackedScene" uid="uid://drued71g8ui4u" path="res://Scenes/Objectives/rock_saw.tscn" id="17_8i2tl"]
+[ext_resource type="PackedScene" uid="uid://b5x4ovf0sau02" path="res://Scenes/Objectives/welder.tscn" id="17_30g3s"]
 [ext_resource type="PackedScene" uid="uid://bh4jot7hakqvs" path="res://Scenes/Objectives/watertower.tscn" id="17_fbv6l"]
+[ext_resource type="PackedScene" uid="uid://ujel2tbkwjqn" path="res://Scenes/Objectives/log_loader.tscn" id="18_5whl3"]
+[ext_resource type="PackedScene" uid="uid://b5axk3ofekoou" path="res://Scenes/Objectives/hopper.tscn" id="18_eujyd"]
+[ext_resource type="PackedScene" uid="uid://f6woabmyb3fk" path="res://Scenes/Objectives/smokestack.tscn" id="19_yqbon"]
+[ext_resource type="PackedScene" uid="uid://b0o85y2vbgli0" path="res://Scenes/Objectives/quarry_miner.tscn" id="20_4dt1d"]
+[ext_resource type="PackedScene" uid="uid://brmjkacgr6o1l" path="res://Scenes/Objectives/factory_building.tscn" id="21_xt0lh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8o6pj"]
 sky_top_color = Color(0.509804, 0.454902, 0.54902, 1)
@@ -275,7 +282,7 @@ map_data = PackedFloat32Array(10.1175, 10.2756, 10.3547, 10.5127, 10.5918, 10.67
 
 [node name="World" type="Node3D" node_paths=PackedStringArray("objectives", "enemies")]
 script = ExtResource("1_6aae5")
-objectives = [NodePath("Objectives/Watertower/Objective")]
+objectives = [NodePath("Objectives/Welder/Objective"), NodePath("Objectives/Welder2/Objective"), NodePath("Objectives/Welder3/Objective"), NodePath("Objectives/Watertower/Objective"), NodePath("Objectives/LogLoader/Objective"), NodePath("Objectives/RockSaw/Objective"), NodePath("Objectives/Hopper/Objective"), NodePath("Objectives/Smokestack/Objective"), NodePath("Objectives/Smokestack2/Objective"), NodePath("Objectives/QuarryMiner/Objective"), NodePath("Objectives/FactoryBuilding/Objective")]
 enemies = [NodePath("Enemies/Cutter")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -368,6 +375,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.7, 4.30383, -35.7)
 
 [node name="Objectives" type="Node3D" parent="."]
 
+[node name="Welder" parent="Objectives" instance=ExtResource("17_30g3s")]
+transform = Transform3D(-0.208782, 0, 0.977962, 0, 1, 0, -0.977962, 0, -0.208782, -50.1588, 3.72424, -34.0088)
+
+[node name="Objective" parent="Objectives/Welder" index="0" node_paths=PackedStringArray("player_body")]
+player_body = NodePath("../../../Player")
+
+[node name="Welder2" parent="Objectives" instance=ExtResource("17_30g3s")]
+transform = Transform3D(-0.0757793, 0, -0.997125, 0, 1, 0, 0.997125, 0, -0.0757793, -42.7428, 5.12588, -38.4292)
+
+[node name="Objective" parent="Objectives/Welder2" index="0" node_paths=PackedStringArray("player_body")]
+player_body = NodePath("../../../Player")
+
+[node name="Welder3" parent="Objectives" instance=ExtResource("17_30g3s")]
+transform = Transform3D(0.0285846, 0, 0.999591, 0, 1, 0, -0.999591, 0, 0.0285846, -44.972, 2.56693, 12.4177)
+
+[node name="Objective" parent="Objectives/Welder3" index="0" node_paths=PackedStringArray("player_body")]
+player_body = NodePath("../../../Player")
+
 [node name="Watertower" parent="Objectives" instance=ExtResource("17_fbv6l")]
 transform = Transform3D(0.819152, 0, 0.573576, 0, 1, 0, -0.573576, 0, 0.819152, -41, 4.9, -37)
 
@@ -375,6 +400,70 @@ transform = Transform3D(0.819152, 0, 0.573576, 0, 1, 0, -0.573576, 0, 0.819152, 
 player_body = NodePath("../../../Player")
 MAX_HEALTH = 1.0
 num_of_followers = 20
+
+[node name="LogLoader" parent="Objectives" instance=ExtResource("18_5whl3")]
+transform = Transform3D(0.883733, 0, 0.467992, 0, 1, 0, -0.467992, 0, 0.883733, -33.1682, 3.77323, -21.8377)
+
+[node name="Objective" parent="Objectives/LogLoader" index="0" node_paths=PackedStringArray("player_body")]
+player_body = NodePath("../../../Player")
+
+[node name="RockSaw" parent="Objectives" instance=ExtResource("17_8i2tl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.0536, 2.16957, 23.7603)
+
+[node name="Objective" parent="Objectives/RockSaw" index="0" node_paths=PackedStringArray("player_body")]
+player_body = NodePath("../../../Player")
+
+[node name="Hopper" parent="Objectives" instance=ExtResource("18_eujyd")]
+transform = Transform3D(0.678198, 0, 0.734879, 0, 1, 0, -0.734879, 0, 0.678198, 0.228649, 6.06252, 25.5034)
+
+[node name="Objective" parent="Objectives/Hopper" index="0" node_paths=PackedStringArray("player_body")]
+player_body = NodePath("../../../Player")
+
+[node name="Cylinder_001" parent="Objectives/Hopper/tree2" index="0"]
+transform = Transform3D(-0.0168686, -0.00148644, 0.00338101, -0.00231528, 0.0165721, -0.00426559, -0.00287754, -0.0046202, -0.0163879, 0, -1.07764, 0)
+
+[node name="Smokestack" parent="Objectives" instance=ExtResource("19_yqbon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.2993, 4.78432, -7.38371)
+
+[node name="Objective" parent="Objectives/Smokestack" index="0" node_paths=PackedStringArray("player_body")]
+player_body = NodePath("../../../Player")
+
+[node name="Cylinder_001" parent="Objectives/Smokestack/tree2" index="0"]
+transform = Transform3D(-0.0168686, -0.00148644, 0.00338101, -0.00231528, 0.0165721, -0.00426559, -0.00287754, -0.0046202, -0.0163879, 0, -1.07764, 0)
+
+[node name="Smokestack2" parent="Objectives" instance=ExtResource("19_yqbon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2993, 4.78432, -7.38371)
+
+[node name="Objective" parent="Objectives/Smokestack2" index="0" node_paths=PackedStringArray("player_body", "graphics_anim", "tree_anim")]
+player_body = NodePath("../../../Player")
+graphics_anim = NodePath("../../Smokestack/AnimationTreeGraphics")
+tree_anim = NodePath("../../Smokestack/AnimationTreeTree")
+
+[node name="Cylinder_001" parent="Objectives/Smokestack2/tree2" index="0"]
+transform = Transform3D(-0.0168686, -0.00148644, 0.00338101, -0.00231528, 0.0165721, -0.00426559, -0.00287754, -0.0046202, -0.0163879, 0, -1.07764, 0)
+
+[node name="QuarryMiner" parent="Objectives" instance=ExtResource("20_4dt1d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.9836, 0, 43.9208)
+
+[node name="Objective" parent="Objectives/QuarryMiner" index="0" node_paths=PackedStringArray("player_body")]
+player_body = NodePath("../../../Player")
+
+[node name="FactoryBuilding" parent="Objectives" instance=ExtResource("21_xt0lh")]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 32.9169, 4.70588, 7.85902)
+
+[node name="Objective" parent="Objectives/FactoryBuilding" index="0" node_paths=PackedStringArray("player_body")]
+player_body = NodePath("../../../Player")
+
+[node name="Skeleton3D" parent="Objectives/FactoryBuilding/Graphics/factory_arm" index="0"]
+bones/5/rotation = Quaternion(-8.83104e-08, 1.09397e-07, 0.408382, 0.912811)
+bones/6/rotation = Quaternion(-8.83104e-08, 1.09397e-07, 0.408382, 0.912811)
+bones/7/rotation = Quaternion(-8.83104e-08, 1.09397e-07, 0.408382, 0.912811)
+bones/8/rotation = Quaternion(-8.83104e-08, 1.09397e-07, 0.408382, 0.912811)
+bones/9/rotation = Quaternion(-8.83104e-08, 1.09397e-07, 0.408382, 0.912811)
+bones/10/rotation = Quaternion(-8.83104e-08, 1.09397e-07, 0.408382, 0.912811)
+
+[node name="Cylinder_001" parent="Objectives/FactoryBuilding/tree2" index="0"]
+transform = Transform3D(-0.0168686, -0.00148644, 0.00338101, -0.00231528, 0.0165721, -0.00426559, -0.00287754, -0.0046202, -0.0163879, 0, -1.07764, 0)
 
 [node name="Enemies" type="Node3D" parent="."]
 
@@ -541,6 +630,36 @@ transform = Transform3D(0.502498, -0.257834, 0.825238, 0.0565023, 0.96225, 0.266
 [node name="TreeEntity50" parent="Trees" instance=ExtResource("16_qklas")]
 transform = Transform3D(1, 0, -1.84401e-10, 0, 1, 0, 1.84401e-10, 0, 1, 38.8422, 4.68992, 22.5536)
 
+[editable path="Objectives/Welder"]
+[editable path="Objectives/Welder/Graphics"]
+[editable path="Objectives/Welder/tree2"]
+[editable path="Objectives/Welder2"]
+[editable path="Objectives/Welder2/Graphics"]
+[editable path="Objectives/Welder2/tree2"]
+[editable path="Objectives/Welder3"]
+[editable path="Objectives/Welder3/Graphics"]
+[editable path="Objectives/Welder3/tree2"]
 [editable path="Objectives/Watertower"]
 [editable path="Objectives/Watertower/Graphics"]
 [editable path="Objectives/Watertower/tree2"]
+[editable path="Objectives/LogLoader"]
+[editable path="Objectives/LogLoader/Graphics"]
+[editable path="Objectives/LogLoader/tree2"]
+[editable path="Objectives/RockSaw"]
+[editable path="Objectives/RockSaw/Graphics"]
+[editable path="Objectives/RockSaw/tree2"]
+[editable path="Objectives/Hopper"]
+[editable path="Objectives/Hopper/Graphics"]
+[editable path="Objectives/Hopper/tree2"]
+[editable path="Objectives/Smokestack"]
+[editable path="Objectives/Smokestack/smokestack"]
+[editable path="Objectives/Smokestack/tree2"]
+[editable path="Objectives/Smokestack2"]
+[editable path="Objectives/Smokestack2/smokestack"]
+[editable path="Objectives/Smokestack2/tree2"]
+[editable path="Objectives/QuarryMiner"]
+[editable path="Objectives/QuarryMiner/Graphics"]
+[editable path="Objectives/QuarryMiner/tree2"]
+[editable path="Objectives/FactoryBuilding"]
+[editable path="Objectives/FactoryBuilding/Graphics"]
+[editable path="Objectives/FactoryBuilding/tree2"]

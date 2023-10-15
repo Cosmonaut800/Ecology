@@ -1,13 +1,86 @@
-[gd_scene load_steps=3 format=3 uid="uid://drued71g8ui4u"]
+[gd_scene load_steps=17 format=3 uid="uid://drued71g8ui4u"]
 
 [ext_resource type="PackedScene" uid="uid://jrx02g6k4j55" path="res://Scenes/Objectives/objective.tscn" id="1_6f50u"]
-[ext_resource type="PackedScene" uid="uid://bp1ly7thfv6xi" path="res://Models/objectives/smokestack.glb" id="2_8266n"]
+[ext_resource type="PackedScene" uid="uid://bumqr3dxv2epo" path="res://Models/objectives/rock_saw.glb" id="2_uvtwp"]
+[ext_resource type="Material" uid="uid://32vspls8t34r" path="res://Materials/metal_rusty.tres" id="3_6bkkf"]
+[ext_resource type="Material" uid="uid://bni8ayt0j1mih" path="res://Materials/soapstone.tres" id="4_fu376"]
+[ext_resource type="Material" uid="uid://dodob1b08qa2h" path="res://Materials/metal_red.tres" id="5_4bn7t"]
+[ext_resource type="PackedScene" uid="uid://duvifqtl4cioh" path="res://Models/objectives/tree2.glb" id="6_bm7w5"]
+[ext_resource type="Material" uid="uid://bp1is4tq0ctx1" path="res://Materials/tree_leaves.tres" id="7_on7wp"]
+[ext_resource type="Material" uid="uid://cskejr35dkg3d" path="res://Materials/tree_bark.tres" id="8_ju546"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ahor1"]
+animation = &"rock_saw_fall"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3eufp"]
+advance_mode = 2
+advance_condition = &"fall"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_rrgh8"]
+states/rock_saw_fall/node = SubResource("AnimationNodeAnimation_ahor1")
+states/rock_saw_fall/position = Vector2(393.333, 70)
+transitions = ["Start", "rock_saw_fall", SubResource("AnimationNodeStateMachineTransition_3eufp")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wrmvx"]
+animation = &"tree2_grow"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5xd0c"]
+animation = &"tree2_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xrskp"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_syheq"]
+advance_mode = 2
+advance_condition = &"grow"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_edujx"]
+states/tree2_grow/node = SubResource("AnimationNodeAnimation_wrmvx")
+states/tree2_grow/position = Vector2(636, 100)
+states/tree2_idle/node = SubResource("AnimationNodeAnimation_5xd0c")
+states/tree2_idle/position = Vector2(400, 100)
+transitions = ["Start", "tree2_idle", SubResource("AnimationNodeStateMachineTransition_xrskp"), "tree2_idle", "tree2_grow", SubResource("AnimationNodeStateMachineTransition_syheq")]
+graph_offset = Vector2(131, 8)
 
 [node name="RockSaw" type="Node3D"]
 
-[node name="Objective" parent="." instance=ExtResource("1_6f50u")]
+[node name="Objective" parent="." node_paths=PackedStringArray("graphics_anim", "tree_anim") instance=ExtResource("1_6f50u")]
+graphics_anim = NodePath("../AnimationTreeGraphics")
+tree_anim = NodePath("../AnimationTreeTree")
+MAX_HEALTH = 50.0
+num_of_followers = 15
 
-[node name="Graphics" parent="." instance=ExtResource("2_8266n")]
-transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 0, 0)
+[node name="Graphics" parent="." instance=ExtResource("2_uvtwp")]
+transform = Transform3D(0.205, 0, 0, 0, 0.205, 0, 0, 0, 0.205, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/rock_saw_arm" index="0"]
+bones/4/rotation = Quaternion(5.76012e-08, 5.76012e-08, -0.707107, 0.707107)
+bones/5/rotation = Quaternion(1.41895e-07, 1.41895e-07, -0.707107, 0.707107)
+
+[node name="rock_saw2" parent="Graphics/rock_saw_arm/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_6bkkf")
+surface_material_override/1 = ExtResource("4_fu376")
+surface_material_override/2 = ExtResource("5_4bn7t")
+
+[node name="AnimationTreeGraphics" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_rrgh8")
+anim_player = NodePath("../Graphics/AnimationPlayer")
+active = true
+parameters/conditions/fall = false
+
+[node name="tree2" parent="." instance=ExtResource("6_bm7w5")]
+transform = Transform3D(0.4188, 0, 0, 0, 0.4188, 0, 0, 0, 0.4188, 0.292927, -0.250961, -0.0588337)
+
+[node name="Cylinder_001" parent="tree2" index="0"]
+transform = Transform3D(-0.0168686, -0.00148644, 0.00338101, -0.00231528, 0.0165721, -0.00426559, -0.00287754, -0.0046202, -0.0163879, 0, -1.07764, 0)
+surface_material_override/0 = ExtResource("7_on7wp")
+surface_material_override/1 = ExtResource("8_ju546")
+
+[node name="AnimationTreeTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_edujx")
+anim_player = NodePath("../tree2/AnimationPlayer")
+active = true
+parameters/conditions/grow = false
 
 [editable path="Graphics"]
+[editable path="tree2"]

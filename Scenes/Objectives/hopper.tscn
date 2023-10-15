@@ -1,12 +1,52 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5axk3ofekoou"]
+[gd_scene load_steps=15 format=3 uid="uid://b5axk3ofekoou"]
 
 [ext_resource type="PackedScene" uid="uid://jrx02g6k4j55" path="res://Scenes/Objectives/objective.tscn" id="1_v4ych"]
 [ext_resource type="PackedScene" uid="uid://du1mk6v5v5b8w" path="res://Models/objectives/hopper.glb" id="2_k4nu3"]
 [ext_resource type="Material" uid="uid://32vspls8t34r" path="res://Materials/metal_rusty.tres" id="3_5t2td"]
+[ext_resource type="PackedScene" uid="uid://duvifqtl4cioh" path="res://Models/objectives/tree2.glb" id="4_3xlnp"]
+[ext_resource type="Material" uid="uid://bp1is4tq0ctx1" path="res://Materials/tree_leaves.tres" id="5_phjwc"]
+[ext_resource type="Material" uid="uid://cskejr35dkg3d" path="res://Materials/tree_bark.tres" id="6_bqchc"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fftv5"]
+animation = &"hopper_fall"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_unoqa"]
+advance_mode = 2
+advance_condition = &"fall"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gmepl"]
+states/hopper_fall/node = SubResource("AnimationNodeAnimation_fftv5")
+states/hopper_fall/position = Vector2(437.333, 84.6667)
+transitions = ["Start", "hopper_fall", SubResource("AnimationNodeStateMachineTransition_unoqa")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wrmvx"]
+animation = &"tree2_grow"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5xd0c"]
+animation = &"tree2_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xrskp"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_syheq"]
+advance_mode = 2
+advance_condition = &"grow"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_mspna"]
+states/tree2_grow/node = SubResource("AnimationNodeAnimation_wrmvx")
+states/tree2_grow/position = Vector2(636, 100)
+states/tree2_idle/node = SubResource("AnimationNodeAnimation_5xd0c")
+states/tree2_idle/position = Vector2(400, 100)
+transitions = ["Start", "tree2_idle", SubResource("AnimationNodeStateMachineTransition_xrskp"), "tree2_idle", "tree2_grow", SubResource("AnimationNodeStateMachineTransition_syheq")]
+graph_offset = Vector2(131, 8)
 
 [node name="Hopper" type="Node3D"]
 
-[node name="Objective" parent="." instance=ExtResource("1_v4ych")]
+[node name="Objective" parent="." node_paths=PackedStringArray("graphics_anim", "tree_anim") instance=ExtResource("1_v4ych")]
+graphics_anim = NodePath("../AnimationTreeGraphics")
+tree_anim = NodePath("../AnimationTreeTree")
+MAX_HEALTH = 50.0
+num_of_followers = 15
 
 [node name="Graphics" parent="." instance=ExtResource("2_k4nu3")]
 transform = Transform3D(0.162, 0, 0, 0, 0.162, 0, 0, 0, 0.162, 0, 0, 0)
@@ -14,4 +54,25 @@ transform = Transform3D(0.162, 0, 0, 0, 0.162, 0, 0, 0, 0.162, 0, 0, 0)
 [node name="hopper2" parent="Graphics" index="0"]
 surface_material_override/0 = ExtResource("3_5t2td")
 
+[node name="AnimationTreeGraphics" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_gmepl")
+anim_player = NodePath("../Graphics/AnimationPlayer")
+active = true
+parameters/conditions/fall = false
+
+[node name="tree2" parent="." instance=ExtResource("4_3xlnp")]
+transform = Transform3D(0.4188, 0, 0, 0, 0.4188, 0, 0, 0, 0.4188, 0, 0, 0)
+
+[node name="Cylinder_001" parent="tree2" index="0"]
+transform = Transform3D(-0.0168686, -0.00148644, 0.00338101, -0.00231528, 0.0165721, -0.00426559, -0.00287754, -0.0046202, -0.0163879, 0, -1.07764, 0)
+surface_material_override/0 = ExtResource("5_phjwc")
+surface_material_override/1 = ExtResource("6_bqchc")
+
+[node name="AnimationTreeTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_mspna")
+anim_player = NodePath("../tree2/AnimationPlayer")
+active = true
+parameters/conditions/grow = false
+
 [editable path="Graphics"]
+[editable path="tree2"]

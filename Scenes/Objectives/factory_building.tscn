@@ -1,19 +1,87 @@
-[gd_scene load_steps=5 format=3 uid="uid://brmjkacgr6o1l"]
+[gd_scene load_steps=16 format=3 uid="uid://brmjkacgr6o1l"]
 
 [ext_resource type="PackedScene" uid="uid://jrx02g6k4j55" path="res://Scenes/Objectives/objective.tscn" id="1_06bsk"]
 [ext_resource type="PackedScene" uid="uid://uenj50ufq2xw" path="res://Models/objectives/factory_building.glb" id="2_4ugov"]
 [ext_resource type="Material" uid="uid://euvpn81d2a5p" path="res://Materials/concrete.tres" id="3_fmgkt"]
 [ext_resource type="Material" uid="uid://dsjnxltf0a5uv" path="res://Materials/metal_corrugated.tres" id="4_gxon1"]
+[ext_resource type="PackedScene" uid="uid://duvifqtl4cioh" path="res://Models/objectives/tree2.glb" id="5_h2eu7"]
+[ext_resource type="Material" uid="uid://bp1is4tq0ctx1" path="res://Materials/tree_leaves.tres" id="6_7cg83"]
+[ext_resource type="Material" uid="uid://cskejr35dkg3d" path="res://Materials/tree_bark.tres" id="7_awc1d"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_soioa"]
+animation = &"factory_fall"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_faq8d"]
+advance_mode = 2
+advance_condition = &"fall"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_djamh"]
+states/factory_fall/node = SubResource("AnimationNodeAnimation_soioa")
+states/factory_fall/position = Vector2(421.333, 94)
+transitions = ["Start", "factory_fall", SubResource("AnimationNodeStateMachineTransition_faq8d")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wrmvx"]
+animation = &"tree2_grow"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5xd0c"]
+animation = &"tree2_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xrskp"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_syheq"]
+advance_mode = 2
+advance_condition = &"grow"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_431fo"]
+states/tree2_grow/node = SubResource("AnimationNodeAnimation_wrmvx")
+states/tree2_grow/position = Vector2(636, 100)
+states/tree2_idle/node = SubResource("AnimationNodeAnimation_5xd0c")
+states/tree2_idle/position = Vector2(400, 100)
+transitions = ["Start", "tree2_idle", SubResource("AnimationNodeStateMachineTransition_xrskp"), "tree2_idle", "tree2_grow", SubResource("AnimationNodeStateMachineTransition_syheq")]
+graph_offset = Vector2(131, 8)
 
 [node name="FactoryBuilding" type="Node3D"]
 
-[node name="Objective" parent="." instance=ExtResource("1_06bsk")]
+[node name="Objective" parent="." node_paths=PackedStringArray("graphics_anim", "tree_anim") instance=ExtResource("1_06bsk")]
+graphics_anim = NodePath("../AnimationTreeGraphics")
+tree_anim = NodePath("../AnimationTreeTree")
+num_of_followers = 55
 
 [node name="Graphics" parent="." instance=ExtResource("2_4ugov")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/factory_arm" index="0"]
+bones/5/rotation = Quaternion(-8.83104e-08, 1.09397e-07, 0.408382, 0.912811)
+bones/6/rotation = Quaternion(-8.83104e-08, 1.09397e-07, 0.408382, 0.912811)
+bones/7/rotation = Quaternion(-8.83104e-08, 1.09397e-07, 0.408382, 0.912811)
+bones/8/rotation = Quaternion(-8.83104e-08, 1.09397e-07, 0.408382, 0.912811)
+bones/9/rotation = Quaternion(-8.83104e-08, 1.09397e-07, 0.408382, 0.912811)
+bones/10/rotation = Quaternion(-8.83104e-08, 1.09397e-07, 0.408382, 0.912811)
 
 [node name="factory" parent="Graphics/factory_arm/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_fmgkt")
 surface_material_override/1 = ExtResource("4_gxon1")
 
+[node name="AnimationTreeGraphics" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_djamh")
+anim_player = NodePath("../Graphics/AnimationPlayer")
+active = true
+parameters/conditions/fall = false
+
+[node name="tree2" parent="." instance=ExtResource("5_h2eu7")]
+transform = Transform3D(1.444, 0, 0, 0, 1.444, 0, 0, 0, 1.444, 0, 0, 0)
+
+[node name="Cylinder_001" parent="tree2" index="0"]
+transform = Transform3D(-0.0168686, -0.00148644, 0.00338101, -0.00231528, 0.0165721, -0.00426559, -0.00287754, -0.0046202, -0.0163879, 0, -1.07764, 0)
+surface_material_override/0 = ExtResource("6_7cg83")
+surface_material_override/1 = ExtResource("7_awc1d")
+
+[node name="AnimationTreeTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_431fo")
+anim_player = NodePath("../tree2/AnimationPlayer")
+active = true
+parameters/conditions/grow = false
+
 [editable path="Graphics"]
+[editable path="tree2"]

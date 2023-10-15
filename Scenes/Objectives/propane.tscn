@@ -1,17 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://y8axcrmrh2x1"]
+[gd_scene load_steps=7 format=3 uid="uid://y8axcrmrh2x1"]
 
 [ext_resource type="PackedScene" uid="uid://jrx02g6k4j55" path="res://Scenes/Objectives/objective.tscn" id="1_bs7sm"]
 [ext_resource type="PackedScene" uid="uid://wmlsrwvukhf8" path="res://Models/objectives/propane.glb" id="2_spkos"]
 [ext_resource type="Material" uid="uid://dddqxv5471fdh" path="res://Materials/metal_white.tres" id="3_bc5lr"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ge6y7"]
+animation = &"propane_fall_key"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ps6j6"]
+advance_mode = 2
+advance_condition = &"fall"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_iwwse"]
+states/propane_fall_key/node = SubResource("AnimationNodeAnimation_ge6y7")
+states/propane_fall_key/position = Vector2(381.333, 106)
+transitions = ["Start", "propane_fall_key", SubResource("AnimationNodeStateMachineTransition_ps6j6")]
 
 [node name="Propane" type="Node3D"]
 
 [node name="Objective" parent="." instance=ExtResource("1_bs7sm")]
 
 [node name="Graphics" parent="." instance=ExtResource("2_spkos")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 0, 0, 0)
 
 [node name="Hemisphere_002" parent="Graphics" index="0"]
+transform = Transform3D(6.18355, 0, 0, 0, 6.18355, 0, 0, 0, 6.18355, 0, 0, 0)
 surface_material_override/0 = ExtResource("3_bc5lr")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_iwwse")
+anim_player = NodePath("../Graphics/AnimationPlayer")
+active = true
+parameters/conditions/fall = false
 
 [editable path="Graphics"]
