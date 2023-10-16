@@ -100,7 +100,7 @@ bg_color = Color(0.360784, 0.176471, 0.160784, 1)
 bg_color = Color(1, 0, 0, 1)
 
 [node name="Cutter" type="CharacterBody3D"]
-collision_layer = 16
+collision_layer = 17
 collision_mask = 130
 script = ExtResource("1_bm4ck")
 
@@ -114,14 +114,14 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -1, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.687, 0)
 
 [node name="Skeleton3D" parent="Graphics/cutter_armature" index="0"]
-bones/0/position = Vector3(0, -0.096392, 0)
-bones/2/position = Vector3(-0.083651, 0.466359, 0.0108612)
+bones/0/position = Vector3(0, -0.0354656, 0)
+bones/2/position = Vector3(-0.0307779, 0.495843, 0.00399619)
 bones/2/rotation = Quaternion(-0.0654056, -6.70347e-08, -0.503742, 0.861375)
-bones/4/position = Vector3(0.083651, 0.466359, 0.0108612)
+bones/4/position = Vector3(0.0307779, 0.495843, 0.00399618)
 bones/4/rotation = Quaternion(-0.0654056, 6.70347e-08, 0.503742, 0.861375)
 bones/6/rotation = Quaternion(-0.753112, 4.42978e-09, 0.00818647, 0.657841)
-bones/7/rotation = Quaternion(3.07927e-09, -2.86475e-09, 0.0202117, 0.999796)
-bones/8/rotation = Quaternion(1.09035e-08, -4.22091e-08, -0.213285, 0.97699)
+bones/7/rotation = Quaternion(9.29568e-12, 2.02227e-10, 0.0459154, 0.998945)
+bones/8/rotation = Quaternion(6.4347e-08, -5.77528e-08, 0.440163, 0.897918)
 
 [node name="cutter_body" parent="Graphics/cutter_armature/Skeleton3D" index="0"]
 surface_material_override/1 = ExtResource("3_h1h6f")

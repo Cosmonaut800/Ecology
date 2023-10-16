@@ -5,10 +5,12 @@ const SPEED = 1.0
 
 @export var player: Node3D
 @export var health := 10.0
+@export var attack_range := 20.0
 
 var timer := 0.0
 var dead := false
 var death_fade := 1.0
+var activated := false
 
 @onready var anim_tree := $Graphics/AnimationTree
 @onready var graphics := $Graphics
@@ -29,8 +31,11 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	
+	if (player.global_position - global_position).length() < attack_range:
+		activated = true
+	
 	var direction = (player.global_position - global_position).normalized()
-	if not dead:
+	if not dead and activated:
 		if (player.global_position - global_position).length() < 2.0:
 			anim_tree.set("parameters/BlendTree/StateMachine/conditions/attacking", true)
 			
@@ -75,3 +80,6 @@ func do_damage():
 		commit_murder.emit()
 		print("deal damage!")
 	pass
+
+func on_kill_healthbars():
+	health_bar.hide()

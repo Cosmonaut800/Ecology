@@ -1,36 +1,121 @@
-[gd_scene load_steps=7 format=3 uid="uid://y8axcrmrh2x1"]
+[gd_scene load_steps=20 format=3 uid="uid://y8axcrmrh2x1"]
 
 [ext_resource type="PackedScene" uid="uid://jrx02g6k4j55" path="res://Scenes/Objectives/objective.tscn" id="1_bs7sm"]
-[ext_resource type="PackedScene" uid="uid://wmlsrwvukhf8" path="res://Models/objectives/propane.glb" id="2_spkos"]
-[ext_resource type="Material" uid="uid://dddqxv5471fdh" path="res://Materials/metal_white.tres" id="3_bc5lr"]
+[ext_resource type="PackedScene" uid="uid://c5c8nake6ntnr" path="res://Models/objectives/propane.glb" id="2_spkos"]
+[ext_resource type="PackedScene" uid="uid://duvifqtl4cioh" path="res://Models/objectives/tree2.glb" id="3_fgijg"]
+[ext_resource type="Material" uid="uid://bp1is4tq0ctx1" path="res://Materials/tree_leaves.tres" id="4_vbwf6"]
+[ext_resource type="Material" uid="uid://cskejr35dkg3d" path="res://Materials/tree_bark.tres" id="5_0at4s"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ge6y7"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k0qvg"]
+radius = 3.28098
+height = 9.8382
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_nkhis"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yr8df"]
 animation = &"propane_fall_key"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ps6j6"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o2ts0"]
+animation = &"propane_fall"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kbgq4"]
+graph_offset = Vector2(-370.511, 78.9985)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_nkhis")
+nodes/Add2/position = Vector2(120, 140)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_o2ts0")
+nodes/Animation/position = Vector2(-60, 60)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_yr8df")
+"nodes/Animation 2/position" = Vector2(-63.6329, 264.121)
+node_connections = [&"output", 0, &"Add2", &"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xu58l"]
 advance_mode = 2
 advance_condition = &"fall"
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_iwwse"]
-states/propane_fall_key/node = SubResource("AnimationNodeAnimation_ge6y7")
-states/propane_fall_key/position = Vector2(381.333, 106)
-transitions = ["Start", "propane_fall_key", SubResource("AnimationNodeStateMachineTransition_ps6j6")]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_wrqpn"]
+states/BlendTree/node = SubResource("AnimationNodeBlendTree_kbgq4")
+states/BlendTree/position = Vector2(392, 100)
+states/Start/position = Vector2(204, 100)
+transitions = ["Start", "BlendTree", SubResource("AnimationNodeStateMachineTransition_xu58l")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wrmvx"]
+animation = &"tree2_grow"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5xd0c"]
+animation = &"tree2_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xrskp"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_syheq"]
+advance_mode = 2
+advance_condition = &"grow"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xism8"]
+states/tree2_grow/node = SubResource("AnimationNodeAnimation_wrmvx")
+states/tree2_grow/position = Vector2(636, 100)
+states/tree2_idle/node = SubResource("AnimationNodeAnimation_5xd0c")
+states/tree2_idle/position = Vector2(400, 100)
+transitions = ["Start", "tree2_idle", SubResource("AnimationNodeStateMachineTransition_xrskp"), "tree2_idle", "tree2_grow", SubResource("AnimationNodeStateMachineTransition_syheq")]
+graph_offset = Vector2(131, 8)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_du0g1"]
+radius = 1.8007
+height = 7.86667
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qohoo"]
+size = Vector3(2.7304, 2.04625, 4.1002)
 
 [node name="Propane" type="Node3D"]
 
-[node name="Objective" parent="." instance=ExtResource("1_bs7sm")]
+[node name="Objective" parent="." node_paths=PackedStringArray("graphics_anim", "tree_anim", "trigger") instance=ExtResource("1_bs7sm")]
+graphics_anim = NodePath("../AnimationTreeGraphics")
+tree_anim = NodePath("../AnimationTreeTree")
+trigger = NodePath("Area3D2")
+MAX_HEALTH = 55.0
+num_of_followers = 20
+
+[node name="Area3D2" type="Area3D" parent="Objective"]
+collision_layer = 4
+collision_mask = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objective/Area3D2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.54469, 0)
+shape = SubResource("CapsuleShape3D_k0qvg")
 
 [node name="Graphics" parent="." instance=ExtResource("2_spkos")]
-transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 0, 0, 0)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
-[node name="Hemisphere_002" parent="Graphics" index="0"]
-transform = Transform3D(6.18355, 0, 0, 0, 6.18355, 0, 0, 0, 6.18355, 0, 0, 0)
-surface_material_override/0 = ExtResource("3_bc5lr")
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_iwwse")
+[node name="AnimationTreeGraphics" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_wrqpn")
 anim_player = NodePath("../Graphics/AnimationPlayer")
 active = true
 parameters/conditions/fall = false
+parameters/BlendTree/Add2/add_amount = 1.0
+
+[node name="tree2" parent="." instance=ExtResource("3_fgijg")]
+transform = Transform3D(0.4188, 0, 0, 0, 0.4188, 0, 0, 0, 0.4188, 0, 0, 0)
+
+[node name="Cylinder_001" parent="tree2" index="0"]
+transform = Transform3D(-0.0168686, -0.00148644, 0.00338101, -0.00231528, 0.0165721, -0.00426559, -0.00287754, -0.0046202, -0.0163879, 0, -1.07764, 0)
+surface_material_override/0 = ExtResource("4_vbwf6")
+surface_material_override/1 = ExtResource("5_0at4s")
+
+[node name="AnimationTreeTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_xism8")
+anim_player = NodePath("../tree2/AnimationPlayer")
+active = true
+parameters/conditions/grow = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.28689, 0)
+shape = SubResource("CapsuleShape3D_du0g1")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.456489, 0)
+shape = SubResource("BoxShape3D_qohoo")
 
 [editable path="Graphics"]
+[editable path="tree2"]

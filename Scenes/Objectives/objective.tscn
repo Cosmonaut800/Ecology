@@ -14,7 +14,7 @@ vertex_color_use_as_albedo = true
 albedo_color = Color(0, 0.529412, 0.490196, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_filot"]
-radius = 1.5
+radius = 0.115
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6xuwq"]
 viewport_path = NodePath("SubViewport")

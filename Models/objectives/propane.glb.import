@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://wmlsrwvukhf8"
+uid="uid://c5c8nake6ntnr"
 path="res://.godot/imported/propane.glb-4e4f1a107324a1e9da9d008545be58d3.scn"
 
 [deps]
@@ -28,12 +28,5 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"materials": {
-"white_metal": {
-"use_external/enabled": true,
-"use_external/path": "res://Materials/Objectives/white_metal.tres"
-}
-}
-}
+_subresources={}
 gltf/embedded_image_handling=1

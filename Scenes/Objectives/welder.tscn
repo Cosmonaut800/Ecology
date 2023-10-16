@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b5x4ovf0sau02"]
+[gd_scene load_steps=17 format=3 uid="uid://b5x4ovf0sau02"]
 
 [ext_resource type="PackedScene" uid="uid://jrx02g6k4j55" path="res://Scenes/Objectives/objective.tscn" id="1_ah0oe"]
 [ext_resource type="PackedScene" uid="uid://cnpmp8wfl12sd" path="res://Models/objectives/welder.glb" id="2_g2sqw"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://duvifqtl4cioh" path="res://Models/objectives/tree2.glb" id="5_5fjsh"]
 [ext_resource type="Material" uid="uid://bp1is4tq0ctx1" path="res://Materials/tree_leaves.tres" id="6_qbxcx"]
 [ext_resource type="Material" uid="uid://cskejr35dkg3d" path="res://Materials/tree_bark.tres" id="7_keo85"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lxtb0"]
+radius = 1.4
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wknt3"]
 animation = &"welder_fall"
@@ -43,11 +46,19 @@ graph_offset = Vector2(131, 8)
 
 [node name="Welder" type="Node3D"]
 
-[node name="Objective" parent="." node_paths=PackedStringArray("graphics_anim", "tree_anim") instance=ExtResource("1_ah0oe")]
+[node name="Objective" parent="." node_paths=PackedStringArray("graphics_anim", "tree_anim", "trigger") instance=ExtResource("1_ah0oe")]
 graphics_anim = NodePath("../AnimationTreeGraphics")
 tree_anim = NodePath("../AnimationTreeTree")
+trigger = NodePath("Area3D2")
 MAX_HEALTH = 1.0
 num_of_followers = 5
+
+[node name="Area3D2" type="Area3D" parent="Objective"]
+collision_layer = 4
+collision_mask = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objective/Area3D2"]
+shape = SubResource("SphereShape3D_lxtb0")
 
 [node name="Graphics" parent="." instance=ExtResource("2_g2sqw")]
 transform = Transform3D(0.34, 0, 0, 0, 0.34, 0, 0, 0, 0.34, 0, 0, 0)

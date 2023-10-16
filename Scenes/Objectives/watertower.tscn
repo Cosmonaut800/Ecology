@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bh4jot7hakqvs"]
+[gd_scene load_steps=18 format=3 uid="uid://bh4jot7hakqvs"]
 
 [ext_resource type="PackedScene" uid="uid://jrx02g6k4j55" path="res://Scenes/Objectives/objective.tscn" id="1_6qcoj"]
 [ext_resource type="PackedScene" uid="uid://bp53ukyabo0y6" path="res://Models/objectives/watertower.glb" id="2_tblwy"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://duvifqtl4cioh" path="res://Models/objectives/tree2.glb" id="5_0x4di"]
 [ext_resource type="Material" uid="uid://bp1is4tq0ctx1" path="res://Materials/tree_leaves.tres" id="6_jjydj"]
 [ext_resource type="Material" uid="uid://cskejr35dkg3d" path="res://Materials/tree_bark.tres" id="7_c0nod"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_84skg"]
+size = Vector3(2.1029, 4.78021, 2.32412)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q0rbs"]
 animation = &"watertower_fall"
@@ -42,13 +45,24 @@ states/tree2_idle/position = Vector2(400, 100)
 transitions = ["Start", "tree2_idle", SubResource("AnimationNodeStateMachineTransition_xrskp"), "tree2_idle", "tree2_grow", SubResource("AnimationNodeStateMachineTransition_syheq")]
 graph_offset = Vector2(131, 8)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1yoyu"]
+size = Vector3(1.35, 2.0165, 1.35)
+
 [node name="Watertower" type="Node3D"]
 
-[node name="Objective" parent="." node_paths=PackedStringArray("graphics_anim", "tree_anim") instance=ExtResource("1_6qcoj")]
+[node name="Objective" parent="." node_paths=PackedStringArray("graphics_anim", "tree_anim", "trigger") instance=ExtResource("1_6qcoj")]
 graphics_anim = NodePath("../AnimationTreeGraphics")
 tree_anim = NodePath("../AnimationTreeTree")
+trigger = NodePath("Area3D2")
 MAX_HEALTH = 20.0
 num_of_followers = 10
+
+[node name="Area3D2" type="Area3D" parent="Objective"]
+collision_layer = 4
+collision_mask = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objective/Area3D2"]
+shape = SubResource("BoxShape3D_84skg")
 
 [node name="Graphics" parent="." instance=ExtResource("2_tblwy")]
 transform = Transform3D(0.39, 0, 0, 0, 0.39, 0, 0, 0, 0.39, 0, 0, 0)
@@ -80,6 +94,13 @@ tree_root = SubResource("AnimationNodeStateMachine_37ied")
 anim_player = NodePath("../tree2/AnimationPlayer")
 active = true
 parameters/conditions/grow = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.20813, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.22173, 0)
+shape = SubResource("BoxShape3D_1yoyu")
 
 [editable path="Graphics"]
 [editable path="tree2"]

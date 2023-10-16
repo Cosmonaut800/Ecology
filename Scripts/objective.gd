@@ -3,11 +3,12 @@ extends Node3D
 @export var player_body :CharacterBody3D
 @export var graphics_anim :AnimationTree
 @export var tree_anim :AnimationTree
+@export var trigger :Area3D
 @export var MAX_HEALTH := 100.0
 @export var num_of_followers := 1
 var health := 100.0
 
-@onready var trigger := $Area3D
+#@onready var trigger := $Area3D
 @onready var health_bar := $SubViewport/HealthBar
 
 var killed := false
@@ -32,3 +33,6 @@ func _physics_process(delta):
 
 func _process(_delta):
 	health_bar.value = health
+
+func on_kill_healthbars():
+	health_bar.hide()

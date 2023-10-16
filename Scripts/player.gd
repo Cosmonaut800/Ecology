@@ -52,7 +52,7 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-	if global_position.y < -100.0:
+	if global_position.y < -50.0:
 		global_position = Vector3(0.0, 100.0, 0.0)
 
 func _process(delta):

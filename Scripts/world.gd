@@ -51,7 +51,7 @@ func on_spawn_follower(amount, spawn_position):
 
 func find_spiral_position(index: int) -> Vector3:
 	var arc_length = 0.612
-	var radius = sqrt((index + 8) * arc_length * GOLDEN * PI)/4.15
+	var radius = sqrt((index + 8) * arc_length * GOLDEN * PI)/4.0
 	var theta = ((index + 8) * arc_length * GOLDEN * PI) / radius
 	
 #	if index % 5 == 0:
