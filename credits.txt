@@ -2,6 +2,7 @@ Asset Credits:
 Music - "Enchanted Tiki 86" by Cynic Music,	http://cynicmusic.com/	http://pixelsphere.org
 Some textures modified from Big Tire by Clint Bellanger on https://opengameart.org/content/big-tire
 "Cat jump.m4a" sound effect by FOX2814 on https://freesound.org/people/FOX2814/sounds/464565/
-
+"Heavy Hard Metal Resonant Impact" sound effect by Artninja on https://freesound.org/people/Artninja/sounds/703595/
+"GGlass Smash, Bottle, G" sound effect by InspectorJ on https://freesound.org/people/InspectorJ/sounds/344270/
 
 All other assets are either created by me or were distributed under the CC0 license.

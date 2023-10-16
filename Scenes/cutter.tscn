@@ -1,9 +1,14 @@
-[gd_scene load_steps=27 format=3 uid="uid://cxbnet6wgr3dv"]
+[gd_scene load_steps=32 format=3 uid="uid://cxbnet6wgr3dv"]
 
 [ext_resource type="Script" path="res://Scripts/cutter.gd" id="1_bm4ck"]
 [ext_resource type="PackedScene" uid="uid://dlvw7gpdsm1n" path="res://Models/cutter.glb" id="1_y0iu7"]
 [ext_resource type="AnimationLibrary" uid="uid://qambok6f25kq" path="res://Models/Animations/cutter/cutter_animations.res" id="2_r4yo5"]
 [ext_resource type="Material" uid="uid://dytffe3xar75n" path="res://Materials/Enemies/animated_face2.tres" id="3_h1h6f"]
+[ext_resource type="AudioStream" uid="uid://c2geraoq7q40e" path="res://Audio/clank1.wav" id="5_iuw0s"]
+[ext_resource type="AudioStream" uid="uid://dgvoe87rtk68r" path="res://Audio/clank2.wav" id="6_xx8bd"]
+[ext_resource type="AudioStream" uid="uid://df5ky84asx5es" path="res://Audio/clank3.wav" id="7_irqcl"]
+[ext_resource type="AudioStream" uid="uid://b4dgpcxr3g5cl" path="res://Audio/saw.wav" id="8_wevmt"]
+[ext_resource type="AudioStream" uid="uid://drwxflrubym6u" path="res://Audio/344270__inspectorj__glass-smash-bottle-g.wav" id="9_nnnpa"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_047qn"]
 radius = 0.841
@@ -114,14 +119,14 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -1, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.687, 0)
 
 [node name="Skeleton3D" parent="Graphics/cutter_armature" index="0"]
-bones/0/position = Vector3(0, -0.0354656, 0)
-bones/2/position = Vector3(-0.0307779, 0.495843, 0.00399619)
+bones/0/position = Vector3(0, -0.020495, 0)
+bones/2/position = Vector3(-0.017786, 0.503088, 0.00230934)
 bones/2/rotation = Quaternion(-0.0654056, -6.70347e-08, -0.503742, 0.861375)
-bones/4/position = Vector3(0.0307779, 0.495843, 0.00399618)
+bones/4/position = Vector3(0.017786, 0.503088, 0.00230933)
 bones/4/rotation = Quaternion(-0.0654056, 6.70347e-08, 0.503742, 0.861375)
 bones/6/rotation = Quaternion(-0.753112, 4.42978e-09, 0.00818647, 0.657841)
-bones/7/rotation = Quaternion(9.29568e-12, 2.02227e-10, 0.0459154, 0.998945)
-bones/8/rotation = Quaternion(6.4347e-08, -5.77528e-08, 0.440163, 0.897918)
+bones/7/rotation = Quaternion(6.5504e-12, 2.02335e-10, 0.0323547, 0.999476)
+bones/8/rotation = Quaternion(4.32534e-08, -5.38836e-08, 0.162137, 0.986768)
 
 [node name="cutter_body" parent="Graphics/cutter_armature/Skeleton3D" index="0"]
 surface_material_override/1 = ExtResource("3_h1h6f")
@@ -185,5 +190,32 @@ theme_override_styles/background = SubResource("StyleBoxFlat_anbky")
 theme_override_styles/fill = SubResource("StyleBoxFlat_44fga")
 value = 75.0
 show_percentage = false
+
+[node name="Clank1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_iuw0s")
+volume_db = -15.0
+attenuation_filter_db = 0.0
+
+[node name="Clank2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_xx8bd")
+volume_db = -15.0
+attenuation_filter_db = 0.0
+
+[node name="Clank3" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_irqcl")
+volume_db = -15.0
+attenuation_filter_db = 0.0
+
+[node name="Saw" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_wevmt")
+volume_db = -15.0
+autoplay = true
+max_distance = 25.0
+attenuation_filter_db = 0.0
+
+[node name="Death" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_nnnpa")
+volume_db = -15.0
+attenuation_filter_db = 0.0
 
 [editable path="Graphics"]

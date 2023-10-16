@@ -53,3 +53,15 @@ func update_brush_size(radius):
 	radius *= 2.0 * (DIMENSION/2048.0) # Values were initially chosen when fog dimension was set to 2048
 	light_image.resize(int(radius*light_scale*light_texture.get_width()), int(radius*light_scale*light_texture.get_height()))
 	light_offset = Vector2(int(radius*light_scale*light_texture.get_width())/2, int(radius*light_scale*light_texture.get_height())/2)
+
+func calculate_score():
+	var average_color := 0.0
+	
+	fog_image.resize(16, 16, Image.INTERPOLATE_TRILINEAR)
+	for x in range(16):
+		for y in range(16):
+			average_color += fog_image.get_pixel(x, y).r
+			print(fog_image.get_pixel(x,y).r)
+	
+	average_color = average_color / (16 * 16)
+	return snapped(average_color * 100.0, 1.0)

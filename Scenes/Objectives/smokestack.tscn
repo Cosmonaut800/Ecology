@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://f6woabmyb3fk"]
+[gd_scene load_steps=18 format=3 uid="uid://f6woabmyb3fk"]
 
 [ext_resource type="PackedScene" uid="uid://jrx02g6k4j55" path="res://Scenes/Objectives/objective.tscn" id="1_sqpc7"]
 [ext_resource type="PackedScene" uid="uid://bp1ly7thfv6xi" path="res://Models/objectives/smokestack.glb" id="2_qvwb0"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://duvifqtl4cioh" path="res://Models/objectives/tree2.glb" id="4_gao5c"]
 [ext_resource type="Material" uid="uid://bp1is4tq0ctx1" path="res://Materials/tree_leaves.tres" id="5_yu8ma"]
 [ext_resource type="Material" uid="uid://cskejr35dkg3d" path="res://Materials/tree_bark.tres" id="6_lyvcy"]
+[ext_resource type="AudioStream" uid="uid://s4afscdimudo" path="res://Audio/703247__xkeril__big-falling-debris-crash.wav" id="7_0drw8"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_vsce2"]
 height = 11.093
@@ -50,10 +51,11 @@ radius = 1.97769
 
 [node name="Smokestack" type="Node3D"]
 
-[node name="Objective" parent="." node_paths=PackedStringArray("graphics_anim", "tree_anim", "trigger") instance=ExtResource("1_sqpc7")]
+[node name="Objective" parent="." node_paths=PackedStringArray("graphics_anim", "tree_anim", "trigger", "fall_sound") instance=ExtResource("1_sqpc7")]
 graphics_anim = NodePath("../AnimationTreeGraphics")
 tree_anim = NodePath("../AnimationTreeTree")
 trigger = NodePath("Area3D2")
+fall_sound = NodePath("../AudioStreamPlayer3D")
 MAX_HEALTH = 60.0
 num_of_followers = 25
 
@@ -94,6 +96,10 @@ parameters/conditions/grow = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("CylinderShape3D_hneua")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_0drw8")
+volume_db = -10.0
 
 [editable path="smokestack"]
 [editable path="tree2"]

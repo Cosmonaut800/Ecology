@@ -8,6 +8,8 @@ var instance_index := 0
 @onready var ray := $RayCast3D
 @onready var graphics := $Graphics
 @onready var trigger := $Area3D
+@onready var whish := $Whish
+@onready var thud := $Thud
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var vertical_velocity := 0.0
@@ -62,6 +64,8 @@ func _physics_process(delta):
 		
 		if t > AIRTIME:
 			landed.emit(self)
+			thud.set_pitch_scale(randf_range(0.8, 1.2))
+			thud.play()
 			target_pos = ray.get_collision_point() + 0.25 * Vector3.UP
 			position = target_pos
 			if trigger.has_overlapping_areas():

@@ -16,6 +16,9 @@ var activated := false
 @onready var graphics := $Graphics
 @onready var health_bar := $SubViewport/HealthBar
 @onready var hurtbox := $Graphics/Hurtbox
+@onready var clanks := [$Clank1, $Clank2, $Clank3]
+@onready var saw := $Saw
+@onready var death_sound := $Death
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -54,6 +57,8 @@ func _physics_process(delta):
 		anim_tree.set("parameters/BlendTree/StateMachine/conditions/not_walking", not get_position_delta().length() > 0.01)
 		
 		if health < 0.1:
+			death_sound.play()
+			saw.stop()
 			dead = true
 			anim_tree.set("parameters/conditions/dead", true)
 		
@@ -83,3 +88,6 @@ func do_damage():
 
 func on_kill_healthbars():
 	health_bar.hide()
+
+func play_random_clank():
+	clanks.pick_random().play()

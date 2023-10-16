@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://brmjkacgr6o1l"]
+[gd_scene load_steps=19 format=3 uid="uid://brmjkacgr6o1l"]
 
 [ext_resource type="PackedScene" uid="uid://jrx02g6k4j55" path="res://Scenes/Objectives/objective.tscn" id="1_06bsk"]
 [ext_resource type="PackedScene" uid="uid://uenj50ufq2xw" path="res://Models/objectives/factory_building.glb" id="2_4ugov"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://duvifqtl4cioh" path="res://Models/objectives/tree2.glb" id="5_h2eu7"]
 [ext_resource type="Material" uid="uid://bp1is4tq0ctx1" path="res://Materials/tree_leaves.tres" id="6_7cg83"]
 [ext_resource type="Material" uid="uid://cskejr35dkg3d" path="res://Materials/tree_bark.tres" id="7_awc1d"]
+[ext_resource type="AudioStream" uid="uid://dkmjnqp7ma4se" path="res://Audio/703595__artninja__heavy_hard_metal_resonant_impact.wav" id="8_sb03n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sx4pq"]
 size = Vector3(24.8163, 13.9943, 13.4908)
@@ -49,10 +50,11 @@ size = Vector3(23.7176, 13.83, 12.4952)
 
 [node name="FactoryBuilding" type="Node3D"]
 
-[node name="Objective" parent="." node_paths=PackedStringArray("graphics_anim", "tree_anim", "trigger") instance=ExtResource("1_06bsk")]
+[node name="Objective" parent="." node_paths=PackedStringArray("graphics_anim", "tree_anim", "trigger", "fall_sound") instance=ExtResource("1_06bsk")]
 graphics_anim = NodePath("../AnimationTreeGraphics")
 tree_anim = NodePath("../AnimationTreeTree")
 trigger = NodePath("Area3D2")
+fall_sound = NodePath("../AudioStreamPlayer3D")
 num_of_followers = 55
 
 [node name="Area3D2" type="Area3D" parent="Objective"]
@@ -101,6 +103,10 @@ parameters/conditions/grow = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_6kdia")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_sb03n")
+volume_db = -10.0
 
 [editable path="Graphics"]
 [editable path="tree2"]

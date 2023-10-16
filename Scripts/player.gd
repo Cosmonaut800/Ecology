@@ -10,6 +10,8 @@ var mouse_last_position := Vector2.ZERO
 var yaw_input := 0.0
 var pitch_input := 0.0
 var can_attack := false
+var can_step := false
+var can_anything := true
 @export var herd_size := 1
 
 @onready var yaw := $YawPivot
@@ -18,6 +20,8 @@ var can_attack := false
 @onready var camera := $YawPivot/PitchPivot/Camera3D
 @onready var camera_ray := $YawPivot/PitchPivot/CameraRay
 @onready var timer_node := $Timer
+@onready var grass_step := $GrassStep
+@onready var audio_timer := $GrassStep/WalkTimer
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -27,6 +31,7 @@ signal throw_follower(amount: int, destination: Vector3)
 
 func _ready():
 	timer_node.timeout.connect(on_timer_timeout)
+	audio_timer.timeout.connect(on_audio_timeout)
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -50,7 +55,8 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, DECEL * delta)
 		velocity.z = move_toward(velocity.z, 0, DECEL * delta)
 	
-	move_and_slide()
+	if can_anything:
+		move_and_slide()
 	
 	if global_position.y < -50.0:
 		global_position = Vector3(0.0, 100.0, 0.0)
@@ -67,7 +73,7 @@ func _process(delta):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		get_viewport().warp_mouse(mouse_last_position)
 	
-	if Input.is_action_pressed("attack") and can_attack:
+	if Input.is_action_pressed("attack") and can_attack and can_anything:
 		attack()
 		can_attack = false
 		timer_node.start()
@@ -78,7 +84,12 @@ func _process(delta):
 	yaw_input = 0.0
 	pitch_input = 0.0
 	
-	if get_position_delta().length() > 0.0:
+	if get_position_delta().length() > 0.01 and can_anything:
+		if can_step:
+			grass_step.set_pitch_scale(randf_range(0.8, 1.2))
+			grass_step.play()
+			can_step = false
+			audio_timer.start()
 		graphics.position.y = 0.05 * sin(20.0 * timer)
 	else:
 		graphics.position.y = 0.0
@@ -123,3 +134,6 @@ func raycast_from_mouse(m_pos, collision_mask):
 
 func on_timer_timeout():
 	can_attack = true
+
+func on_audio_timeout():
+	can_step = true

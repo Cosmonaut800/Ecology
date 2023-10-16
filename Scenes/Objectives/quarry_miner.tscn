@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b0o85y2vbgli0"]
+[gd_scene load_steps=20 format=3 uid="uid://b0o85y2vbgli0"]
 
 [ext_resource type="PackedScene" uid="uid://jrx02g6k4j55" path="res://Scenes/Objectives/objective.tscn" id="1_gpcfa"]
 [ext_resource type="PackedScene" uid="uid://dvb0vtbhu6pa7" path="res://Models/objectives/quarry_miner.glb" id="2_5csrw"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://duvifqtl4cioh" path="res://Models/objectives/tree2.glb" id="6_1gqmc"]
 [ext_resource type="Material" uid="uid://bp1is4tq0ctx1" path="res://Materials/tree_leaves.tres" id="7_jflf3"]
 [ext_resource type="Material" uid="uid://cskejr35dkg3d" path="res://Materials/tree_bark.tres" id="8_3i54d"]
+[ext_resource type="AudioStream" uid="uid://dkmjnqp7ma4se" path="res://Audio/703595__artninja__heavy_hard_metal_resonant_impact.wav" id="9_66xlp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_783wh"]
 size = Vector3(8.73512, 9.4332, 8.50302)
@@ -50,10 +51,11 @@ size = Vector3(6.61669, 6.37648, 4.41824)
 
 [node name="QuarryMiner" type="Node3D"]
 
-[node name="Objective" parent="." node_paths=PackedStringArray("graphics_anim", "tree_anim", "trigger") instance=ExtResource("1_gpcfa")]
+[node name="Objective" parent="." node_paths=PackedStringArray("graphics_anim", "tree_anim", "trigger", "fall_sound") instance=ExtResource("1_gpcfa")]
 graphics_anim = NodePath("../AnimationTreeGraphics")
 tree_anim = NodePath("../AnimationTreeTree")
 trigger = NodePath("Area3D2")
+fall_sound = NodePath("../AudioStreamPlayer3D")
 MAX_HEALTH = 80.0
 num_of_followers = 40
 
@@ -104,6 +106,10 @@ parameters/conditions/grow = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.593153, 0.606457, 0.293978)
 shape = SubResource("BoxShape3D_atygn")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_66xlp")
+volume_db = -10.0
 
 [editable path="Graphics"]
 [editable path="tree2"]

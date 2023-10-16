@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bb3fswnhcewyr"]
+[gd_scene load_steps=7 format=3 uid="uid://bb3fswnhcewyr"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_re3kw"]
 [ext_resource type="Script" path="res://Scripts/camera_collision.gd" id="2_b2qeo"]
 [ext_resource type="PackedScene" uid="uid://cgj1c8onrj4l6" path="res://Models/forest_sprite.glb" id="2_cn1nc"]
+[ext_resource type="AudioStream" uid="uid://dyx05rdyplswa" path="res://Audio/grass.wav" id="4_gayfx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_68iyb"]
 
@@ -43,5 +44,14 @@ collision_mask = 2
 [node name="Camera3D" type="Camera3D" parent="YawPivot/PitchPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.6)
 script = ExtResource("2_b2qeo")
+
+[node name="GrassStep" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_gayfx")
+volume_db = -22.1138
+attenuation_filter_db = 0.0
+
+[node name="WalkTimer" type="Timer" parent="GrassStep"]
+wait_time = 0.318
+autostart = true
 
 [editable path="Graphics/forest_sprite"]

@@ -4,6 +4,7 @@ extends Node3D
 @export var graphics_anim :AnimationTree
 @export var tree_anim :AnimationTree
 @export var trigger :Area3D
+@export var fall_sound :AudioStreamPlayer3D
 @export var MAX_HEALTH := 100.0
 @export var num_of_followers := 1
 var health := 100.0
@@ -25,6 +26,7 @@ func _physics_process(delta):
 		health -= delta
 	
 	if health < 0.01 and not killed:
+		fall_sound.play()
 		spawn_follower.emit(num_of_followers, global_position)
 		#health = MAX_HEALTH
 		graphics_anim.set("parameters/conditions/fall", true)

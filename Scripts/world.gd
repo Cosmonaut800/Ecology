@@ -11,10 +11,17 @@ var total_thrown = 0
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+var objectives_destroyed := 0
+var trees_revived := 0
+
 @export var objectives: Array[Node3D]= []
 @export var enemies: Array[Node3D]= []
+@export var trees: Array[Node3D]= []
 @onready var player = $Player
 @onready var ground_paint_controller = $GroundPaintController
+@onready var num_structures := $CanvasLayer/Control/NumStructures
+@onready var num_trees := $CanvasLayer/Control/NumTrees
+@onready var num_ground := $CanvasLayer/Control/NumGround
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,6 +31,9 @@ func _ready():
 	for enemy in enemies:
 		enemy.commit_murder.connect(on_commit_murder)
 	
+	for tree in trees:
+		tree.tree_touched.connect(on_tree_touched)
+	
 	player.throw_follower.connect(on_throw_follower)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,6 +41,8 @@ func _ready():
 #	pass
 
 func on_spawn_follower(amount, spawn_position):
+	objectives_destroyed += 1
+	
 	for i in amount:
 		follower_instances.append(follower_scene.instantiate())
 		follower_instances[-1].landed.connect(on_follower_land)
@@ -70,6 +82,8 @@ func on_throw_follower(amount, destination):
 			total_thrown += 1
 			player.herd_size -= 1
 			
+			follower_thrown[-1].whish.set_pitch_scale(randf_range(0.8, 1.2))
+			follower_thrown[-1].whish.play()
 			follower_thrown[-1].t = 0.0
 			follower_thrown[-1].r0 = follower_thrown[-1].position
 			follower_thrown[-1].v0.x = (destination.x - follower_thrown[-1].r0.x)/follower_thrown[-1].AIRTIME
@@ -116,3 +130,12 @@ func sort_thrown_followers(a, b):
 		return false
 	else:
 		return true
+
+func on_tree_touched():
+	trees_revived += 1
+
+func display_score():
+	player.can_anything = false
+	num_structures.text = str(objectives_destroyed) + "/13"
+	num_trees.text = str(trees_revived) + "/50"
+	num_ground.text = str(ground_paint_controller.calculate_score()) + "%"

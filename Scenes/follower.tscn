@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddgpd7xbfmn5h"]
+[gd_scene load_steps=6 format=3 uid="uid://ddgpd7xbfmn5h"]
 
 [ext_resource type="Script" path="res://Scripts/follower.gd" id="1_jkej4"]
 [ext_resource type="PackedScene" uid="uid://cgj1c8onrj4l6" path="res://Models/forest_sprite.glb" id="2_8oxf0"]
+[ext_resource type="AudioStream" uid="uid://lvyl2bdelcrf" path="res://Audio/whish.wav" id="3_gc576"]
+[ext_resource type="AudioStream" uid="uid://japbifilyxsh" path="res://Audio/thud.wav" id="4_4w121"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_frb6u"]
 radius = 0.25
@@ -26,3 +28,13 @@ collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_frb6u")
+
+[node name="Whish" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_gc576")
+volume_db = -16.9106
+attenuation_filter_db = 0.0
+
+[node name="Thud" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_4w121")
+volume_db = -20.813
+attenuation_filter_db = 0.0
