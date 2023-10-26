@@ -66,7 +66,7 @@ func find_spiral_position(index: int) -> Vector3:
 	
 	return Vector3(radius * cos(theta), 0.0, radius * sin(theta))
 
-func on_throw_follower(amount, destination):
+func on_throw_follower(_amount, destination):
 	if player.herd_size > 1:
 		var index := find_usable_follower_index()
 		
@@ -87,7 +87,6 @@ func on_throw_follower(amount, destination):
 func on_follower_land(follower):
 	follower_thrown.erase(follower)
 	player.herd_size += 1
-	pass
 
 func on_follower_die(follower):
 	follower_dead.append(follower)
@@ -117,12 +116,6 @@ func find_usable_follower_index() -> int:
 			index = (index + 1) % follower_instances.size()
 	
 	return -1
-
-func sort_thrown_followers(a, b):
-	if a.state == a.FOLLOW:
-		return false
-	else:
-		return true
 
 func on_tree_touched():
 	trees_revived += 1

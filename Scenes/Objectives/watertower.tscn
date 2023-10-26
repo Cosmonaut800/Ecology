@@ -47,7 +47,7 @@ transitions = ["Start", "tree2_idle", SubResource("AnimationNodeStateMachineTran
 graph_offset = Vector2(131, 8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1yoyu"]
-size = Vector3(1.35, 2.0165, 1.35)
+size = Vector3(1, 4.58773, 1)
 
 [node name="Watertower" type="Node3D"]
 
@@ -64,6 +64,7 @@ collision_layer = 4
 collision_mask = 9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objective/Area3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.20038, 0)
 shape = SubResource("BoxShape3D_84skg")
 
 [node name="Graphics" parent="." instance=ExtResource("2_tblwy")]
@@ -101,7 +102,7 @@ parameters/conditions/grow = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.20813, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.22173, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.151214, 0)
 shape = SubResource("BoxShape3D_1yoyu")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

@@ -114,7 +114,7 @@ func attack():
 # Thanks to MagickPanda on the Godot Forums at
 # https://godotforums.org/d/33479-godot-4-raycasting-to-get-mouse-position-in-3d/2
 # for this implementation of ray casting!
-func raycast_from_mouse(m_pos, collision_mask):
+func raycast_from_mouse(m_pos, ray_collision_mask):
 	var ray_start = camera.project_ray_origin(m_pos)
 	var ray_end = ray_start + camera.project_ray_normal(m_pos) * 1000.0
 	var world3d : World3D = get_world_3d()
@@ -123,7 +123,7 @@ func raycast_from_mouse(m_pos, collision_mask):
 	if space_state == null:
 		return
 	
-	var query = PhysicsRayQueryParameters3D.create(ray_start, ray_end, collision_mask)
+	var query = PhysicsRayQueryParameters3D.create(ray_start, ray_end, ray_collision_mask)
 	query.collide_with_areas = true
 	
 	return space_state.intersect_ray(query)
