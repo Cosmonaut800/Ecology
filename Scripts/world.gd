@@ -36,10 +36,6 @@ func _ready():
 	
 	player.throw_follower.connect(on_throw_follower)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _physics_process(_delta):
-#	pass
-
 func on_spawn_follower(amount, spawn_position):
 	objectives_destroyed += 1
 	
@@ -65,10 +61,7 @@ func find_spiral_position(index: int) -> Vector3:
 	var arc_length = 0.612
 	var radius = sqrt((index + 8) * arc_length * GOLDEN * PI)/4.0
 	var theta = ((index + 8) * arc_length * GOLDEN * PI) / radius
-	
-#	if index % 5 == 0:
-#		print(index, ", ", radius)
-	
+
 	radius = max(0.75, radius)/player.basis.get_scale().x
 	
 	return Vector3(radius * cos(theta), 0.0, radius * sin(theta))

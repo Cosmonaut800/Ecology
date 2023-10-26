@@ -15,7 +15,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var vertical_velocity := 0.0
 var random_offset := randf_range(0.0, 2 * PI)
 var last_position := Vector3.ZERO
-var speed := 5.0 # randf_range(4.8, 5.2)
+var speed := 5.0
 
 enum {FOLLOW, THROWN, COOLDOWN, RETURN}
 var state = FOLLOW

@@ -99,10 +99,6 @@ func _unhandled_input(event):
 			if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 				yaw_input = -event.relative.x * mouse_sensitivity
 				pitch_input = -event.relative.y * mouse_sensitivity
-				
-#		if event is InputEventMouseButton:
-#			if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
-#				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func change_camera_distance(distance):
 	camera.distance = distance

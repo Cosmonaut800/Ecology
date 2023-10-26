@@ -16,7 +16,6 @@ var light_image = light_texture.get_image()
 var light_offset = Vector2.ZERO
 @export var light_scale := 1.0
 
-# var player_last_position := Vector3.ZERO
 var target := Vector2.ZERO
 
 func _ready():
@@ -24,8 +23,7 @@ func _ready():
 	fog_image = Image.create(DIMENSION, DIMENSION, false, Image.FORMAT_RGBAH)
 	fog_image.fill(Color.BLACK)
 	light_image.decompress()
-	update_brush_size(0.6) #light_image.resize(int(player.herd_size*light_scale*light_texture.get_width()), int(player.herd_size*light_scale*light_texture.get_height()))
-	#light_offset = Vector2(int(light_scale*light_texture.get_width())/2, int(light_scale*light_texture.get_height())/2)
+	update_brush_size(0.6)
 	light_image.convert(Image.FORMAT_RGBAH)
 	target = Vector2(-fog_image.get_width(), -fog_image.get_height())
 	update_fog(target)
@@ -42,8 +40,6 @@ func update_fog_image_texture():
 
 func _process(_delta):
 	target = (DIMENSION/128.0) * Vector2(player.global_position.x, player.global_position.z) + Vector2(DIMENSION/2.0, DIMENSION/2.0)
-	
-	# player_last_position = player.global_position
 
 func on_timer_timeout():
 	if player.get_position_delta().length() > 0.01:

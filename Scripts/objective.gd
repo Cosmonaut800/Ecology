@@ -9,7 +9,6 @@ extends Node3D
 @export var num_of_followers := 1
 var health := 100.0
 
-#@onready var trigger := $Area3D
 @onready var health_bar := $SubViewport/HealthBar
 
 var killed := false
@@ -28,7 +27,6 @@ func _physics_process(delta):
 	if health < 0.01 and not killed:
 		fall_sound.play()
 		spawn_follower.emit(num_of_followers, global_position)
-		#health = MAX_HEALTH
 		graphics_anim.set("parameters/conditions/fall", true)
 		tree_anim.set("parameters/conditions/grow", true)
 		killed = true

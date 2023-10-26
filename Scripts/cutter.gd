@@ -69,11 +69,6 @@ func _process(_delta):
 	
 	if Vector3(velocity.x, 0.0, velocity.z).length() > 0.08:
 		graphics.look_at(global_position + 100.0 * Vector3(velocity.x, 0.0, velocity.z))
-	
-#	if dead:
-#
-#
-#		death_fade -= delta
 
 func do_damage():
 	if hurtbox.has_overlapping_areas():
