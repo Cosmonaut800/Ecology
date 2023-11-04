@@ -2,12 +2,12 @@ shader_type spatial;
 render_mode diffuse_lambert_wrap;
 
 uniform sampler2D staticTex;
-uniform sampler2D staticNorm;
+uniform sampler2D staticNorm : hint_normal;
 uniform sampler2D revealedTex;
-uniform sampler2D revealedNorm;
-uniform sampler2D heightmap: repeat_disable, filter_nearest;
+uniform sampler2D revealedNorm : hint_normal;
+uniform sampler2D heightmap: repeat_disable;
 uniform float heightIntensity = 1.0f;
-uniform sampler2D srcTex;
+uniform sampler2D srcTex : repeat_disable;
 uniform vec2 repeat = vec2(1.0f, 1.0f);
 uniform vec2 splatUVStart = vec2(0.0f, 0.0f);
 uniform vec2 splatUVEnd = vec2(1.0f, 1.0f);

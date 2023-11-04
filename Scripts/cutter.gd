@@ -56,13 +56,13 @@ func _physics_process(delta):
 		anim_tree.set("parameters/BlendTree/StateMachine/conditions/walking", get_position_delta().length() > 0.01)
 		anim_tree.set("parameters/BlendTree/StateMachine/conditions/not_walking", not get_position_delta().length() > 0.01)
 		
-		if health < 0.1:
-			death_sound.play()
-			saw.stop()
-			dead = true
-			anim_tree.set("parameters/conditions/dead", true)
-		
 		move_and_slide()
+		
+	if health < 0.1 and not dead:
+		death_sound.play()
+		saw.stop()
+		dead = true
+		anim_tree.set("parameters/conditions/dead", true)
 
 func _process(_delta):
 	health_bar.value = health;

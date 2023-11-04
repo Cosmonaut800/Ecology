@@ -1,6 +1,6 @@
 extends Node3D
 
-const AIRTIME = 1.0
+var AIRTIME = 1.0
 
 var leader = null
 var player
@@ -31,12 +31,14 @@ signal died(follower)
 func _ready():
 	cooldown_timer = cooldown_time
 	last_position = position
+	AIRTIME = randf_range(1.0, 1.2)
 
 func _physics_process(delta):
 	var target_pos = Vector3(leader.global_position.x, position.y, leader.global_position.z)
 	
-	if state == FOLLOW or state == RETURN:
-		position = position.move_toward(target_pos, speed * delta)
+	if state == FOLLOW or state == RETURN or state==COOLDOWN:
+		if state == FOLLOW or state == RETURN:
+			position = position.move_toward(target_pos, speed * delta)
 		target_pos = ray.get_collision_point() + 0.25 * Vector3.UP
 		if target_pos.y < position.y:
 			vertical_velocity -= gravity * delta
@@ -67,7 +69,8 @@ func _physics_process(delta):
 			thud.set_pitch_scale(randf_range(0.8, 1.2))
 			thud.play()
 			target_pos = ray.get_collision_point() + 0.25 * Vector3.UP
-			position = target_pos
+			if target_pos.y > position.y: position = target_pos
+			vertical_velocity = 4.0 #v0.y - gravity * t
 			if trigger.has_overlapping_areas():
 				var triggered_areas = trigger.get_overlapping_areas()
 				for triggered in triggered_areas:
@@ -86,7 +89,7 @@ func _process(_delta):
 	var look_dir: Vector3
 	
 	if (position - last_position).length() > 0.01:
-		graphics.position.y = 0.05 * sin(20.0 * player.timer + random_offset)
+		if state == FOLLOW or state == RETURN: graphics.position.y = 0.05 * sin(20.0 * player.timer + random_offset)
 		look_dir = position + (5.0 * (position - last_position).normalized() * Vector3(1.0, 0.0, 1.0))
 		if (look_dir - position).length() > 0.01:
 			graphics.look_at(look_dir)
