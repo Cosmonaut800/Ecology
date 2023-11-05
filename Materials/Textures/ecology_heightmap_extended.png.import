@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chl2100wqpij7"
-path.bptc="res://.godot/imported/ecology_heightmap.png-30af80db92016ebd5ca13adde4272a11.bptc.ctex"
+uid="uid://cpcaorx5vmp1r"
+path.bptc="res://.godot/imported/ecology_heightmap_extended.png-e6cd4e9f8b20e3aa3cdc66f325509d96.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Materials/Textures/ecology_heightmap.png"
-dest_files=["res://.godot/imported/ecology_heightmap.png-30af80db92016ebd5ca13adde4272a11.bptc.ctex"]
+source_file="res://Materials/Textures/ecology_heightmap_extended.png"
+dest_files=["res://.godot/imported/ecology_heightmap_extended.png-e6cd4e9f8b20e3aa3cdc66f325509d96.bptc.ctex"]
 
 [params]
 
