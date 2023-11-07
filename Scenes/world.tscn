@@ -968,6 +968,7 @@ shape = SubResource("HeightMapShape3D_qhefn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.7, 4.304, -35.7)
 
 [node name="GrassParticles" type="GPUParticles3D" parent="Player"]
+visible = false
 material_override = ExtResource("27_raci6")
 cast_shadow = 0
 amount = 90000
