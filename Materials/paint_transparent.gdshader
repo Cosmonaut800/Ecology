@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode diffuse_lambert_wrap;
+render_mode diffuse_lambert_wrap, depth_draw_always;
 
 uniform sampler2D staticTex;
 uniform sampler2D staticNorm : hint_normal;
@@ -27,7 +27,7 @@ void fragment() {
 	METALLIC = mix(0.0f, mix(texture(staticTex,repeat*UV).a, texture(revealedTex, repeat*UV).a, texture(srcTex, splatRange*UV+splatUVStart).r), texture(secondMask, splatRange*UV+splatUVStart).r);
 	NORMAL_MAP = mix(vec3(0.5f, 0.5f, 0.5f), mix(texture(staticNorm,repeat*UV).rgb, texture(revealedNorm, repeat*UV).rgb, texture(srcTex, splatRange*UV+splatUVStart).r), texture(secondMask, splatRange*UV+splatUVStart).r);
 	
-	//ALPHA = clamp(alphaRamp * texture(secondMask, splatRange*UV+splatUVStart).r + (1.0f - alphaRamp), 0.0f, 1.0f);
+	ALPHA = clamp(alphaRamp * texture(secondMask, splatRange*UV+splatUVStart).r + (1.0f - alphaRamp), 0.0f, 1.0f);
 	
 	//float opacity = clamp(alphaRamp * texture(secondMask, splatRange*UV+splatUVStart).r + (1.0f - alphaRamp), 0.0f, 1.0f);
     

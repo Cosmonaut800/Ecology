@@ -84,6 +84,11 @@ func _physics_process(delta):
 		if cooldown_timer < 0.0:
 			cooldown_timer = cooldown_time
 			state = RETURN
+	
+	if position.x > 64.0: position.x = 64.0
+	if position.x < -64.0: position.x = -64.0
+	if position.z > 64.0: position.z = 64.0
+	if position.z < -64.0: position.z = -64.0
 
 func _process(_delta):
 	var look_dir: Vector3

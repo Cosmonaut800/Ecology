@@ -16,7 +16,7 @@ float GetHeight(vec2 pos) {
 	pos /= heightmapSize;
 	
 	if (texture(srcTex, pos).r < 0.95f || pos.x < 0.0f || pos.x > 1.0f || pos.y < 0.0f || pos.y > 1.0f) {
-		return -100.0f;
+		return -4096.0f;
 	}
 	
 	return heightmapIntensity * texture(heightmap, pos).r * texture(srcTex, pos).r;

@@ -1,16 +1,18 @@
-[gd_scene load_steps=79 format=3 uid="uid://chsv4hh4paivh"]
+[gd_scene load_steps=81 format=3 uid="uid://chsv4hh4paivh"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_6aae5"]
 [ext_resource type="Script" path="res://Scripts/ground_paint_controller.gd" id="2_587i6"]
 [ext_resource type="PackedScene" uid="uid://bb3fswnhcewyr" path="res://Scenes/player.tscn" id="2_lmlxt"]
+[ext_resource type="Sky" uid="uid://b06nienhxl4wb" path="res://sky.tres" id="2_m3rqb"]
 [ext_resource type="Shader" path="res://Materials/paint.gdshader" id="3_h68e7"]
+[ext_resource type="Shader" path="res://Materials/paint_transparent.gdshader" id="3_mboqj"]
 [ext_resource type="Texture2D" uid="uid://c0svse5hb2ibb" path="res://Materials/Textures/Grass01_2K_Normal+height.png" id="5_pfbg2"]
 [ext_resource type="Texture2D" uid="uid://bm3kior0ovg04" path="res://Materials/Textures/Grass01_2K_BaseColor+Roughness.png" id="6_ofj17"]
 [ext_resource type="Texture2D" uid="uid://b578xhpldbj42" path="res://Materials/Textures/spotlight.png" id="7_wohdv"]
 [ext_resource type="Texture2D" uid="uid://bn7eqq0ritix3" path="res://Materials/Textures/Dirt01_2K_Normal+Height.png" id="8_mu10c"]
 [ext_resource type="Texture2D" uid="uid://hsstebncr3jw" path="res://Materials/Textures/Dirt01_2K_BaseColor+Roughness.png" id="9_2yce4"]
 [ext_resource type="Texture2D" uid="uid://cpcaorx5vmp1r" path="res://Materials/Textures/ecology_heightmap_extended.png" id="10_ba6up"]
-[ext_resource type="Texture2D" uid="uid://dsg25hviux0mv" path="res://Materials/Textures/white.png" id="11_unpgm"]
+[ext_resource type="Texture2D" uid="uid://blqu1hxrvnt68" path="res://Materials/Textures/ecology_border_mask.png" id="10_h8nfh"]
 [ext_resource type="Texture2D" uid="uid://nmjqmrwaslp4" path="res://Materials/Textures/black.png" id="11_vxw4c"]
 [ext_resource type="PackedScene" uid="uid://cxbnet6wgr3dv" path="res://Scenes/cutter.tscn" id="15_3bnyu"]
 [ext_resource type="PackedScene" uid="uid://ih6pwq61mcnv" path="res://Scenes/tree_entity.tscn" id="16_qklas"]
@@ -28,19 +30,14 @@
 [ext_resource type="ArrayMesh" uid="uid://bu8iibf43xpid" path="res://Models/grass.obj" id="26_6777t"]
 [ext_resource type="Material" uid="uid://bmpyac1rvgqmd" path="res://Materials/grass_particle.tres" id="27_raci6"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8o6pj"]
-sky_top_color = Color(0.509804, 0.454902, 0.54902, 1)
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_dl45m"]
-sky_material = SubResource("ProceduralSkyMaterial_8o6pj")
-
 [sub_resource type="Environment" id="Environment_xscvn"]
 background_mode = 2
-sky = SubResource("Sky_dl45m")
+sky = ExtResource("2_m3rqb")
+ambient_light_color = Color(0.384314, 0.384314, 0.384314, 1)
 tonemap_mode = 2
 glow_enabled = true
+fog_density = 0.0
+volumetric_fog_density = 0.0
 
 [sub_resource type="Animation" id="Animation_1egdg"]
 length = 0.001
@@ -140,6 +137,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [Quaternion(-0.439132, 0.763997, -0.227744, 0.414251)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WorldEnvironment:environment:ambient_light_color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.384314, 0.384314, 0.384314, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_xackr"]
 resource_name = "day_cycle"
@@ -211,10 +220,10 @@ tracks/5/path = NodePath("WorldEnvironment:environment:sky:sky_material:ground_b
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 300, 320),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 250, 300, 320),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.2, 0.169, 0.133, 1), Color(0.2, 0.169, 0.133, 1), Color(0, 0, 0, 1)]
+"values": [Color(0.2, 0.168627, 0.133333, 1), Color(0.2, 0.168627, 0.133333, 1), Color(0.2, 0.168627, 0.133333, 1), Color(0, 0, 0, 1)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -265,6 +274,18 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Quaternion(-0.439132, 0.763997, -0.227744, 0.414251), Quaternion(-0.473584, 0.258862, 0.142907, 0.82963), Quaternion(-0.238134, -0.412459, 0.439651, 0.761496), Quaternion(-0.0135964, 0.737948, -0.499815, -0.453247)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("WorldEnvironment:environment:ambient_light_color")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 250, 300, 320),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.431373, 0.368627, 0.360784, 1), Color(0.431373, 0.368627, 0.360784, 1), Color(0.572549, 0.27451, 0.0588235, 1), Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4bvea"]
@@ -373,18 +394,28 @@ plane = Plane(-1, 1.45519e-11, 1.45519e-11, 1.45519e-11)
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_px87i"]
 plane = Plane(1, 1.45519e-11, 1.45519e-11, 1.45519e-11)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_lbcnh"]
+size = Vector2(16000, 16000)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42waf"]
+albedo_color = Color(0.756863, 0.756863, 0.756863, 1)
+metallic_specular = 1.0
+disable_receive_shadows = true
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g21ak"]
 render_priority = 0
-shader = ExtResource("3_h68e7")
+shader = ExtResource("3_mboqj")
 shader_parameter/heightIntensity = 10.0
 shader_parameter/repeat = Vector2(15, 15)
 shader_parameter/splatUVStart = Vector2(1.45519e-11, 0.25)
 shader_parameter/splatUVEnd = Vector2(0.25, 0.5)
-shader_parameter/staticTex = ExtResource("11_unpgm")
+shader_parameter/staticTex = ExtResource("9_2yce4")
+shader_parameter/staticNorm = ExtResource("8_mu10c")
 shader_parameter/revealedTex = ExtResource("6_ofj17")
 shader_parameter/revealedNorm = ExtResource("5_pfbg2")
 shader_parameter/heightmap = ExtResource("10_ba6up")
 shader_parameter/srcTex = ExtResource("11_vxw4c")
+shader_parameter/secondMask = ExtResource("10_h8nfh")
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_asqe5"]
 map_width = 130
@@ -393,16 +424,18 @@ map_data = PackedFloat32Array(10.0385, 9.8804, 9.64327, 9.32709, 8.93188, 8.6947
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5epsi"]
 render_priority = 0
-shader = ExtResource("3_h68e7")
+shader = ExtResource("3_mboqj")
 shader_parameter/heightIntensity = 10.0
 shader_parameter/repeat = Vector2(15, 15)
 shader_parameter/splatUVStart = Vector2(1.45519e-11, 1.45519e-11)
 shader_parameter/splatUVEnd = Vector2(0.25, 0.25)
-shader_parameter/staticTex = ExtResource("11_unpgm")
+shader_parameter/staticTex = ExtResource("9_2yce4")
+shader_parameter/staticNorm = ExtResource("8_mu10c")
 shader_parameter/revealedTex = ExtResource("6_ofj17")
 shader_parameter/revealedNorm = ExtResource("5_pfbg2")
 shader_parameter/heightmap = ExtResource("10_ba6up")
 shader_parameter/srcTex = ExtResource("11_vxw4c")
+shader_parameter/secondMask = ExtResource("10_h8nfh")
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_q1md4"]
 map_width = 130
@@ -411,16 +444,18 @@ map_data = PackedFloat32Array(10.5127, 10.4337, 10.1175, 9.95944, 9.72231, 9.485
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bj8sa"]
 render_priority = 0
-shader = ExtResource("3_h68e7")
+shader = ExtResource("3_mboqj")
 shader_parameter/heightIntensity = 10.0
 shader_parameter/repeat = Vector2(15, 15)
 shader_parameter/splatUVStart = Vector2(0.25, 1.45519e-11)
 shader_parameter/splatUVEnd = Vector2(0.5, 0.25)
-shader_parameter/staticTex = ExtResource("11_unpgm")
+shader_parameter/staticTex = ExtResource("9_2yce4")
+shader_parameter/staticNorm = ExtResource("8_mu10c")
 shader_parameter/revealedTex = ExtResource("6_ofj17")
 shader_parameter/revealedNorm = ExtResource("5_pfbg2")
 shader_parameter/heightmap = ExtResource("10_ba6up")
 shader_parameter/srcTex = ExtResource("11_vxw4c")
+shader_parameter/secondMask = ExtResource("10_h8nfh")
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_g0gto"]
 map_width = 130
@@ -429,16 +464,18 @@ map_data = PackedFloat32Array(10.2756, 10.3547, 10.4337, 10.5918, 10.6708, 10.74
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_boiy3"]
 render_priority = 0
-shader = ExtResource("3_h68e7")
+shader = ExtResource("3_mboqj")
 shader_parameter/heightIntensity = 10.0
 shader_parameter/repeat = Vector2(15, 15)
 shader_parameter/splatUVStart = Vector2(0.5, 1.45519e-11)
 shader_parameter/splatUVEnd = Vector2(0.75, 0.25)
-shader_parameter/staticTex = ExtResource("11_unpgm")
+shader_parameter/staticTex = ExtResource("9_2yce4")
+shader_parameter/staticNorm = ExtResource("8_mu10c")
 shader_parameter/revealedTex = ExtResource("6_ofj17")
 shader_parameter/revealedNorm = ExtResource("5_pfbg2")
 shader_parameter/heightmap = ExtResource("10_ba6up")
 shader_parameter/srcTex = ExtResource("11_vxw4c")
+shader_parameter/secondMask = ExtResource("10_h8nfh")
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_pe7mm"]
 map_width = 130
@@ -447,16 +484,18 @@ map_data = PackedFloat32Array(10.5918, 10.7499, 11.2241, 11.4613, 11.6984, 12.01
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cv16h"]
 render_priority = 0
-shader = ExtResource("3_h68e7")
+shader = ExtResource("3_mboqj")
 shader_parameter/heightIntensity = 10.0
 shader_parameter/repeat = Vector2(15, 15)
 shader_parameter/splatUVStart = Vector2(0.75, 1.45519e-11)
 shader_parameter/splatUVEnd = Vector2(1, 0.25)
-shader_parameter/staticTex = ExtResource("11_unpgm")
+shader_parameter/staticTex = ExtResource("9_2yce4")
+shader_parameter/staticNorm = ExtResource("8_mu10c")
 shader_parameter/revealedTex = ExtResource("6_ofj17")
 shader_parameter/revealedNorm = ExtResource("5_pfbg2")
 shader_parameter/heightmap = ExtResource("10_ba6up")
 shader_parameter/srcTex = ExtResource("11_vxw4c")
+shader_parameter/secondMask = ExtResource("10_h8nfh")
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_nvhv3"]
 map_width = 130
@@ -465,16 +504,18 @@ map_data = PackedFloat32Array(9.16901, 9.16901, 9.32709, 9.40614, 9.56422, 9.801
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l8y14"]
 render_priority = 0
-shader = ExtResource("3_h68e7")
+shader = ExtResource("3_mboqj")
 shader_parameter/heightIntensity = 10.0
 shader_parameter/repeat = Vector2(15, 15)
 shader_parameter/splatUVStart = Vector2(0.75, 0.25)
 shader_parameter/splatUVEnd = Vector2(1, 0.5)
-shader_parameter/staticTex = ExtResource("11_unpgm")
+shader_parameter/staticTex = ExtResource("9_2yce4")
+shader_parameter/staticNorm = ExtResource("8_mu10c")
 shader_parameter/revealedTex = ExtResource("6_ofj17")
 shader_parameter/revealedNorm = ExtResource("5_pfbg2")
 shader_parameter/heightmap = ExtResource("10_ba6up")
 shader_parameter/srcTex = ExtResource("11_vxw4c")
+shader_parameter/secondMask = ExtResource("10_h8nfh")
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_v2ckj"]
 map_width = 130
@@ -483,16 +524,18 @@ map_data = PackedFloat32Array(7.5091, 7.74623, 7.74623, 7.82527, 8.0624, 8.29953
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y033j"]
 render_priority = 0
-shader = ExtResource("3_h68e7")
+shader = ExtResource("3_mboqj")
 shader_parameter/heightIntensity = 10.0
 shader_parameter/repeat = Vector2(15, 15)
 shader_parameter/splatUVStart = Vector2(0.75, 0.5)
 shader_parameter/splatUVEnd = Vector2(1, 0.75)
-shader_parameter/staticTex = ExtResource("11_unpgm")
+shader_parameter/staticTex = ExtResource("9_2yce4")
+shader_parameter/staticNorm = ExtResource("8_mu10c")
 shader_parameter/revealedTex = ExtResource("6_ofj17")
 shader_parameter/revealedNorm = ExtResource("5_pfbg2")
 shader_parameter/heightmap = ExtResource("10_ba6up")
 shader_parameter/srcTex = ExtResource("11_vxw4c")
+shader_parameter/secondMask = ExtResource("10_h8nfh")
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_71r0p"]
 map_width = 130
@@ -501,16 +544,18 @@ map_data = PackedFloat32Array(9.08996, 9.16901, 9.24805, 9.32709, 9.48518, 9.722
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iacgk"]
 render_priority = 0
-shader = ExtResource("3_h68e7")
+shader = ExtResource("3_mboqj")
 shader_parameter/heightIntensity = 10.0
 shader_parameter/repeat = Vector2(15, 15)
 shader_parameter/splatUVStart = Vector2(0.75, 0.75)
 shader_parameter/splatUVEnd = Vector2(1, 1)
-shader_parameter/staticTex = ExtResource("11_unpgm")
+shader_parameter/staticTex = ExtResource("9_2yce4")
+shader_parameter/staticNorm = ExtResource("8_mu10c")
 shader_parameter/revealedTex = ExtResource("6_ofj17")
 shader_parameter/revealedNorm = ExtResource("5_pfbg2")
 shader_parameter/heightmap = ExtResource("10_ba6up")
 shader_parameter/srcTex = ExtResource("11_vxw4c")
+shader_parameter/secondMask = ExtResource("10_h8nfh")
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_shbm6"]
 map_width = 130
@@ -519,16 +564,18 @@ map_data = PackedFloat32Array(11.066, 10.7499, 10.5127, 10.2756, 10.0385, 9.6432
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u3jxx"]
 render_priority = 0
-shader = ExtResource("3_h68e7")
+shader = ExtResource("3_mboqj")
 shader_parameter/heightIntensity = 10.0
 shader_parameter/repeat = Vector2(15, 15)
 shader_parameter/splatUVStart = Vector2(0.5, 0.75)
 shader_parameter/splatUVEnd = Vector2(0.75, 1)
-shader_parameter/staticTex = ExtResource("11_unpgm")
+shader_parameter/staticTex = ExtResource("9_2yce4")
+shader_parameter/staticNorm = ExtResource("8_mu10c")
 shader_parameter/revealedTex = ExtResource("6_ofj17")
 shader_parameter/revealedNorm = ExtResource("5_pfbg2")
 shader_parameter/heightmap = ExtResource("10_ba6up")
 shader_parameter/srcTex = ExtResource("11_vxw4c")
+shader_parameter/secondMask = ExtResource("10_h8nfh")
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_kwm5a"]
 map_width = 130
@@ -537,16 +584,18 @@ map_data = PackedFloat32Array(12.884, 13.1212, 13.4373, 13.6745, 13.8326, 14.069
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m4exl"]
 render_priority = 0
-shader = ExtResource("3_h68e7")
+shader = ExtResource("3_mboqj")
 shader_parameter/heightIntensity = 10.0
 shader_parameter/repeat = Vector2(15, 15)
 shader_parameter/splatUVStart = Vector2(0.25, 0.75)
 shader_parameter/splatUVEnd = Vector2(0.5, 1)
-shader_parameter/staticTex = ExtResource("11_unpgm")
+shader_parameter/staticTex = ExtResource("9_2yce4")
+shader_parameter/staticNorm = ExtResource("8_mu10c")
 shader_parameter/revealedTex = ExtResource("6_ofj17")
 shader_parameter/revealedNorm = ExtResource("5_pfbg2")
 shader_parameter/heightmap = ExtResource("10_ba6up")
 shader_parameter/srcTex = ExtResource("11_vxw4c")
+shader_parameter/secondMask = ExtResource("10_h8nfh")
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_887sk"]
 map_width = 130
@@ -555,16 +604,18 @@ map_data = PackedFloat32Array(8.93188, 8.93188, 8.93188, 9.01092, 9.01092, 9.089
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cfctd"]
 render_priority = 0
-shader = ExtResource("3_h68e7")
+shader = ExtResource("3_mboqj")
 shader_parameter/heightIntensity = 10.0
 shader_parameter/repeat = Vector2(15, 15)
 shader_parameter/splatUVStart = Vector2(1.45519e-11, 0.75)
 shader_parameter/splatUVEnd = Vector2(0.25, 1)
-shader_parameter/staticTex = ExtResource("11_unpgm")
+shader_parameter/staticTex = ExtResource("9_2yce4")
+shader_parameter/staticNorm = ExtResource("8_mu10c")
 shader_parameter/revealedTex = ExtResource("6_ofj17")
 shader_parameter/revealedNorm = ExtResource("5_pfbg2")
 shader_parameter/heightmap = ExtResource("10_ba6up")
 shader_parameter/srcTex = ExtResource("11_vxw4c")
+shader_parameter/secondMask = ExtResource("10_h8nfh")
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_u4487"]
 map_width = 130
@@ -573,16 +624,18 @@ map_data = PackedFloat32Array(12.884, 12.6469, 12.3307, 12.0936, 11.7774, 11.540
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wgkdl"]
 render_priority = 0
-shader = ExtResource("3_h68e7")
+shader = ExtResource("3_mboqj")
 shader_parameter/heightIntensity = 10.0
 shader_parameter/repeat = Vector2(15, 15)
 shader_parameter/splatUVStart = Vector2(1.45519e-11, 0.5)
 shader_parameter/splatUVEnd = Vector2(0.25, 0.75)
-shader_parameter/staticTex = ExtResource("11_unpgm")
+shader_parameter/staticTex = ExtResource("9_2yce4")
+shader_parameter/staticNorm = ExtResource("8_mu10c")
 shader_parameter/revealedTex = ExtResource("6_ofj17")
 shader_parameter/revealedNorm = ExtResource("5_pfbg2")
 shader_parameter/heightmap = ExtResource("10_ba6up")
 shader_parameter/srcTex = ExtResource("11_vxw4c")
+shader_parameter/secondMask = ExtResource("10_h8nfh")
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_qhefn"]
 map_width = 130
@@ -620,7 +673,7 @@ trees = [NodePath("Trees/TreeEntity"), NodePath("Trees/TreeEntity2"), NodePath("
 environment = SubResource("Environment_xscvn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.271119, -0.482305, 0.832993, -0.859677, 0.510592, 0.0158303, -0.432955, -0.711813, -0.553057, 0, 0, 0)
+transform = Transform3D(-0.271118, -0.482305, 0.832993, -0.859678, 0.510591, 0.0158303, -0.432954, -0.711814, -0.553057, 0, 0, 0)
 rotation_edit_mode = 1
 shadow_enabled = true
 
@@ -724,6 +777,12 @@ shape = SubResource("WorldBoundaryShape3D_w8hpb")
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Ground/WorldBorder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 60, 0)
 shape = SubResource("WorldBoundaryShape3D_px87i")
+
+[node name="BorderPlane" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+visible = false
+mesh = SubResource("PlaneMesh_lbcnh")
+surface_material_override/0 = SubResource("StandardMaterial3D_42waf")
 
 [node name="BorderGround1" type="MeshInstance3D" parent="Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96, 0, -32)
