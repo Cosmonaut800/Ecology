@@ -7,13 +7,13 @@
 
 [resource]
 shader = ExtResource("1_aq50y")
-shader_parameter/rows = 300.0
+shader_parameter/rows = 80.0
 shader_parameter/spacing = 0.4
 shader_parameter/heightmapIntensity = 10.0
 shader_parameter/heightmapSize = Vector2(128, 128)
 shader_parameter/playerPosition = Vector3(-47.7, 4.304, -35.7)
 shader_parameter/playerRadius = 1.0
-shader_parameter/renderRadius = 45.0
+shader_parameter/renderRadius = 13.295
 shader_parameter/srcTex = ExtResource("4_jj6c1")
 shader_parameter/noisemap = ExtResource("3_opvu3")
 shader_parameter/heightmap = ExtResource("2_nhcvq")
