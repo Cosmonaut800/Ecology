@@ -1203,7 +1203,7 @@ transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -31, 5.9, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 4.5, -30)
 
 [node name="TreeEntity21" parent="Trees" instance=ExtResource("16_qklas")]
-transform = Transform3D(-0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, -0.766044, -27, 6.8, -5)
+transform = Transform3D(-0.766044, -1.25125e-08, 0.642788, 0.154187, 0.970804, 0.183753, -0.624021, 0.239872, -0.743679, -27, 6.64701, -5)
 
 [node name="TreeEntity22" parent="Trees" instance=ExtResource("16_qklas")]
 transform = Transform3D(0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, 0.766044, -55, 6, -4)
