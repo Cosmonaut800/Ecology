@@ -665,7 +665,7 @@ font_size = 48
 
 [node name="World" type="Node3D" node_paths=PackedStringArray("objectives", "enemies", "trees")]
 script = ExtResource("1_6aae5")
-objectives = [NodePath("Objectives/Welder/Objective"), NodePath("Objectives/Welder2/Objective"), NodePath("Objectives/Welder3/Objective"), NodePath("Objectives/Watertower/Objective"), NodePath("Objectives/LogLoader/Objective"), NodePath("Objectives/RockSaw/Objective"), NodePath("Objectives/Hopper/Objective"), NodePath("Objectives/Smokestack/Objective"), NodePath("Objectives/Smokestack2/Objective"), NodePath("Objectives/QuarryMiner/Objective"), NodePath("Objectives/FactoryBuilding/Objective"), NodePath("Objectives/Propane/Objective"), NodePath("Objectives/Propane2/Objective")]
+objectives = [NodePath("Objectives/Welder/Objective"), NodePath("Objectives/Welder2/Objective"), NodePath("Objectives/Welder3/Objective"), NodePath("Objectives/Watertower/Objective"), NodePath("Objectives/LogLoader/Objective"), NodePath("Objectives/RockSaw/Objective"), NodePath("Objectives/Hopper/Objective"), NodePath("Objectives/Smokestack/Objective"), NodePath("Objectives/Smokestack2/Objective"), NodePath("Objectives/QuarryMiner/Objective"), NodePath("Objectives/FactoryBuilding/Objective"), NodePath("Objectives/Propane/Objective"), NodePath("Objectives/Propane2/Objective"), NodePath("Objectives/Watertower2/Objective")]
 enemies = [NodePath("Enemies/Cutter"), NodePath("Enemies/Cutter2"), NodePath("Enemies/Cutter3")]
 trees = [NodePath("Trees/TreeEntity"), NodePath("Trees/TreeEntity2"), NodePath("Trees/TreeEntity3"), NodePath("Trees/TreeEntity4"), NodePath("Trees/TreeEntity5"), NodePath("Trees/TreeEntity6"), NodePath("Trees/TreeEntity7"), NodePath("Trees/TreeEntity8"), NodePath("Trees/TreeEntity9"), NodePath("Trees/TreeEntity10"), NodePath("Trees/TreeEntity11"), NodePath("Trees/TreeEntity12"), NodePath("Trees/TreeEntity13"), NodePath("Trees/TreeEntity14"), NodePath("Trees/TreeEntity15"), NodePath("Trees/TreeEntity16"), NodePath("Trees/TreeEntity17"), NodePath("Trees/TreeEntity18"), NodePath("Trees/TreeEntity19"), NodePath("Trees/TreeEntity20"), NodePath("Trees/TreeEntity21"), NodePath("Trees/TreeEntity22"), NodePath("Trees/TreeEntity23"), NodePath("Trees/TreeEntity24"), NodePath("Trees/TreeEntity25"), NodePath("Trees/TreeEntity26"), NodePath("Trees/TreeEntity27"), NodePath("Trees/TreeEntity28"), NodePath("Trees/TreeEntity29"), NodePath("Trees/TreeEntity30"), NodePath("Trees/TreeEntity31"), NodePath("Trees/TreeEntity32"), NodePath("Trees/TreeEntity33"), NodePath("Trees/TreeEntity34"), NodePath("Trees/TreeEntity35"), NodePath("Trees/TreeEntity36"), NodePath("Trees/TreeEntity37"), NodePath("Trees/TreeEntity38"), NodePath("Trees/TreeEntity39"), NodePath("Trees/TreeEntity40"), NodePath("Trees/TreeEntity41"), NodePath("Trees/TreeEntity42"), NodePath("Trees/TreeEntity43"), NodePath("Trees/TreeEntity44"), NodePath("Trees/TreeEntity45"), NodePath("Trees/TreeEntity46"), NodePath("Trees/TreeEntity47"), NodePath("Trees/TreeEntity48"), NodePath("Trees/TreeEntity49"), NodePath("Trees/TreeEntity50")]
 
@@ -1000,6 +1000,7 @@ transform = Transform3D(-0.0168686, -0.00148643, 0.00338101, -0.00231527, 0.0165
 transform = Transform3D(0.0285846, 0, 0.999591, 0, 1, 0, -0.999591, 0, 0.0285846, -44.972, 2.56693, 12.4177)
 
 [node name="Objective" parent="Objectives/Welder3" index="0" node_paths=PackedStringArray("player_body")]
+transform = Transform3D(1, 0, 1.30385e-08, 0, 1, 0, -1.30385e-08, 0, 1, -0.110374, 2.2821, -0.177792)
 player_body = NodePath("../../../Player")
 
 [node name="Cylinder_001" parent="Objectives/Welder3/tree2" index="0"]
@@ -1125,6 +1126,16 @@ bones/10/rotation = Quaternion(-8.83104e-08, 1.09397e-07, 0.408382, 0.912811)
 
 [node name="Cylinder_001" parent="Objectives/FactoryBuilding/tree2" index="0"]
 transform = Transform3D(-0.0168686, -0.00148643, 0.00338101, -0.00231527, 0.0165721, -0.00426559, -0.00287754, -0.0046202, -0.0163879, 0, -1.07764, 0)
+
+[node name="Watertower2" parent="Objectives" instance=ExtResource("17_fbv6l")]
+transform = Transform3D(0.999907, -0.0136306, 0, 0.0136306, 0.999907, 0, 0, 0, 1, 44.0244, 4.96212, 39.2162)
+
+[node name="Skeleton3D" parent="Objectives/Watertower2/Graphics/watertower_arm" index="0"]
+bones/5/rotation = Quaternion(0.0593974, 0.0310882, -0.0564032, 0.996155)
+bones/6/rotation = Quaternion(0.0593974, -0.0310882, 0.0564032, 0.996155)
+
+[node name="Cylinder_001" parent="Objectives/Watertower2/tree2" index="0"]
+transform = Transform3D(-0.0168686, -0.00148644, 0.00338101, -0.00231528, 0.0165721, -0.00426559, -0.00287754, -0.0046202, -0.0163879, 0, -1.07764, 0)
 
 [node name="Enemies" type="Node3D" parent="."]
 
@@ -1292,6 +1303,15 @@ transform = Transform3D(0.502498, -0.257834, 0.825238, 0.0565023, 0.96225, 0.266
 [node name="TreeEntity50" parent="Trees" instance=ExtResource("16_qklas")]
 transform = Transform3D(1, 0, -1.84401e-10, 0, 1, 0, 1.84401e-10, 0, 1, 38.8422, 4.68992, 22.5536)
 
+[node name="TreeEntity51" parent="Trees" instance=ExtResource("16_qklas")]
+transform = Transform3D(0.979006, 0.20379, -0.00402687, -0.20383, 0.978815, -0.0193413, 0, 0.019756, 0.999805, 22, 7.71103, 50.8609)
+
+[node name="TreeEntity52" parent="Trees" instance=ExtResource("16_qklas")]
+transform = Transform3D(0.993951, 0.0584111, -0.0929995, -0.0622808, 0.997286, -0.0392648, 0.0904536, 0.0448193, 0.994892, 44.9048, 5.20794, 36.2305)
+
+[node name="TreeEntity53" parent="Trees" instance=ExtResource("16_qklas")]
+transform = Transform3D(0.230967, -0.0481312, -0.971771, -0.124113, 0.989159, -0.0784911, 0.965013, 0.138738, 0.222489, 39.1859, 4.9652, 40.6966)
+
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("25_wm7tw")
 volume_db = -20.155
@@ -1417,3 +1437,6 @@ label_settings = SubResource("LabelSettings_e6krq")
 [editable path="Objectives/FactoryBuilding"]
 [editable path="Objectives/FactoryBuilding/Graphics"]
 [editable path="Objectives/FactoryBuilding/tree2"]
+[editable path="Objectives/Watertower2"]
+[editable path="Objectives/Watertower2/Graphics"]
+[editable path="Objectives/Watertower2/tree2"]
