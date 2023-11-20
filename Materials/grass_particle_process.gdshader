@@ -44,7 +44,7 @@ void process() {
 	pos.x += noise.x * spacing;
 	pos.z += noise.y * spacing;
 	
-	pos.y = GetHeight(pos.xz) - 0.6f * clamp(-0.5f * (distance(pos.xz, playerPosition.xz) - (playerRadius + 1.0f)), 0.0f, 1.0f) - 1.1f * clamp(0.05f * (distance(pos.xz, playerPosition.xz) - (renderRadius)), 0.0f, 1.0f);
+	pos.y = GetHeight(pos.xz) - 0.6f * clamp(-0.5f * (distance(pos.xz, playerPosition.xz) - (playerRadius + 1.0f)), 0.0f, 1.0f) - 1.1f * clamp(0.2f * (distance(pos.xz, playerPosition.xz) - (renderRadius)), 0.0f, 1.0f);
 	
 	TRANSFORM[0][0] = cos(PI * noise.z);
 	TRANSFORM[0][2] = -sin(PI * noise.z);

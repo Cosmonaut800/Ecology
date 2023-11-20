@@ -92,7 +92,6 @@ func on_follower_die(follower):
 	follower_dead.append(follower)
 
 func on_commit_murder():
-	print("killing ", follower_dead.size(), " followers!")
 	for follower in follower_dead:
 		follower_instances.erase(follower)
 		follower.queue_free()

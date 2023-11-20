@@ -109,5 +109,4 @@ func set_leader(target_leader: Node3D):
 	leader = target_leader
 
 func die():
-	print("received damage!")
 	died.emit(self)
