@@ -1501,6 +1501,9 @@ transform = Transform3D(-0.0168686, -0.00148643, 0.00338101, -0.00231527, 0.0165
 [node name="Watertower2" parent="Objectives" instance=ExtResource("17_fbv6l")]
 transform = Transform3D(0.999907, -0.0136306, 0, 0.0136306, 0.999907, 0, 0, 0, 1, 44.0244, 4.96212, 39.2162)
 
+[node name="Objective" parent="Objectives/Watertower2" index="0" node_paths=PackedStringArray("player_body")]
+player_body = NodePath("../../../Player")
+
 [node name="Skeleton3D" parent="Objectives/Watertower2/Graphics/watertower_arm" index="0"]
 bones/5/rotation = Quaternion(0.0593974, 0.0310882, -0.0564032, 0.996155)
 bones/6/rotation = Quaternion(0.0593974, -0.0310882, 0.0564032, 0.996155)
