@@ -6,7 +6,7 @@ extends Node3D
 const light_texture = preload("res://Materials/Textures/spotlight.png")
 const DIMENSION = 1024
 
-@onready var fogs = [$"../Ground/Ground1".get_surface_override_material(0), $"../Ground/Ground2".get_surface_override_material(0), $"../Ground/Ground3".get_surface_override_material(0), $"../Ground/Ground4".get_surface_override_material(0), $"../Player/GrassParticles".get_process_material()]
+@onready var fogs = [$"../Ground/Ground1".get_surface_override_material(0), $"../Ground/Ground2".get_surface_override_material(0), $"../Ground/Ground3".get_surface_override_material(0), $"../Ground/Ground4".get_surface_override_material(0), $"../Player/GrassParticleGrid/GrassParticles".get_process_material()]
 @onready var player = $"../Player"
 @onready var timer = $Timer
 

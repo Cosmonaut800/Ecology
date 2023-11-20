@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://chsv4hh4paivh"]
+[gd_scene load_steps=84 format=3 uid="uid://chsv4hh4paivh"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_6aae5"]
 [ext_resource type="Script" path="res://Scripts/ground_paint_controller.gd" id="2_587i6"]
@@ -29,6 +29,7 @@
 [ext_resource type="Material" uid="uid://cm5tqkoht0jtr" path="res://Materials/grass_particle_process.tres" id="26_32v1w"]
 [ext_resource type="ArrayMesh" uid="uid://bu8iibf43xpid" path="res://Models/grass.obj" id="26_6777t"]
 [ext_resource type="Material" uid="uid://bmpyac1rvgqmd" path="res://Materials/grass_particle.tres" id="27_raci6"]
+[ext_resource type="Shader" path="res://Materials/sky_reflection.gdshader" id="30_cdp5f"]
 
 [sub_resource type="Environment" id="Environment_xscvn"]
 background_mode = 2
@@ -149,6 +150,30 @@ tracks/8/keys = {
 "update": 0,
 "values": [Color(0.384314, 0.384314, 0.384314, 1)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Reflection/MeshInstance3D:surface_material_override/0:shader_parameter/skyColor")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.490196, 0.415686, 0.486275, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Reflection/MeshInstance3D:surface_material_override/0:shader_parameter/groundColor")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.2, 0.168627, 0.133333, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_xackr"]
 resource_name = "day_cycle"
@@ -223,7 +248,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 250, 300, 320),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.2, 0.168627, 0.133333, 1), Color(0.2, 0.168627, 0.133333, 1), Color(0.2, 0.168627, 0.133333, 1), Color(0, 0, 0, 1)]
+"values": [Color(0.686275, 0.686275, 0.686275, 1), Color(0.686275, 0.686275, 0.686275, 1), Color(0.815686, 0.262745, 0.0980392, 1), Color(0, 0, 0, 1)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -286,6 +311,30 @@ tracks/10/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(0.431373, 0.368627, 0.360784, 1), Color(0.431373, 0.368627, 0.360784, 1), Color(0.572549, 0.27451, 0.0588235, 1), Color(0, 0, 0, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Reflection/MeshInstance3D:surface_material_override/0:shader_parameter/skyColor")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 150, 250, 300, 320),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.509804, 0.454902, 0.54902, 1), Color(0.32549, 0.486275, 0.686275, 1), Color(0.32549, 0.486275, 0.686275, 1), Color(1, 0.701961, 0.337255, 1), Color(0, 0.0117647, 0.137255, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Reflection/MeshInstance3D:surface_material_override/0:shader_parameter/groundColor")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 300, 320),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.2, 0.168627, 0.133333, 1), Color(0.2, 0.168627, 0.133333, 1), Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4bvea"]
@@ -663,6 +712,14 @@ font_size = 32
 [sub_resource type="LabelSettings" id="LabelSettings_e6krq"]
 font_size = 48
 
+[sub_resource type="SphereMesh" id="SphereMesh_11ex6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jajso"]
+render_priority = 0
+shader = ExtResource("30_cdp5f")
+shader_parameter/skyColor = Color(0.490196, 0.415686, 0.486275, 1)
+shader_parameter/groundColor = Color(0.2, 0.168627, 0.133333, 1)
+
 [node name="World" type="Node3D" node_paths=PackedStringArray("objectives", "enemies", "trees")]
 script = ExtResource("1_6aae5")
 objectives = [NodePath("Objectives/Welder/Objective"), NodePath("Objectives/Welder2/Objective"), NodePath("Objectives/Welder3/Objective"), NodePath("Objectives/Watertower/Objective"), NodePath("Objectives/LogLoader/Objective"), NodePath("Objectives/RockSaw/Objective"), NodePath("Objectives/Hopper/Objective"), NodePath("Objectives/Smokestack/Objective"), NodePath("Objectives/Smokestack2/Objective"), NodePath("Objectives/QuarryMiner/Objective"), NodePath("Objectives/FactoryBuilding/Objective"), NodePath("Objectives/Propane/Objective"), NodePath("Objectives/Propane2/Objective")]
@@ -967,10 +1024,324 @@ shape = SubResource("HeightMapShape3D_qhefn")
 [node name="Player" parent="." instance=ExtResource("2_lmlxt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.7, 4.304, -35.7)
 
-[node name="GrassParticles" type="GPUParticles3D" parent="Player"]
+[node name="GrassParticleGrid" type="Node3D" parent="Player"]
+
+[node name="GrassParticles" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10)
 material_override = ExtResource("27_raci6")
 cast_shadow = 0
-amount = 90000
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles2" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 10)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles3" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles4" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -10)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles5" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -10)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles6" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 10)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles7" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 30)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles8" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 30)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles9" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 30)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles10" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 30)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles11" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 10)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles12" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -10)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles13" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -30)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles14" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -30)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles15" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -30)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles16" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -30)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles17" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -30)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles18" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -10)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles19" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 10)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles20" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 30)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles21" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 50)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles22" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 50)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles23" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 50)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles24" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 50)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles25" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, 30)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles26" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, 10)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles27" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, -10)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles28" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, -30)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles29" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -50)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles30" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -50)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles31" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -50)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
+explosiveness = 1.0
+process_material = ExtResource("26_32v1w")
+draw_pass_1 = ExtResource("26_6777t")
+
+[node name="GrassParticles32" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -50)
+material_override = ExtResource("27_raci6")
+cast_shadow = 0
+extra_cull_margin = 5.0
+amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
 draw_pass_1 = ExtResource("26_6777t")
@@ -1377,6 +1748,17 @@ offset_right = 1182.0
 offset_bottom = 646.0
 text = "Thank you for playing!"
 label_settings = SubResource("LabelSettings_e6krq")
+
+[node name="Reflection" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Reflection"]
+mesh = SubResource("SphereMesh_11ex6")
+surface_material_override/0 = SubResource("ShaderMaterial_jajso")
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="Reflection"]
+update_mode = 1
+size = Vector3(256, 64, 256)
+interior = true
 
 [editable path="Objectives/Welder"]
 [editable path="Objectives/Welder/Graphics"]
