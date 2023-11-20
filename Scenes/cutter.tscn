@@ -119,14 +119,14 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -1, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.687, 0)
 
 [node name="Skeleton3D" parent="Graphics/cutter_armature" index="0"]
-bones/0/position = Vector3(0, -0.0578013, 0)
-bones/2/position = Vector3(-0.0501612, 0.485034, 0.00651292)
+bones/0/position = Vector3(0, -0.0948942, 0)
+bones/2/position = Vector3(-0.0823511, 0.467084, 0.0106924)
 bones/2/rotation = Quaternion(-0.0654056, -6.70347e-08, -0.503742, 0.861375)
-bones/4/position = Vector3(0.0501613, 0.485034, 0.00651291)
+bones/4/position = Vector3(0.0823511, 0.467084, 0.0106924)
 bones/4/rotation = Quaternion(-0.0654056, 6.70347e-08, 0.503742, 0.861375)
 bones/6/rotation = Quaternion(-0.753112, 4.42978e-09, 0.00818647, 0.657841)
-bones/7/rotation = Quaternion(-2.47429e-10, 1.56082e-09, -0.0257055, 0.99967)
-bones/8/rotation = Quaternion(9.29421e-08, -5.96064e-08, 0.809774, 0.586743)
+bones/7/rotation = Quaternion(3.08011e-09, -2.86464e-09, 0.0250459, 0.999686)
+bones/8/rotation = Quaternion(1.05259e-07, -6.18386e-08, 0.920771, 0.390104)
 
 [node name="cutter_body" parent="Graphics/cutter_armature/Skeleton3D" index="0"]
 surface_material_override/1 = ExtResource("3_h1h6f")
