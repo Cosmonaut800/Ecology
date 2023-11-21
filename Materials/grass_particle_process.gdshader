@@ -14,12 +14,13 @@ uniform float renderRadius = 40.0f;
 float GetHeight(vec2 pos) {
 	pos += 0.5 * heightmapSize;
 	pos /= heightmapSize;
+	float srcValue = texture(srcTex, pos).r;
 	
-	if (texture(srcTex, pos).r < 0.95f || pos.x < 0.0f || pos.x > 1.0f || pos.y < 0.0f || pos.y > 1.0f) {
+	if (srcValue < 0.95f || pos.x < 0.0f || pos.x > 1.0f || pos.y < 0.0f || pos.y > 1.0f) {
 		return -4096.0f;
 	}
 	
-	return heightmapIntensity * texture(heightmap, pos).r * texture(srcTex, pos).r;
+	return heightmapIntensity * texture(heightmap, pos).r * srcValue;
 }
 
 void start() {
@@ -44,7 +45,8 @@ void process() {
 	pos.x += noise.x * spacing;
 	pos.z += noise.y * spacing;
 	
-	pos.y = GetHeight(pos.xz) - 0.6f * clamp(-0.5f * (distance(pos.xz, playerPosition.xz) - (playerRadius + 1.0f)), 0.0f, 1.0f) - 1.1f * clamp(0.05f * (distance(pos.xz, playerPosition.xz) - (renderRadius)), 0.0f, 1.0f);
+	float dist = distance(pos.xz, playerPosition.xz);
+	pos.y = GetHeight(pos.xz) - 0.6f * clamp(-0.5f * (dist - (playerRadius + 1.0f)), 0.0f, 1.0f) - 1.1f * clamp(0.05f * (dist - (renderRadius)), 0.0f, 1.0f);
 	
 	TRANSFORM[0][0] = cos(PI * noise.z);
 	TRANSFORM[0][2] = -sin(PI * noise.z);

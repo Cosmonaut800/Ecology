@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://chsv4hh4paivh"]
+[gd_scene load_steps=85 format=3 uid="uid://chsv4hh4paivh"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_6aae5"]
 [ext_resource type="Script" path="res://Scripts/ground_paint_controller.gd" id="2_587i6"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bh4jot7hakqvs" path="res://Scenes/Objectives/watertower.tscn" id="17_fbv6l"]
 [ext_resource type="PackedScene" uid="uid://ujel2tbkwjqn" path="res://Scenes/Objectives/log_loader.tscn" id="18_5whl3"]
 [ext_resource type="PackedScene" uid="uid://b5axk3ofekoou" path="res://Scenes/Objectives/hopper.tscn" id="18_eujyd"]
+[ext_resource type="ArrayMesh" uid="uid://7vx6cr6j6mkx" path="res://Models/grass_lod1.obj" id="18_tx1kt"]
 [ext_resource type="PackedScene" uid="uid://f6woabmyb3fk" path="res://Scenes/Objectives/smokestack.tscn" id="19_yqbon"]
 [ext_resource type="PackedScene" uid="uid://b0o85y2vbgli0" path="res://Scenes/Objectives/quarry_miner.tscn" id="20_4dt1d"]
 [ext_resource type="PackedScene" uid="uid://brmjkacgr6o1l" path="res://Scenes/Objectives/factory_building.tscn" id="21_xt0lh"]
@@ -1074,7 +1075,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles6" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 10)
@@ -1084,7 +1085,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles7" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 30)
@@ -1094,7 +1095,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles8" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 30)
@@ -1104,7 +1105,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles9" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 30)
@@ -1114,7 +1115,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles10" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 30)
@@ -1124,7 +1125,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles11" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 10)
@@ -1134,7 +1135,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles12" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -10)
@@ -1144,7 +1145,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles13" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -30)
@@ -1154,7 +1155,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles14" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -30)
@@ -1164,7 +1165,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles15" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -30)
@@ -1174,7 +1175,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles16" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -30)
@@ -1184,7 +1185,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles17" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -30)
@@ -1194,7 +1195,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles18" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -10)
@@ -1204,7 +1205,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles19" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 10)
@@ -1214,7 +1215,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles20" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 30)
@@ -1224,7 +1225,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles21" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 50)
@@ -1234,7 +1235,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles22" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 50)
@@ -1244,7 +1245,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles23" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 50)
@@ -1254,7 +1255,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles24" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 50)
@@ -1264,7 +1265,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles25" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, 30)
@@ -1274,7 +1275,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles26" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, 10)
@@ -1284,7 +1285,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles27" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, -10)
@@ -1294,7 +1295,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles28" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, -30)
@@ -1304,7 +1305,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles29" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -50)
@@ -1314,7 +1315,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles30" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -50)
@@ -1324,7 +1325,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles31" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -50)
@@ -1334,7 +1335,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="GrassParticles32" type="GPUParticles3D" parent="Player/GrassParticleGrid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -50)
@@ -1344,7 +1345,7 @@ extra_cull_margin = 5.0
 amount = 2500
 explosiveness = 1.0
 process_material = ExtResource("26_32v1w")
-draw_pass_1 = ExtResource("26_6777t")
+draw_pass_1 = ExtResource("18_tx1kt")
 
 [node name="Objectives" type="Node3D" parent="."]
 
@@ -1779,7 +1780,6 @@ mesh = SubResource("SphereMesh_11ex6")
 surface_material_override/0 = SubResource("ShaderMaterial_jajso")
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="Reflection"]
-update_mode = 1
 size = Vector3(256, 64, 256)
 interior = true
 
