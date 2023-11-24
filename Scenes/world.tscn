@@ -1372,7 +1372,7 @@ transform = Transform3D(-0.0168686, -0.00148643, 0.00338101, -0.00231527, 0.0165
 transform = Transform3D(0.0285846, 0, 0.999591, 0, 1, 0, -0.999591, 0, 0.0285846, -44.972, 2.56693, 12.4177)
 
 [node name="Objective" parent="Objectives/Welder3" index="0" node_paths=PackedStringArray("player_body")]
-transform = Transform3D(1, 0, 1.30385e-08, 0, 1, 0, -1.30385e-08, 0, 1, -0.110374, 2.2821, -0.177792)
+transform = Transform3D(1, 0, 1.30385e-08, 0, 1, 0, -1.30385e-08, 0, 1, -0.11, 0, -0.178)
 player_body = NodePath("../../../Player")
 
 [node name="Cylinder_001" parent="Objectives/Welder3/tree2" index="0"]
