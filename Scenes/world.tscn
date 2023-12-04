@@ -344,6 +344,14 @@ _data = {
 "day_cycle": SubResource("Animation_xackr")
 }
 
+[sub_resource type="SphereMesh" id="SphereMesh_11ex6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jajso"]
+render_priority = 0
+shader = ExtResource("30_cdp5f")
+shader_parameter/skyColor = Color(0.490196, 0.415686, 0.486275, 1)
+shader_parameter/groundColor = Color(0.2, 0.168627, 0.133333, 1)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_1qffk"]
 size = Vector2(64, 64)
 subdivide_width = 128
@@ -713,14 +721,6 @@ font_size = 32
 [sub_resource type="LabelSettings" id="LabelSettings_e6krq"]
 font_size = 48
 
-[sub_resource type="SphereMesh" id="SphereMesh_11ex6"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jajso"]
-render_priority = 0
-shader = ExtResource("30_cdp5f")
-shader_parameter/skyColor = Color(0.490196, 0.415686, 0.486275, 1)
-shader_parameter/groundColor = Color(0.2, 0.168627, 0.133333, 1)
-
 [node name="World" type="Node3D" node_paths=PackedStringArray("objectives", "enemies", "trees")]
 script = ExtResource("1_6aae5")
 objectives = [NodePath("Objectives/Welder/Objective"), NodePath("Objectives/Welder2/Objective"), NodePath("Objectives/Welder3/Objective"), NodePath("Objectives/Watertower/Objective"), NodePath("Objectives/LogLoader/Objective"), NodePath("Objectives/RockSaw/Objective"), NodePath("Objectives/Hopper/Objective"), NodePath("Objectives/Smokestack/Objective"), NodePath("Objectives/Smokestack2/Objective"), NodePath("Objectives/QuarryMiner/Objective"), NodePath("Objectives/FactoryBuilding/Objective"), NodePath("Objectives/Propane/Objective"), NodePath("Objectives/Propane2/Objective"), NodePath("Objectives/Watertower2/Objective")]
@@ -751,6 +751,16 @@ light_scale = 0.08
 process_callback = 0
 wait_time = 0.075
 autostart = true
+
+[node name="Reflection" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Reflection"]
+mesh = SubResource("SphereMesh_11ex6")
+surface_material_override/0 = SubResource("ShaderMaterial_jajso")
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="Reflection"]
+size = Vector3(256, 64, 256)
+interior = true
 
 [node name="Ground" type="Node3D" parent="."]
 
@@ -1772,16 +1782,6 @@ offset_right = 1182.0
 offset_bottom = 646.0
 text = "Thank you for playing!"
 label_settings = SubResource("LabelSettings_e6krq")
-
-[node name="Reflection" type="Node3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Reflection"]
-mesh = SubResource("SphereMesh_11ex6")
-surface_material_override/0 = SubResource("ShaderMaterial_jajso")
-
-[node name="ReflectionProbe" type="ReflectionProbe" parent="Reflection"]
-size = Vector3(256, 64, 256)
-interior = true
 
 [editable path="Objectives/Welder"]
 [editable path="Objectives/Welder/Graphics"]

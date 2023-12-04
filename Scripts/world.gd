@@ -22,6 +22,8 @@ var trees_revived := 0
 @onready var num_structures := $CanvasLayer/Control/NumStructures
 @onready var num_trees := $CanvasLayer/Control/NumTrees
 @onready var num_ground := $CanvasLayer/Control/NumGround
+@onready var reflection := $Reflection/ReflectionProbe
+var reflection_timer := 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,6 +37,14 @@ func _ready():
 		tree.tree_touched.connect(on_tree_touched)
 	
 	player.throw_follower.connect(on_throw_follower)
+
+func _physics_process(delta):
+	if reflection_timer > 0.25:
+		print("Reflection probe updated.")
+		reflection_timer -= 0.25
+		reflection.set_update_mode(ReflectionProbe.UPDATE_ONCE)
+	
+	reflection_timer += delta
 
 func on_spawn_follower(amount, spawn_position):
 	objectives_destroyed += 1
