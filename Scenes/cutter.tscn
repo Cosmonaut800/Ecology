@@ -68,7 +68,7 @@ nodes/Animation/node = SubResource("AnimationNodeAnimation_7o23i")
 nodes/Animation/position = Vector2(-180, 260)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_r1sgm")
 nodes/StateMachine/position = Vector2(-160, 120)
-node_connections = [&"output", 0, &"Add2", &"Add2", 0, &"StateMachine", &"Add2", 1, &"Animation"]
+node_connections = [&"Add2", 0, &"StateMachine", &"Add2", 1, &"Animation", &"output", 0, &"Add2"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8o6ip"]
 animation = &"cutter_die"
@@ -137,9 +137,11 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="Graphics"]
+libraries = {
+"": ExtResource("2_r4yo5")
+}
 tree_root = SubResource("AnimationNodeStateMachine_m1rnv")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/conditions/dead = false
 parameters/BlendTree/Add2/add_amount = 1.0
 parameters/BlendTree/StateMachine/conditions/attacking = false

@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED = 5.0
+const SPEED = 5.0 * 1.0 #multiplying speed for testing
 const ACCEL = 25.0
 const DECEL = 25.0
 const JUMP_VELOCITY = 4.5

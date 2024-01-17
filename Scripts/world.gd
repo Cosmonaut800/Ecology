@@ -40,7 +40,6 @@ func _ready():
 
 func _physics_process(delta):
 	if reflection_timer > 0.25:
-		print("Reflection probe updated.")
 		reflection_timer -= 0.25
 		reflection.set_update_mode(ReflectionProbe.UPDATE_ONCE)
 	

@@ -27,7 +27,7 @@ nodes/Animation/node = SubResource("AnimationNodeAnimation_o2ts0")
 nodes/Animation/position = Vector2(-60, 60)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_yr8df")
 "nodes/Animation 2/position" = Vector2(-63.6329, 264.121)
-node_connections = [&"output", 0, &"Add2", &"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2"]
+node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"output", 0, &"Add2"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xu58l"]
 advance_mode = 2

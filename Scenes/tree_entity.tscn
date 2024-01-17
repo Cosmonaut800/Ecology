@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ih6pwq61mcnv"]
+[gd_scene load_steps=15 format=3 uid="uid://ih6pwq61mcnv"]
 
 [ext_resource type="PackedScene" uid="uid://dk173agg4873y" path="res://Models/tree.glb" id="1_ukklc"]
 [ext_resource type="Script" path="res://Scripts/tree_entity.gd" id="1_uokrm"]
@@ -11,6 +11,34 @@ radius = 0.83
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_klcor"]
 radius = 2.0
+
+[sub_resource type="Animation" id="Animation_nnsr8"]
+resource_name = "grow_leaves"
+length = 20.0
+tracks/0/type = "blend_shape"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cylinder_007:leafless")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.383333, 1, 0.001088, 0.533333, 1, 0.00209541, 0.666667, 1, 0.00325926, 0.8, 1, 0.004672, 0.933333, 1, 0.00633007, 1.06667, 1, 0.00822993, 1.21667, 1, 0.0106518, 1.36667, 1, 0.0133702, 1.51667, 1, 0.0163799, 1.66667, 1, 0.0196759, 1.81667, 1, 0.0232532, 1.96667, 1, 0.0271067, 2.13333, 1, 0.0317061, 2.3, 1, 0.0366332, 2.46667, 1, 0.0418813, 2.63333, 1, 0.0474432, 2.81667, 1, 0.0539155, 3, 1, 0.06075, 3.18333, 1, 0.0679374, 3.36667, 1, 0.0754685, 3.56667, 1, 0.0840653, 3.76667, 1, 0.0930482, 3.98333, 1, 0.103201, 4.2, 1, 0.113778, 4.43333, 1, 0.125625, 4.66667, 1, 0.137926, 4.91667, 1, 0.151589, 5.18333, 1, 0.166687, 5.46667, 1, 0.183291, 5.76667, 1, 0.201466, 6.08333, 1, 0.221271, 6.43333, 1, 0.243843, 6.83333, 1, 0.270439, 7.3, 1, 0.302421, 7.86667, 1, 0.342427, 8.7, 1, 0.403049, 11.3833, 1, 0.603088, 12.1, 1, 0.655185, 12.6333, 1, 0.692935, 13.0833, 1, 0.723922, 13.4667, 1, 0.749585, 13.8167, 1, 0.772351, 14.1333, 1, 0.792346, 14.4333, 1, 0.810716, 14.7167, 1, 0.827517, 14.9833, 1, 0.842811, 15.2333, 1, 0.856668, 15.4667, 1, 0.869158, 15.7, 1, 0.881202, 15.9167, 1, 0.891969, 16.1333, 1, 0.902319, 16.3333, 1, 0.911491, 16.5333, 1, 0.920282, 16.7333, 1, 0.928681, 16.9167, 1, 0.936026, 17.1, 1, 0.943022, 17.2833, 1, 0.94966, 17.45, 1, 0.955377, 17.6167, 1, 0.960782, 17.7833, 1, 0.965871, 17.95, 1, 0.970635, 18.1167, 1, 0.975068, 18.2667, 1, 0.978769, 18.4167, 1, 0.98219, 18.5667, 1, 0.985328, 18.7167, 1, 0.988176, 18.8667, 1, 0.990731, 19, 1, 0.99275, 19.1333, 1, 0.994529, 19.2667, 1, 0.996065, 19.4, 1, 0.997354, 19.5333, 1, 0.998392, 19.7167, 1, 0.999404, 20, 1, 1)
+
+[sub_resource type="Animation" id="Animation_3g77h"]
+resource_name = "idle_leaves"
+length = 0.5
+tracks/0/type = "blend_shape"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cylinder_007:leafless")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hiyt6"]
+_data = {
+"grow_leaves": SubResource("Animation_nnsr8"),
+"idle_leaves": SubResource("Animation_3g77h")
+}
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q81gq"]
 animation = &"grow_leaves"
@@ -55,9 +83,12 @@ collision_mask = 32776
 shape = SubResource("SphereShape3D_klcor")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../tree")
+libraries = {
+"": SubResource("AnimationLibrary_hiyt6")
+}
 tree_root = SubResource("AnimationNodeStateMachine_xuk1r")
 anim_player = NodePath("../tree/AnimationPlayer")
-active = true
 parameters/conditions/grow = false
 
 [editable path="tree"]
