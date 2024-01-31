@@ -1,233 +1,104 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1hor6a4fag2"]
+[gd_scene load_steps=2 format=3 uid="uid://d1hor6a4fag2"]
 
-[ext_resource type="ArrayMesh" uid="uid://dmx0t0f3a04gx" path="res://Models/fence.obj" id="1_4okdc"]
-[ext_resource type="Material" uid="uid://ch2ppei4f7tcx" path="res://Materials/fence_mat.tres" id="2_aghwl"]
+[ext_resource type="PackedScene" uid="uid://c36w4jth21lmw" path="res://Models/fence.tscn" id="3_hd5e4"]
 
 [node name="FenceRow" type="Node3D"]
 
 [node name="Group" type="Node3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 64, 0, 0)
 
-[node name="Fence1" type="MeshInstance3D" parent="Group"]
+[node name="Fence" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence2" type="MeshInstance3D" parent="Group"]
+[node name="Fence2" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence3" type="MeshInstance3D" parent="Group"]
+[node name="Fence3" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence4" type="MeshInstance3D" parent="Group"]
+[node name="Fence4" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence5" type="MeshInstance3D" parent="Group"]
+[node name="Fence5" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence6" type="MeshInstance3D" parent="Group"]
+[node name="Fence6" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence7" type="MeshInstance3D" parent="Group"]
+[node name="Fence7" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence8" type="MeshInstance3D" parent="Group"]
+[node name="Fence8" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence9" type="MeshInstance3D" parent="Group"]
+[node name="Fence9" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence10" type="MeshInstance3D" parent="Group"]
+[node name="Fence10" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence11" type="MeshInstance3D" parent="Group"]
+[node name="Fence11" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence12" type="MeshInstance3D" parent="Group"]
+[node name="Fence12" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence13" type="MeshInstance3D" parent="Group"]
+[node name="Fence13" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence14" type="MeshInstance3D" parent="Group"]
+[node name="Fence14" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence15" type="MeshInstance3D" parent="Group"]
+[node name="Fence15" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence16" type="MeshInstance3D" parent="Group"]
+[node name="Fence16" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence17" type="MeshInstance3D" parent="Group"]
+[node name="Fence17" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence18" type="MeshInstance3D" parent="Group"]
+[node name="Fence18" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence19" type="MeshInstance3D" parent="Group"]
+[node name="Fence19" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence20" type="MeshInstance3D" parent="Group"]
+[node name="Fence20" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence21" type="MeshInstance3D" parent="Group"]
+[node name="Fence21" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence22" type="MeshInstance3D" parent="Group"]
+[node name="Fence22" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence23" type="MeshInstance3D" parent="Group"]
+[node name="Fence23" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence24" type="MeshInstance3D" parent="Group"]
+[node name="Fence24" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence25" type="MeshInstance3D" parent="Group"]
+[node name="Fence25" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence26" type="MeshInstance3D" parent="Group"]
+[node name="Fence26" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence27" type="MeshInstance3D" parent="Group"]
+[node name="Fence27" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence28" type="MeshInstance3D" parent="Group"]
+[node name="Fence28" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence29" type="MeshInstance3D" parent="Group"]
+[node name="Fence29" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence30" type="MeshInstance3D" parent="Group"]
+[node name="Fence30" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence31" type="MeshInstance3D" parent="Group"]
+[node name="Fence31" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")
 
-[node name="Fence32" type="MeshInstance3D" parent="Group"]
+[node name="Fence32" parent="Group" instance=ExtResource("3_hd5e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
-extra_cull_margin = 8.0
-mesh = ExtResource("1_4okdc")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_aghwl")

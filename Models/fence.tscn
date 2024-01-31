@@ -1,10 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://c36w4jth21lmw"]
+[gd_scene load_steps=7 format=3 uid="uid://c36w4jth21lmw"]
 
 [ext_resource type="PackedScene" uid="uid://btd0lpy840pn8" path="res://Models/fence.glb" id="1_pntwj"]
 [ext_resource type="Material" uid="uid://ch2ppei4f7tcx" path="res://Materials/fence_mat.tres" id="2_s13d8"]
+[ext_resource type="Shader" path="res://Materials/fence_mat.gdshader" id="3_s7u8t"]
+[ext_resource type="Texture2D" uid="uid://cpcaorx5vmp1r" path="res://Materials/Textures/ecology_heightmap_extended.png" id="4_de3u8"]
+[ext_resource type="Texture2D" uid="uid://bbxp4unc5ymgg" path="res://Materials/Textures/PaintedMetal03_2K_Roughness.png" id="5_bupb8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eurr0"]
+render_priority = 0
+shader = ExtResource("3_s7u8t")
+shader_parameter/heightIntensity = 5.0
+shader_parameter/texRepeat = Vector2(0, 0)
+shader_parameter/alphaCutoff = 0.5
+shader_parameter/tex = ExtResource("5_bupb8")
+shader_parameter/heightmap = ExtResource("4_de3u8")
 
 [node name="fence" instance=ExtResource("1_pntwj")]
 
 [node name="Plane_003" parent="." index="0"]
+extra_cull_margin = 8.0
 surface_material_override/0 = ExtResource("2_s13d8")
-surface_material_override/1 = ExtResource("2_s13d8")
+surface_material_override/1 = SubResource("ShaderMaterial_eurr0")

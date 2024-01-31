@@ -3495,7 +3495,7 @@ trees = [NodePath("Trees/TreeEntity"), NodePath("Trees/TreeEntity2"), NodePath("
 environment = SubResource("Environment_xscvn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.271118, -0.482305, 0.832993, -0.859678, 0.510591, 0.0158303, -0.432954, -0.711814, -0.553057, 0, 0, 0)
+transform = Transform3D(-0.271118, -0.482305, 0.832993, -0.859678, 0.510591, 0.0158302, -0.432954, -0.711814, -0.553057, 0, 0, 0)
 rotation_edit_mode = 1
 shadow_enabled = true
 
@@ -4224,7 +4224,6 @@ bones/5/rotation = Quaternion(5.01798e-08, -5.3072e-08, 0.26507, 0.964229)
 bones/6/rotation = Quaternion(-2.66925e-08, -2.66925e-08, -0.707107, 0.707107)
 bones/7/rotation = Quaternion(-2.66925e-08, -2.66925e-08, -0.707107, 0.707107)
 bones/8/rotation = Quaternion(-0.0361591, 0.00899967, -0.714381, 0.698764)
-bones/8/scale = Vector3(1, 1, 1)
 
 [node name="AnimationTreeGraphics" parent="Objectives/LogLoader" index="2"]
 root_node = NodePath("../Graphics")
