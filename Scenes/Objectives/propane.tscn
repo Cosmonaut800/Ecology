@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://y8axcrmrh2x1"]
+[gd_scene load_steps=27 format=3 uid="uid://y8axcrmrh2x1"]
 
 [ext_resource type="PackedScene" uid="uid://jrx02g6k4j55" path="res://Scenes/Objectives/objective.tscn" id="1_bs7sm"]
 [ext_resource type="PackedScene" uid="uid://c5c8nake6ntnr" path="res://Models/objectives/propane.glb" id="2_spkos"]
@@ -10,6 +10,55 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k0qvg"]
 radius = 3.28098
 height = 9.8382
+
+[sub_resource type="Animation" id="Animation_6efwq"]
+resource_name = "propane_fall_key"
+length = 0.583333
+tracks/0/type = "blend_shape"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hemisphere_002:Key 1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.0166667, 1, 0.00240233, 0.0333333, 1, 0.00942274, 0.05, 1, 0.0207813, 0.0666667, 1, 0.0361983, 0.0833333, 1, 0.0553936, 0.1, 1, 0.0780875, 0.116667, 1, 0.104, 0.133333, 1, 0.132851, 0.15, 1, 0.164362, 0.166667, 1, 0.198251, 0.183333, 1, 0.234239, 0.2, 1, 0.272047, 0.216667, 1, 0.311394, 0.233333, 1, 0.352, 0.25, 1, 0.393586, 0.333333, 1, 0.606414, 0.35, 1, 0.648, 0.366667, 1, 0.688606, 0.383333, 1, 0.727953, 0.4, 1, 0.765761, 0.416667, 1, 0.801749, 0.433333, 1, 0.835639, 0.45, 1, 0.867149, 0.466667, 1, 0.896, 0.483333, 1, 0.921913, 0.5, 1, 0.944606, 0.516667, 1, 0.963802, 0.533333, 1, 0.979219, 0.55, 1, 0.990577, 0.566667, 1, 0.997598, 0.583333, 1, 1)
+tracks/1/type = "position_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hemisphere_002")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hemisphere_002")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_6ji7a"]
+resource_name = "propane_fall"
+length = 0.583333
+tracks/0/type = "position_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hemisphere_002")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, -4.76837e-07, 0, 0.0333333, 1, -0.0156974, -0.0615898, -6.88297e-05, 0.0666667, 1, -0.0603029, -0.236601, -0.000264415, 0.1, 1, -0.130086, -0.510399, -0.000570401, 0.133333, 1, -0.221318, -0.868349, -0.000970431, 0.166667, 1, -0.330267, -1.29582, -0.00144815, 0.2, 1, -0.453204, -1.77816, -0.0019872, 0.233333, 1, -0.586399, -2.30076, -0.00257123, 0.266667, 1, -0.726122, -2.84897, -0.00318389, 0.333333, 1, -1.01023, -3.96367, -0.00442964, 0.366667, 1, -1.14715, -4.5009, -0.00503002, 0.4, 1, -1.27569, -5.0052, -0.00559361, 0.433333, 1, -1.3921, -5.46194, -0.00610404, 0.466667, 1, -1.49265, -5.85648, -0.00654496, 0.5, 1, -1.57363, -6.17418, -0.00690001, 0.533333, 1, -1.63129, -6.40041, -0.00715284, 0.566667, 1, -1.6619, -6.52054, -0.00728709, 0.583333, 1, -1.66591, -6.53625, -0.00730464)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hemisphere_002")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 8.74228e-08, 0, 0, 1, 0.0333333, 1, 0.000319192, 0.00122215, 0.000277557, 0.999999, 0.0666667, 1, 0.00122937, 0.00469593, 0.001062, 0.999988, 0.1, 1, 0.00266471, 0.0101332, 0.0022765, 0.999943, 0.133333, 1, 0.0045606, 0.0172463, 0.00384072, 0.999834, 0.166667, 1, 0.00685357, 0.025747, 0.0056734, 0.999629, 0.2, 1, 0.00947876, 0.0353463, 0.00769468, 0.999301, 0.233333, 1, 0.0123667, 0.0457537, 0.00982805, 0.998828, 0.266667, 1, 0.0154442, 0.0566777, 0.0120019, 0.998201, 0.333333, 1, 0.0218486, 0.078903, 0.0162165, 0.996511, 0.366667, 1, 0.025003, 0.0896171, 0.0181476, 0.995497, 0.4, 1, 0.028003, 0.0996739, 0.0199001, 0.994427, 0.433333, 1, 0.0307518, 0.108781, 0.0214364, 0.993359, 0.466667, 1, 0.0331497, 0.116645, 0.0227243, 0.99236, 0.5, 1, 0.0350962, 0.122976, 0.0237347, 0.991505, 0.533333, 1, 0.0364909, 0.127483, 0.0244396, 0.990868, 0.566667, 1, 0.0372341, 0.129875, 0.024809, 0.99052, 0.583333, 1, 0.0373314, 0.130188, 0.024857, 0.990474)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sijb1"]
+_data = {
+"propane_fall": SubResource("Animation_6ji7a"),
+"propane_fall_key": SubResource("Animation_6efwq")
+}
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_nkhis"]
 
@@ -38,6 +87,46 @@ states/BlendTree/node = SubResource("AnimationNodeBlendTree_kbgq4")
 states/BlendTree/position = Vector2(392, 100)
 states/Start/position = Vector2(204, 100)
 transitions = ["Start", "BlendTree", SubResource("AnimationNodeStateMachineTransition_xu58l")]
+
+[sub_resource type="Animation" id="Animation_7rx0p"]
+resource_name = "tree2_grow"
+tracks/0/type = "position_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cylinder_001")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -5.96046e-08, -1.07764, -4.76837e-07, 0.0333333, 1, -5.96046e-08, -1.07413, -4.76837e-07, 0.0666667, 1, -5.96046e-08, -1.06391, -4.76837e-07, 0.1, 1, -5.96046e-08, -1.04747, -4.76837e-07, 0.133333, 1, -5.96046e-08, -1.02528, -4.76837e-07, 0.166667, 1, -5.96046e-08, -0.997816, -4.76837e-07, 0.2, 1, -5.96046e-08, -0.965566, -4.76837e-07, 0.233333, 1, -5.96046e-08, -0.929006, -4.76837e-07, 0.266667, 1, -5.96046e-08, -0.888615, -4.76837e-07, 0.3, 1, -5.96046e-08, -0.84487, -4.76837e-07, 0.333333, 1, -5.96046e-08, -0.798252, -4.76837e-07, 0.366667, 1, -5.96046e-08, -0.74924, -4.76837e-07, 0.4, 1, -5.96046e-08, -0.698311, -4.76837e-07, 0.433333, 1, -5.96046e-08, -0.645946, -4.76837e-07, 0.566667, 1, -5.96046e-08, -0.431695, -4.76837e-07, 0.6, 1, -5.96046e-08, -0.37933, -4.76837e-07, 0.633333, 1, -5.96046e-08, -0.328401, -4.76837e-07, 0.666667, 1, -5.96046e-08, -0.279388, -4.76837e-07, 0.7, 1, -5.96046e-08, -0.232771, -4.76837e-07, 0.733333, 1, -5.96046e-08, -0.189026, -4.76837e-07, 0.766667, 1, -5.96046e-08, -0.148635, -4.76837e-07, 0.8, 1, -5.96046e-08, -0.112075, -4.76837e-07, 0.833333, 1, -5.96046e-08, -0.0798253, -4.76837e-07, 0.866667, 1, -5.96046e-08, -0.0523654, -4.76837e-07, 0.9, 1, -5.96046e-08, -0.0301739, -4.76837e-07, 0.933333, 1, -5.96046e-08, -0.0137299, -4.76837e-07, 0.966667, 1, -5.96046e-08, -0.00351226, -4.76837e-07, 1, 1, -5.96046e-08, 5.96046e-08, -4.76837e-07)
+tracks/1/type = "scale_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cylinder_001")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.0172682, 0.0172682, 0.0172682, 0.0333333, 1, 0.0188194, 0.0188194, 0.0188194, 0.0666667, 1, 0.0233322, 0.0233322, 0.0233322, 0.1, 1, 0.0305949, 0.0305949, 0.0305949, 0.133333, 1, 0.0403959, 0.040396, 0.040396, 0.166667, 1, 0.0525239, 0.0525239, 0.0525239, 0.2, 1, 0.0667672, 0.0667672, 0.0667672, 0.233333, 1, 0.0829143, 0.0829144, 0.0829144, 0.266667, 1, 0.100754, 0.100754, 0.100754, 0.3, 1, 0.120074, 0.120074, 0.120074, 0.333333, 1, 0.140663, 0.140663, 0.140663, 0.366667, 1, 0.16231, 0.16231, 0.16231, 0.4, 1, 0.184803, 0.184803, 0.184803, 0.433333, 1, 0.207931, 0.207931, 0.207931, 0.566667, 1, 0.302557, 0.302558, 0.302558, 0.6, 1, 0.325685, 0.325685, 0.325685, 0.633333, 1, 0.348178, 0.348178, 0.348178, 0.666667, 1, 0.369825, 0.369825, 0.369825, 0.7, 1, 0.390415, 0.390415, 0.390415, 0.733333, 1, 0.409735, 0.409735, 0.409735, 0.766667, 1, 0.427574, 0.427574, 0.427574, 0.8, 1, 0.443721, 0.443721, 0.443721, 0.833333, 1, 0.457965, 0.457965, 0.457965, 0.866667, 1, 0.470093, 0.470093, 0.470093, 0.9, 1, 0.479894, 0.479894, 0.479894, 0.933333, 1, 0.487156, 0.487156, 0.487156, 0.966667, 1, 0.491669, 0.491669, 0.491669, 1, 1, 0.49322, 0.49322, 0.49322)
+
+[sub_resource type="Animation" id="Animation_ouj4g"]
+resource_name = "tree2_idle"
+tracks/0/type = "position_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cylinder_001")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, -1.07764, 0)
+tracks/1/type = "scale_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cylinder_001")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.0172682, 0.0172682, 0.0172682)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_86ihr"]
+_data = {
+"tree2_grow": SubResource("Animation_7rx0p"),
+"tree2_idle": SubResource("Animation_ouj4g")
+}
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wrmvx"]
 animation = &"tree2_grow"
@@ -89,9 +178,12 @@ shape = SubResource("CapsuleShape3D_k0qvg")
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
 [node name="AnimationTreeGraphics" type="AnimationTree" parent="."]
+root_node = NodePath("../Graphics")
+libraries = {
+"": SubResource("AnimationLibrary_sijb1")
+}
 tree_root = SubResource("AnimationNodeStateMachine_wrqpn")
 anim_player = NodePath("../Graphics/AnimationPlayer")
-active = true
 parameters/conditions/fall = false
 parameters/BlendTree/Add2/add_amount = 1.0
 
@@ -104,9 +196,12 @@ surface_material_override/0 = ExtResource("4_vbwf6")
 surface_material_override/1 = ExtResource("5_0at4s")
 
 [node name="AnimationTreeTree" type="AnimationTree" parent="."]
+root_node = NodePath("../tree2")
+libraries = {
+"": SubResource("AnimationLibrary_86ihr")
+}
 tree_root = SubResource("AnimationNodeStateMachine_xism8")
 anim_player = NodePath("../tree2/AnimationPlayer")
-active = true
 parameters/conditions/grow = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

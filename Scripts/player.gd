@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED = 5.0 * 1.0 #multiplying speed for testing
+var speed = 5.0 * 1.0 #multiplying speed for testing
 const ACCEL = 25.0
 const DECEL = 25.0
 const JUMP_VELOCITY = 4.5
@@ -48,8 +48,8 @@ func _physics_process(delta):
 	var direction = (yaw.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	direction.y = 0.0
 	if direction:
-		velocity.x = move_toward(velocity.x, SPEED * direction.x, ACCEL * delta)
-		velocity.z = move_toward(velocity.z, SPEED * direction.z, ACCEL * delta)
+		velocity.x = move_toward(velocity.x, speed * direction.x, ACCEL * delta)
+		velocity.z = move_toward(velocity.z, speed * direction.z, ACCEL * delta)
 		graphics.look_at(position + (velocity * Vector3(1.0, 0.0, 1.0)))
 	else:
 		velocity.x = move_toward(velocity.x, 0, DECEL * delta)

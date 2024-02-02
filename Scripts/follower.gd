@@ -35,6 +35,7 @@ func _ready():
 
 func _physics_process(delta):
 	var target_pos = Vector3(leader.global_position.x, position.y, leader.global_position.z)
+	speed = player.speed
 	
 	if state == FOLLOW or state == RETURN or state==COOLDOWN:
 		if state == FOLLOW or state == RETURN:

@@ -12,7 +12,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_sx4pq"]
 size = Vector3(24.8163, 13.9943, 13.4908)
 
-[sub_resource type="Animation" id="Animation_qsll0"]
+[sub_resource type="Animation" id="Animation_bquhq"]
 resource_name = "factory_fall"
 length = 1.16667
 tracks/0/type = "rotation_3d"
@@ -128,7 +128,7 @@ tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = PackedFloat32Array(0, 1, -8.83104e-08, 1.09397e-07, 0.408382, 0.912811, 0.0333333, 1, 0.00062145, -0.000346694, 0.408597, 0.912715, 0.0666667, 1, 0.00243863, -0.00136064, 0.409224, 0.91243, 0.1, 1, 0.00538135, -0.0030026, 0.410237, 0.911958, 0.133333, 1, 0.00938046, -0.00523401, 0.411605, 0.911299, 0.166667, 1, 0.0143674, -0.00801659, 0.413297, 0.910448, 0.2, 1, 0.0202735, -0.0113121, 0.415282, 0.909397, 0.233333, 1, 0.0270299, -0.015082, 0.417527, 0.908137, 0.266667, 1, 0.0345669, -0.0192874, 0.419999, 0.906661, 0.3, 1, 0.0428136, -0.0238889, 0.422666, 0.904959, 0.333333, 1, 0.0516978, -0.0288461, 0.425493, 0.903023, 0.366667, 1, 0.0611459, -0.0341179, 0.428448, 0.900849, 0.4, 1, 0.0710827, -0.0396624, 0.431498, 0.898434, 0.433333, 1, 0.0814316, -0.0454368, 0.434612, 0.895777, 0.466667, 1, 0.0921148, -0.0513978, 0.437758, 0.892884, 0.5, 1, 0.103053, -0.0575012, 0.440908, 0.889761, 0.533333, 1, 0.114167, -0.0637024, 0.444034, 0.886421, 0.633333, 1, 0.147761, -0.0824471, 0.453021, 0.875295, 0.666667, 1, 0.158778, -0.0885945, 0.455816, 0.871305, 0.7, 1, 0.169575, -0.0946188, 0.458481, 0.867229, 0.733333, 1, 0.180076, -0.100478, 0.461002, 0.863107, 0.766667, 1, 0.190206, -0.10613, 0.463367, 0.858981, 0.8, 1, 0.199895, -0.111536, 0.465567, 0.854897, 0.833333, 1, 0.209072, -0.116657, 0.467595, 0.850902, 0.866667, 1, 0.217671, -0.121455, 0.469445, 0.847047, 0.9, 1, 0.225626, -0.125894, 0.471113, 0.843384, 0.933333, 1, 0.232874, -0.129938, 0.472596, 0.839964, 0.966667, 1, 0.239353, -0.133553, 0.473891, 0.83684, 1, 1, 0.245003, -0.136706, 0.474998, 0.834064, 1.03333, 1, 0.249763, -0.139362, 0.475914, 0.831687, 1.06667, 1, 0.253574, -0.141488, 0.476635, 0.829759, 1.1, 1, 0.256374, -0.14305, 0.477159, 0.828329, 1.13333, 1, 0.258101, -0.144014, 0.47748, 0.82744, 1.16667, 1, 0.258692, -0.144344, 0.477589, 0.827135)
 
-[sub_resource type="Animation" id="Animation_d4kwk"]
+[sub_resource type="Animation" id="Animation_4n02n"]
 resource_name = "log_loader_fall"
 length = 0.7
 tracks/0/type = "position_3d"
@@ -244,7 +244,7 @@ tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = PackedFloat32Array(0, 1, 0, 1.19209e-07, 0, 1)
 
-[sub_resource type="Animation" id="Animation_8w0vn"]
+[sub_resource type="Animation" id="Animation_sheys"]
 resource_name = "quarry_miner_fall"
 length = 1.33333
 tracks/0/type = "position_3d"
@@ -360,7 +360,7 @@ tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = PackedFloat32Array(0, 1, 0, 1.19209e-07, 0, 1)
 
-[sub_resource type="Animation" id="Animation_wp5lx"]
+[sub_resource type="Animation" id="Animation_hi2i7"]
 resource_name = "rock_saw_fall"
 length = 0.666667
 tracks/0/type = "position_3d"
@@ -476,7 +476,7 @@ tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = PackedFloat32Array(0, 1, 0, 1.19209e-07, 0, 1)
 
-[sub_resource type="Animation" id="Animation_uj2v8"]
+[sub_resource type="Animation" id="Animation_v5sna"]
 resource_name = "smokestack_fall"
 length = 1.46667
 tracks/0/type = "position_3d"
@@ -592,7 +592,7 @@ tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = PackedFloat32Array(0, 1, 0, 1.19209e-07, 0, 1)
 
-[sub_resource type="Animation" id="Animation_aqhai"]
+[sub_resource type="Animation" id="Animation_h31oh"]
 resource_name = "watertower_fall"
 length = 0.783333
 tracks/0/type = "position_3d"
@@ -708,14 +708,14 @@ tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = PackedFloat32Array(0, 1, 0, 1.19209e-07, 0, 1)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_haw2n"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sybt3"]
 _data = {
-"factory_fall": SubResource("Animation_qsll0"),
-"log_loader_fall": SubResource("Animation_d4kwk"),
-"quarry_miner_fall": SubResource("Animation_8w0vn"),
-"rock_saw_fall": SubResource("Animation_wp5lx"),
-"smokestack_fall": SubResource("Animation_uj2v8"),
-"watertower_fall": SubResource("Animation_aqhai")
+"factory_fall": SubResource("Animation_bquhq"),
+"log_loader_fall": SubResource("Animation_4n02n"),
+"quarry_miner_fall": SubResource("Animation_sheys"),
+"rock_saw_fall": SubResource("Animation_hi2i7"),
+"smokestack_fall": SubResource("Animation_v5sna"),
+"watertower_fall": SubResource("Animation_h31oh")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_soioa"]
@@ -730,7 +730,7 @@ states/factory_fall/node = SubResource("AnimationNodeAnimation_soioa")
 states/factory_fall/position = Vector2(421.333, 94)
 transitions = ["Start", "factory_fall", SubResource("AnimationNodeStateMachineTransition_faq8d")]
 
-[sub_resource type="Animation" id="Animation_n34m5"]
+[sub_resource type="Animation" id="Animation_7rx0p"]
 resource_name = "tree2_grow"
 tracks/0/type = "position_3d"
 tracks/0/imported = true
@@ -747,7 +747,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0.0172682, 0.0172682, 0.0172682, 0.0333333, 1, 0.0188194, 0.0188194, 0.0188194, 0.0666667, 1, 0.0233322, 0.0233322, 0.0233322, 0.1, 1, 0.0305949, 0.0305949, 0.0305949, 0.133333, 1, 0.0403959, 0.040396, 0.040396, 0.166667, 1, 0.0525239, 0.0525239, 0.0525239, 0.2, 1, 0.0667672, 0.0667672, 0.0667672, 0.233333, 1, 0.0829143, 0.0829144, 0.0829144, 0.266667, 1, 0.100754, 0.100754, 0.100754, 0.3, 1, 0.120074, 0.120074, 0.120074, 0.333333, 1, 0.140663, 0.140663, 0.140663, 0.366667, 1, 0.16231, 0.16231, 0.16231, 0.4, 1, 0.184803, 0.184803, 0.184803, 0.433333, 1, 0.207931, 0.207931, 0.207931, 0.566667, 1, 0.302557, 0.302558, 0.302558, 0.6, 1, 0.325685, 0.325685, 0.325685, 0.633333, 1, 0.348178, 0.348178, 0.348178, 0.666667, 1, 0.369825, 0.369825, 0.369825, 0.7, 1, 0.390415, 0.390415, 0.390415, 0.733333, 1, 0.409735, 0.409735, 0.409735, 0.766667, 1, 0.427574, 0.427574, 0.427574, 0.8, 1, 0.443721, 0.443721, 0.443721, 0.833333, 1, 0.457965, 0.457965, 0.457965, 0.866667, 1, 0.470093, 0.470093, 0.470093, 0.9, 1, 0.479894, 0.479894, 0.479894, 0.933333, 1, 0.487156, 0.487156, 0.487156, 0.966667, 1, 0.491669, 0.491669, 0.491669, 1, 1, 0.49322, 0.49322, 0.49322)
 
-[sub_resource type="Animation" id="Animation_oh1su"]
+[sub_resource type="Animation" id="Animation_ouj4g"]
 resource_name = "tree2_idle"
 tracks/0/type = "position_3d"
 tracks/0/imported = true
@@ -764,10 +764,10 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0.0172682, 0.0172682, 0.0172682)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qocea"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_86ihr"]
 _data = {
-"tree2_grow": SubResource("Animation_n34m5"),
-"tree2_idle": SubResource("Animation_oh1su")
+"tree2_grow": SubResource("Animation_7rx0p"),
+"tree2_idle": SubResource("Animation_ouj4g")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wrmvx"]
@@ -828,7 +828,7 @@ surface_material_override/1 = ExtResource("4_gxon1")
 [node name="AnimationTreeGraphics" type="AnimationTree" parent="."]
 root_node = NodePath("../Graphics")
 libraries = {
-"": SubResource("AnimationLibrary_haw2n")
+"": SubResource("AnimationLibrary_sybt3")
 }
 tree_root = SubResource("AnimationNodeStateMachine_djamh")
 anim_player = NodePath("../Graphics/AnimationPlayer")
@@ -845,7 +845,7 @@ surface_material_override/1 = ExtResource("7_awc1d")
 [node name="AnimationTreeTree" type="AnimationTree" parent="."]
 root_node = NodePath("../tree2")
 libraries = {
-"": SubResource("AnimationLibrary_qocea")
+"": SubResource("AnimationLibrary_86ihr")
 }
 tree_root = SubResource("AnimationNodeStateMachine_431fo")
 anim_player = NodePath("../tree2/AnimationPlayer")

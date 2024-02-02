@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b5x4ovf0sau02"]
+[gd_scene load_steps=23 format=3 uid="uid://b5x4ovf0sau02"]
 
 [ext_resource type="PackedScene" uid="uid://jrx02g6k4j55" path="res://Scenes/Objectives/objective.tscn" id="1_ah0oe"]
 [ext_resource type="PackedScene" uid="uid://cnpmp8wfl12sd" path="res://Models/objectives/welder.glb" id="2_g2sqw"]
@@ -12,6 +12,29 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_lxtb0"]
 radius = 1.4
 
+[sub_resource type="Animation" id="Animation_kdisp"]
+resource_name = "welder_fall"
+length = 0.5
+tracks/0/type = "position_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube_050")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.952213, 0, 0.0333333, 1, 0, 0.936112, 0, 0.0666667, 1, 0, 0.890804, 0, 0.1, 1, 0, 0.820783, 0, 0.133333, 1, 0, 0.730541, 0, 0.166667, 1, 0, 0.624572, 0, 0.2, 1, 0, 0.50737, 0, 0.233333, 1, 0, 0.383428, 0, 0.266667, 1, 0, 0.25724, 0, 0.3, 1, 0, 0.133298, 0, 0.333333, 1, 0, 0.0160959, 0, 0.366667, 1, 0, -0.0898725, 0, 0.4, 1, 0, -0.180115, 0, 0.433333, 1, 0, -0.250136, 0, 0.466667, 1, 0, -0.295444, 0, 0.5, 1, 0, -0.311545, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cube_050")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.0333333, 1, -0.00227846, -0.000317858, -0.000993593, 0.999997, 0.0666667, 1, -0.00868636, -0.00118796, -0.0037972, 0.999954, 0.1, 1, -0.0185783, -0.0024618, -0.00815164, 0.999791, 0.133333, 1, -0.0313044, -0.0039759, -0.0138002, 0.999407, 0.166667, 1, -0.046212, -0.00556929, -0.0204821, 0.998706, 0.2, 1, -0.0626482, -0.00709777, -0.0279282, 0.99762, 0.233333, 1, -0.0799625, -0.00844509, -0.0358594, 0.996117, 0.266667, 1, -0.0975114, -0.00953083, -0.0439862, 0.994216, 0.3, 1, -0.114662, -0.0103146, -0.0520112, 0.991989, 0.333333, 1, -0.130793, -0.0107969, -0.0596316, 0.989556, 0.366667, 1, -0.1453, -0.0110155, -0.0665423, 0.987086, 0.4, 1, -0.157592, -0.0110382, -0.0724391, 0.984782, 0.433333, 1, -0.167088, -0.0109521, -0.0770198, 0.982868, 0.466667, 1, -0.173213, -0.010848, -0.0799854, 0.981571, 0.5, 1, -0.175385, -0.0108018, -0.0810395, 0.981099)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vtp81"]
+_data = {
+"welder_fall": SubResource("Animation_kdisp")
+}
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wknt3"]
 animation = &"welder_fall"
 
@@ -23,6 +46,46 @@ advance_condition = &"fall"
 states/welder_fall/node = SubResource("AnimationNodeAnimation_wknt3")
 states/welder_fall/position = Vector2(404, 92.6667)
 transitions = ["Start", "welder_fall", SubResource("AnimationNodeStateMachineTransition_o5upu")]
+
+[sub_resource type="Animation" id="Animation_7rx0p"]
+resource_name = "tree2_grow"
+tracks/0/type = "position_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cylinder_001")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -5.96046e-08, -1.07764, -4.76837e-07, 0.0333333, 1, -5.96046e-08, -1.07413, -4.76837e-07, 0.0666667, 1, -5.96046e-08, -1.06391, -4.76837e-07, 0.1, 1, -5.96046e-08, -1.04747, -4.76837e-07, 0.133333, 1, -5.96046e-08, -1.02528, -4.76837e-07, 0.166667, 1, -5.96046e-08, -0.997816, -4.76837e-07, 0.2, 1, -5.96046e-08, -0.965566, -4.76837e-07, 0.233333, 1, -5.96046e-08, -0.929006, -4.76837e-07, 0.266667, 1, -5.96046e-08, -0.888615, -4.76837e-07, 0.3, 1, -5.96046e-08, -0.84487, -4.76837e-07, 0.333333, 1, -5.96046e-08, -0.798252, -4.76837e-07, 0.366667, 1, -5.96046e-08, -0.74924, -4.76837e-07, 0.4, 1, -5.96046e-08, -0.698311, -4.76837e-07, 0.433333, 1, -5.96046e-08, -0.645946, -4.76837e-07, 0.566667, 1, -5.96046e-08, -0.431695, -4.76837e-07, 0.6, 1, -5.96046e-08, -0.37933, -4.76837e-07, 0.633333, 1, -5.96046e-08, -0.328401, -4.76837e-07, 0.666667, 1, -5.96046e-08, -0.279388, -4.76837e-07, 0.7, 1, -5.96046e-08, -0.232771, -4.76837e-07, 0.733333, 1, -5.96046e-08, -0.189026, -4.76837e-07, 0.766667, 1, -5.96046e-08, -0.148635, -4.76837e-07, 0.8, 1, -5.96046e-08, -0.112075, -4.76837e-07, 0.833333, 1, -5.96046e-08, -0.0798253, -4.76837e-07, 0.866667, 1, -5.96046e-08, -0.0523654, -4.76837e-07, 0.9, 1, -5.96046e-08, -0.0301739, -4.76837e-07, 0.933333, 1, -5.96046e-08, -0.0137299, -4.76837e-07, 0.966667, 1, -5.96046e-08, -0.00351226, -4.76837e-07, 1, 1, -5.96046e-08, 5.96046e-08, -4.76837e-07)
+tracks/1/type = "scale_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cylinder_001")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.0172682, 0.0172682, 0.0172682, 0.0333333, 1, 0.0188194, 0.0188194, 0.0188194, 0.0666667, 1, 0.0233322, 0.0233322, 0.0233322, 0.1, 1, 0.0305949, 0.0305949, 0.0305949, 0.133333, 1, 0.0403959, 0.040396, 0.040396, 0.166667, 1, 0.0525239, 0.0525239, 0.0525239, 0.2, 1, 0.0667672, 0.0667672, 0.0667672, 0.233333, 1, 0.0829143, 0.0829144, 0.0829144, 0.266667, 1, 0.100754, 0.100754, 0.100754, 0.3, 1, 0.120074, 0.120074, 0.120074, 0.333333, 1, 0.140663, 0.140663, 0.140663, 0.366667, 1, 0.16231, 0.16231, 0.16231, 0.4, 1, 0.184803, 0.184803, 0.184803, 0.433333, 1, 0.207931, 0.207931, 0.207931, 0.566667, 1, 0.302557, 0.302558, 0.302558, 0.6, 1, 0.325685, 0.325685, 0.325685, 0.633333, 1, 0.348178, 0.348178, 0.348178, 0.666667, 1, 0.369825, 0.369825, 0.369825, 0.7, 1, 0.390415, 0.390415, 0.390415, 0.733333, 1, 0.409735, 0.409735, 0.409735, 0.766667, 1, 0.427574, 0.427574, 0.427574, 0.8, 1, 0.443721, 0.443721, 0.443721, 0.833333, 1, 0.457965, 0.457965, 0.457965, 0.866667, 1, 0.470093, 0.470093, 0.470093, 0.9, 1, 0.479894, 0.479894, 0.479894, 0.933333, 1, 0.487156, 0.487156, 0.487156, 0.966667, 1, 0.491669, 0.491669, 0.491669, 1, 1, 0.49322, 0.49322, 0.49322)
+
+[sub_resource type="Animation" id="Animation_ouj4g"]
+resource_name = "tree2_idle"
+tracks/0/type = "position_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cylinder_001")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, -1.07764, 0)
+tracks/1/type = "scale_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cylinder_001")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.0172682, 0.0172682, 0.0172682)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_86ihr"]
+_data = {
+"tree2_grow": SubResource("Animation_7rx0p"),
+"tree2_idle": SubResource("Animation_ouj4g")
+}
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wrmvx"]
 animation = &"tree2_grow"
@@ -71,9 +134,12 @@ surface_material_override/0 = ExtResource("3_0l0et")
 surface_material_override/1 = ExtResource("4_6semn")
 
 [node name="AnimationTreeGraphics" type="AnimationTree" parent="."]
+root_node = NodePath("../Graphics")
+libraries = {
+"": SubResource("AnimationLibrary_vtp81")
+}
 tree_root = SubResource("AnimationNodeStateMachine_0ovhl")
 anim_player = NodePath("../Graphics/AnimationPlayer")
-active = true
 parameters/conditions/fall = false
 
 [node name="tree2" parent="." instance=ExtResource("5_5fjsh")]
@@ -85,9 +151,12 @@ surface_material_override/0 = ExtResource("6_qbxcx")
 surface_material_override/1 = ExtResource("7_keo85")
 
 [node name="AnimationTreeTree" type="AnimationTree" parent="."]
+root_node = NodePath("../tree2")
+libraries = {
+"": SubResource("AnimationLibrary_86ihr")
+}
 tree_root = SubResource("AnimationNodeStateMachine_xh728")
 anim_player = NodePath("../tree2/AnimationPlayer")
-active = true
 parameters/conditions/grow = false
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
