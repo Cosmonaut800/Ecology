@@ -18,6 +18,7 @@ var can_anything := true
 @onready var pitch := $YawPivot/PitchPivot
 @onready var graphics := $Graphics
 @onready var camera := $YawPivot/PitchPivot/Camera3D
+@onready var camera_pos_target := $YawPivot/PitchPivot/CameraPosTarget
 @onready var camera_ray := $YawPivot/PitchPivot/CameraRay
 @onready var timer_node := $Timer
 @onready var grass_step := $GrassStep
@@ -101,7 +102,7 @@ func _unhandled_input(event):
 				pitch_input = -event.relative.y * mouse_sensitivity
 
 func change_camera_distance(distance):
-	camera.distance = distance
+	camera_pos_target.position = Vector3(0.0, 0.0, distance)
 	camera_ray.target_position.z = distance
 
 func attack():
