@@ -1,5 +1,4 @@
 shader_type spatial;
-render_mode depth_draw_always;
 
 uniform sampler2D tex : source_color;
 uniform sampler2D heightmap;
@@ -14,14 +13,4 @@ void vertex() {
 
 void fragment() {
 	ALBEDO = texture(tex, UV * texRepeat).rgb;
-	
-	/*if (texture(tex, UV * texRepeat).a > alphaCutoff)
-	{
-		ALPHA = 1.0f;
-	} 
-	else
-	{
-		ALPHA = 0.0f;
-	}*/
-	ALPHA = texture(tex, UV * texRepeat).a;
 }

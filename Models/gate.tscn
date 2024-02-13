@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqwwdhmrftul5"]
+
+[ext_resource type="PackedScene" uid="uid://kjohy7faony1" path="res://Models/gate.glb" id="1_b4lhw"]
+[ext_resource type="Shader" path="res://Models/gate_mat.gdshader" id="2_b53ha"]
+[ext_resource type="Texture2D" uid="uid://cpcaorx5vmp1r" path="res://Materials/Textures/ecology_heightmap_extended.png" id="3_jus1r"]
+[ext_resource type="Texture2D" uid="uid://drrdu3ejseyw2" path="res://Models/gate_Wood02_2K_BaseColor.png" id="4_uwn66"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qwxax"]
+render_priority = 0
+shader = ExtResource("2_b53ha")
+shader_parameter/heightIntensity = 5.0
+shader_parameter/texRepeat = Vector2(1, 1)
+shader_parameter/alphaCutoff = 0.5
+shader_parameter/tex = ExtResource("4_uwn66")
+shader_parameter/heightmap = ExtResource("3_jus1r")
+
+[node name="Gate" instance=ExtResource("1_b4lhw")]
+
+[node name="gate" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.475624, 0, 0)
+extra_cull_margin = 8.0
+surface_material_override/0 = SubResource("ShaderMaterial_qwxax")

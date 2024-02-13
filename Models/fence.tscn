@@ -2,13 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://btd0lpy840pn8" path="res://Models/fence.glb" id="1_pntwj"]
 [ext_resource type="Material" uid="uid://ch2ppei4f7tcx" path="res://Materials/fence_mat.tres" id="2_s13d8"]
-[ext_resource type="Shader" path="res://Materials/fence_mat.gdshader" id="3_s7u8t"]
+[ext_resource type="Shader" path="res://Models/gate_mat.gdshader" id="3_ybiwp"]
 [ext_resource type="Texture2D" uid="uid://cpcaorx5vmp1r" path="res://Materials/Textures/ecology_heightmap_extended.png" id="4_de3u8"]
 [ext_resource type="Texture2D" uid="uid://bbxp4unc5ymgg" path="res://Materials/Textures/PaintedMetal03_2K_Roughness.png" id="5_bupb8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eurr0"]
 render_priority = 0
-shader = ExtResource("3_s7u8t")
+shader = ExtResource("3_ybiwp")
 shader_parameter/heightIntensity = 5.0
 shader_parameter/texRepeat = Vector2(0, 0)
 shader_parameter/alphaCutoff = 0.5
