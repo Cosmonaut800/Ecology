@@ -63,6 +63,7 @@ func _physics_process(delta):
 		saw.stop()
 		dead = true
 		anim_tree.set("parameters/conditions/dead", true)
+		health_bar.hide()
 
 func _process(_delta):
 	health_bar.value = health;

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dp76ovil0s31b"]
+
+[node name="GPUEdit" type="Node3D"]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport"]
+custom_minimum_size = Vector2(512, 512)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.152941, 1, 1)
+
+[node name="SubViewport2" type="SubViewport" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport2"]
+offset_right = 40.0
+offset_bottom = 40.0

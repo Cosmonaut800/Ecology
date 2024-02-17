@@ -6,20 +6,23 @@ extends Node3D
 const light_texture = preload("res://Materials/Textures/spotlight.png")
 const DIMENSION = 1024
 
-@onready var fogs = [$"../Ground/Ground1".get_surface_override_material(0), $"../Ground/Ground2".get_surface_override_material(0), $"../Ground/Ground3".get_surface_override_material(0), $"../Ground/Ground4".get_surface_override_material(0), $"../Player/GrassParticleGrid/GrassParticles".get_process_material()]
-@onready var player = $"../Player"
-@onready var timer = $Timer
+@onready var fogs := [$"../Ground/Ground1".get_surface_override_material(0), $"../Ground/Ground2".get_surface_override_material(0), $"../Ground/Ground3".get_surface_override_material(0), $"../Ground/Ground4".get_surface_override_material(0), $"../Player/GrassParticleGrid/GrassParticles".get_process_material()]
+@onready var player := $"../Player"
+@onready var timer := $Timer
+@onready var score_timer := $ScoreTimer
+@onready var score_text := $"../CanvasLayer/Percentage"
 
-var fog_image = Image.new()
-var fog_texture = ImageTexture.new()
-var light_image = light_texture.get_image()
-var light_offset = Vector2.ZERO
+var fog_image := Image.new()
+var fog_texture := ImageTexture.new()
+var light_image := light_texture.get_image()
+var light_offset := Vector2.ZERO
 @export var light_scale := 1.0
 
 var target := Vector2.ZERO
 
 func _ready():
 	timer.timeout.connect(on_timer_timeout)
+	score_timer.timeout.connect(on_score_timeout)
 	fog_image = Image.create(DIMENSION, DIMENSION, false, Image.FORMAT_RGBAH)
 	fog_image.fill(Color.BLACK)
 	light_image.decompress()
@@ -47,6 +50,10 @@ func on_timer_timeout():
 	if player.get_position_delta().length() > 0.01:
 		update_fog(target)
 
+func on_score_timeout():
+	print("score updated")
+	score_text.text = str(calculate_score()) + "%"
+
 func update_brush_size(radius):
 	fogs[4].set_shader_parameter("playerRadius", radius)
 	radius *= 2.0 * (DIMENSION/2048.0) # Values were initially chosen when fog dimension was set to 2048
@@ -56,11 +63,14 @@ func update_brush_size(radius):
 
 func calculate_score():
 	var average_color := 0.0
+	var test_image := Image.new()
 	
-	fog_image.resize(16, 16, Image.INTERPOLATE_TRILINEAR)
+	test_image.copy_from(fog_image)
+	
+	test_image.resize(16, 16, Image.INTERPOLATE_TRILINEAR)
 	for x in range(16):
 		for y in range(16):
-			average_color += fog_image.get_pixel(x, y).r
+			average_color += test_image.get_pixel(x, y).r
 	
 	average_color = average_color / (16 * 16)
 	return snapped(average_color * 100.0, 1.0)

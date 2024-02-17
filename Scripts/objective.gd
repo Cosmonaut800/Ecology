@@ -29,6 +29,7 @@ func _physics_process(delta):
 		spawn_follower.emit(num_of_followers, global_position)
 		graphics_anim.set("parameters/conditions/fall", true)
 		tree_anim.set("parameters/conditions/grow", true)
+		health_bar.hide()
 		killed = true
 
 func _process(_delta):
