@@ -4198,8 +4198,6 @@ player_body = NodePath("../../../Player")
 [node name="Skeleton3D" parent="Objectives/Watertower/Graphics/watertower_arm" index="0"]
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.0593974, 0.0310882, -0.0564032, 0.996155)
-bones/6/rotation = Quaternion(0.0593974, -0.0310882, 0.0564032, 0.996155)
 
 [node name="Cylinder_001" parent="Objectives/Watertower/tree2" index="0"]
 transform = Transform3D(-0.0168686, -0.00148643, 0.00338101, -0.00231527, 0.0165721, -0.00426559, -0.00287754, -0.0046202, -0.0163879, 0, -1.07764, 0)
@@ -4220,12 +4218,6 @@ transform = Transform3D(0.883733, 0, 0.467992, 0, 1, 0, -0.467992, 0, 0.883733, 
 [node name="Objective" parent="Objectives/LogLoader" index="0" node_paths=PackedStringArray("player_body")]
 player_body = NodePath("../../../Player")
 
-[node name="Skeleton3D" parent="Objectives/LogLoader/Graphics/log_loader_arm" index="0"]
-bones/5/rotation = Quaternion(5.01798e-08, -5.3072e-08, 0.26507, 0.964229)
-bones/6/rotation = Quaternion(-2.66925e-08, -2.66925e-08, -0.707107, 0.707107)
-bones/7/rotation = Quaternion(-2.66925e-08, -2.66925e-08, -0.707107, 0.707107)
-bones/8/rotation = Quaternion(-0.0361591, 0.00899967, -0.714381, 0.698764)
-
 [node name="AnimationTreeGraphics" parent="Objectives/LogLoader" index="2"]
 libraries = {
 "": SubResource("AnimationLibrary_edcw0")
@@ -4244,10 +4236,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.0536, 2.16957, 23.7603)
 
 [node name="Objective" parent="Objectives/RockSaw" index="0" node_paths=PackedStringArray("player_body")]
 player_body = NodePath("../../../Player")
-
-[node name="Skeleton3D" parent="Objectives/RockSaw/Graphics/rock_saw_arm" index="0"]
-bones/4/rotation = Quaternion(5.76012e-08, 5.76012e-08, -0.707107, 0.707107)
-bones/5/rotation = Quaternion(1.41895e-07, 1.41895e-07, -0.707107, 0.707107)
 
 [node name="AnimationTreeGraphics" parent="Objectives/RockSaw" index="2"]
 libraries = {
@@ -4292,9 +4280,6 @@ libraries = {
 "": SubResource("AnimationLibrary_majmx")
 }
 
-[node name="Cylinder_001" parent="Objectives/Propane/tree2" index="0"]
-transform = Transform3D(-0.0168686, -0.00148644, 0.00338101, -0.00231528, 0.0165721, -0.00426559, -0.00287754, -0.0046202, -0.0163879, 0, -1.07764, 0)
-
 [node name="AnimationTreeTree" parent="Objectives/Propane" index="4"]
 libraries = {
 "": SubResource("AnimationLibrary_qocea")
@@ -4310,9 +4295,6 @@ player_body = NodePath("../../../Player")
 libraries = {
 "": SubResource("AnimationLibrary_majmx")
 }
-
-[node name="Cylinder_001" parent="Objectives/Propane2/tree2" index="0"]
-transform = Transform3D(-0.0168686, -0.00148644, 0.00338101, -0.00231528, 0.0165721, -0.00426559, -0.00287754, -0.0046202, -0.0163879, 0, -1.07764, 0)
 
 [node name="AnimationTreeTree" parent="Objectives/Propane2" index="4"]
 libraries = {
@@ -4369,13 +4351,9 @@ player_body = NodePath("../../../Player")
 [node name="Skeleton3D" parent="Objectives/QuarryMiner/Graphics/quarry_miner_arm" index="0"]
 bones/0/rotation = Quaternion(4.31966e-08, -8.77948e-10, 0.00272738, 0.999996)
 bones/0/scale = Vector3(1, 1, 1)
-bones/1/rotation = Quaternion(2.00817e-08, 1.18424e-07, -0.149212, 0.988805)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(0.0278108, -0.0582626, 0.899421, -0.432289)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(-0.192847, 0.0587106, 0.882752, 0.424396)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.181224, 0.0835057, 0.881377, 0.428205)
 
 [node name="AnimationTreeGraphics" parent="Objectives/QuarryMiner" index="2"]
 libraries = {
@@ -4395,14 +4373,6 @@ transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 32.916
 
 [node name="Objective" parent="Objectives/FactoryBuilding" index="0" node_paths=PackedStringArray("player_body")]
 player_body = NodePath("../../../Player")
-
-[node name="Skeleton3D" parent="Objectives/FactoryBuilding/Graphics/factory_arm" index="0"]
-bones/5/rotation = Quaternion(-8.83104e-08, 1.09397e-07, 0.408382, 0.912811)
-bones/6/rotation = Quaternion(-8.83104e-08, 1.09397e-07, 0.408382, 0.912811)
-bones/7/rotation = Quaternion(-8.83104e-08, 1.09397e-07, 0.408382, 0.912811)
-bones/8/rotation = Quaternion(-8.83104e-08, 1.09397e-07, 0.408382, 0.912811)
-bones/9/rotation = Quaternion(-8.83104e-08, 1.09397e-07, 0.408382, 0.912811)
-bones/10/rotation = Quaternion(-8.83104e-08, 1.09397e-07, 0.408382, 0.912811)
 
 [node name="AnimationTreeGraphics" parent="Objectives/FactoryBuilding" index="2"]
 libraries = {
@@ -4426,11 +4396,6 @@ player_body = NodePath("../../../Player")
 [node name="Skeleton3D" parent="Objectives/Watertower2/Graphics/watertower_arm" index="0"]
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.0593974, 0.0310882, -0.0564032, 0.996155)
-bones/6/rotation = Quaternion(0.0593974, -0.0310882, 0.0564032, 0.996155)
-
-[node name="Cylinder_001" parent="Objectives/Watertower2/tree2" index="0"]
-transform = Transform3D(-0.0168686, -0.00148644, 0.00338101, -0.00231528, 0.0165721, -0.00426559, -0.00287754, -0.0046202, -0.0163879, 0, -1.07764, 0)
 
 [node name="AnimationTreeGraphics" parent="Objectives/Watertower2" index="3"]
 libraries = {
