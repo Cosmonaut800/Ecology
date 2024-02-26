@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnvyj172ikqkf"]
+
+[ext_resource type="ArrayMesh" uid="uid://bnm7xd3emfchl" path="res://Models/mountains1.obj" id="1_2rtr0"]
+[ext_resource type="Material" uid="uid://l3vkf0uayub5" path="res://Materials/mountain_mat.tres" id="2_styfx"]
+[ext_resource type="ArrayMesh" uid="uid://buctvirhtt4fk" path="res://Models/mountains2.obj" id="3_mn1gy"]
+[ext_resource type="ArrayMesh" uid="uid://nsb511olise4" path="res://Models/mountains3.obj" id="4_1sbhs"]
+[ext_resource type="ArrayMesh" uid="uid://nrbbu1127axx" path="res://Models/mountains4.obj" id="5_vwk1d"]
+
+[node name="DistantMountains" type="Node3D"]
+
+[node name="MountainGroupLarge" type="Node3D" parent="."]
+
+[node name="Mountains1" type="MeshInstance3D" parent="MountainGroupLarge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.821, 0, 75.869)
+mesh = ExtResource("1_2rtr0")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_styfx")
+
+[node name="Mountains2" type="MeshInstance3D" parent="MountainGroupLarge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.869, 0, 75.821)
+mesh = ExtResource("3_mn1gy")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_styfx")
+
+[node name="Mountains3" type="MeshInstance3D" parent="MountainGroupLarge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.821, 0, -75.869)
+mesh = ExtResource("4_1sbhs")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_styfx")
+
+[node name="Mountains4" type="MeshInstance3D" parent="MountainGroupLarge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.869, 0, -75.821)
+mesh = ExtResource("5_vwk1d")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_styfx")
+
+[node name="MountainGroupSmall" type="Node3D" parent="."]
+transform = Transform3D(-0.652086, 0, -0.339454, 0, 0.73515, 0, 0.339454, 0, -0.652086, 0, 0, 0)
+
+[node name="Mountains1" type="MeshInstance3D" parent="MountainGroupSmall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.821, 0, 75.869)
+mesh = ExtResource("1_2rtr0")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_styfx")
+
+[node name="Mountains2" type="MeshInstance3D" parent="MountainGroupSmall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.869, 0, 75.821)
+mesh = ExtResource("3_mn1gy")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_styfx")
+
+[node name="Mountains3" type="MeshInstance3D" parent="MountainGroupSmall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.821, 0, -75.869)
+mesh = ExtResource("4_1sbhs")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_styfx")
+
+[node name="Mountains4" type="MeshInstance3D" parent="MountainGroupSmall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.869, 0, -75.821)
+mesh = ExtResource("5_vwk1d")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_styfx")

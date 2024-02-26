@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://l3vkf0uayub5"]
+
+[ext_resource type="Texture2D" uid="uid://bwlii4n1y3a3u" path="res://Materials/Textures/mountains.png" id="1_a8d85"]
+
+[resource]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.505882, 0.521569, 0.580392, 1)
+albedo_texture = ExtResource("1_a8d85")
