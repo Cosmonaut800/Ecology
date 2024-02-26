@@ -1,11 +1,11 @@
-[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://cm5tqkoht0jtr"]
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://cm5tqkoht0jtr"]
 
 [ext_resource type="Shader" path="res://Materials/grass_particle_process.gdshader" id="1_aq50y"]
 [ext_resource type="Texture2D" uid="uid://chl2100wqpij7" path="res://Materials/Textures/ecology_heightmap.png" id="2_nhcvq"]
 [ext_resource type="Texture2D" uid="uid://wy7iqkpixwnd" path="res://Materials/Textures/white_noise.png" id="3_opvu3"]
-[ext_resource type="Texture2D" uid="uid://b578xhpldbj42" path="res://Materials/Textures/spotlight.png" id="4_jj6c1"]
 
 [resource]
+resource_local_to_scene = true
 shader = ExtResource("1_aq50y")
 shader_parameter/rows = 50.0
 shader_parameter/spacing = 0.4
@@ -14,6 +14,5 @@ shader_parameter/heightmapSize = Vector2(128, 128)
 shader_parameter/playerPosition = Vector3(-47.7, 4.304, -35.7)
 shader_parameter/playerRadius = 1.0
 shader_parameter/renderRadius = 45.0
-shader_parameter/srcTex = ExtResource("4_jj6c1")
 shader_parameter/noisemap = ExtResource("3_opvu3")
 shader_parameter/heightmap = ExtResource("2_nhcvq")

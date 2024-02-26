@@ -1,13 +1,9 @@
 extends Node2D
 
 @export var texture: Texture2D
-@export var bg_texture: Texture2D
 @export var brush_size: int = 100
 
 var brush_queue = []
-
-func _ready():
-	draw_texture_rect(bg_texture, Rect2(0.0, 0.0, 1024.0, 1024.0), false)
 
 func queue_brush(draw_position: Vector2, color := Color.WHITE):
 	brush_queue.push_back([draw_position, color])
