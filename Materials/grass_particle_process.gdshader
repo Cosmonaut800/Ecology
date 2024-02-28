@@ -3,6 +3,7 @@ shader_type particles;
 uniform float rows = 4.0f;
 uniform float spacing = 1.0f;
 uniform sampler2D srcTex;
+uniform sampler2D srcDiff;
 uniform sampler2D noisemap;
 uniform sampler2D heightmap : repeat_disable;
 uniform float heightmapIntensity = 10.0f;

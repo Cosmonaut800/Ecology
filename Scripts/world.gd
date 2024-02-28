@@ -113,7 +113,7 @@ func on_commit_murder():
 	
 	follower_targets.resize(follower_instances.size())
 	
-	ground_paint_controller.update_brush_size(follower_targets[-1].position.length())
+	#ground_paint_controller.update_brush_size(follower_targets[-1].position.length())
 
 func find_usable_follower_index() -> int:
 	var index := randi_range(0, follower_instances.size()-1)

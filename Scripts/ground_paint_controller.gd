@@ -53,10 +53,14 @@ func _process(_delta):
 	#target = (DIMENSION/128.0) * Vector2(player.global_position.x, player.global_position.z) + Vector2(DIMENSION/2.0, DIMENSION/2.0)
 	fogs[4].set_shader_parameter("playerPosition", player.position)
 	
+	if player.is_on_floor():
+		diff_brush.queue_brush(world_to_texture_space(player.global_position))
+		brush.queue_brush(world_to_texture_space(player.global_position))
+	
 	for follower in world.follower_instances:
 		if follower.state != follower.THROWN:
-			diff_brush.queue_brush(world_to_texture_space(follower.position))
-			brush.queue_brush(world_to_texture_space(follower.position))
+			diff_brush.queue_brush(world_to_texture_space(follower.global_position))
+			brush.queue_brush(world_to_texture_space(follower.global_position))
 
 func on_timer_timeout():
 	if player.get_position_delta().length() > 0.01:
