@@ -24,7 +24,6 @@ var target := Vector2.ZERO
 const NUM_OF_BRUSHES = 1000
 
 @onready var brush := $SubViewport/Brush
-@onready var diff_brush := $SubViewport2/Brush
 
 func _ready():
 	timer.timeout.connect(on_timer_timeout)
@@ -54,12 +53,10 @@ func _process(_delta):
 	fogs[4].set_shader_parameter("playerPosition", player.position)
 	
 	if player.is_on_floor():
-		diff_brush.queue_brush(world_to_texture_space(player.global_position))
 		brush.queue_brush(world_to_texture_space(player.global_position))
 	
 	for follower in world.follower_instances:
 		if follower.state != follower.THROWN:
-			diff_brush.queue_brush(world_to_texture_space(follower.global_position))
 			brush.queue_brush(world_to_texture_space(follower.global_position))
 
 func on_timer_timeout():
@@ -83,7 +80,8 @@ func calculate_score():
 	var average_color := 0.0
 	var test_image := Image.new()
 	
-	test_image.copy_from(fog_image)
+	#test_image.copy_from(fog_image)
+	test_image.copy_from($SubViewport.get_texture().get_image())
 	
 	test_image.resize(16, 16, Image.INTERPOLATE_TRILINEAR)
 	for x in range(16):
