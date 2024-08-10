@@ -137,9 +137,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="Graphics"]
-libraries = {
-"": ExtResource("2_r4yo5")
-}
 tree_root = SubResource("AnimationNodeStateMachine_m1rnv")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/dead = false
